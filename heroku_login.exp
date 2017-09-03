@@ -13,6 +13,6 @@ send "$env(PASSWORD_HEROKU)"
 
 expect
 
-send  "\r"
+send "\r"
 
 interact
