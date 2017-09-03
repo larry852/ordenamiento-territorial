@@ -8,4 +8,4 @@ script:
   - git subtree push --prefix Source/Frontend/ frontend master
   - git remote add backend  https://git.heroku.com/ordenamiento-backend.git
   - git subtree push --prefix Source/Backend/ backend master
-  - heroku run php /app/artisan migrate
+  - heroku run php /app/artisan migrate --remote backend
