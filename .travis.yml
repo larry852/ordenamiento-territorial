@@ -1,0 +1,8 @@
+install: true
+script:
+  - sudo apt-get install expect
+  - expect heroku_login.exp
+  - git clone https://github.com/larry852/ordenamiento-territorial.git
+  - cd ordenamiento-territorial
+  - git remote add frontend https://git.heroku.com/ordenamiento-frontend.git
+  - git subtree push --prefix Source/Frontend/ frontend master

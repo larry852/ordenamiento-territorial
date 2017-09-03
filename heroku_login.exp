@@ -1,0 +1,18 @@
+#!/usr/bin/expect
+spawn heroku "login"
+
+expect "Email:"
+
+send "$env(EMAIL_HEROKU)"
+
+send "\r"
+
+expect "Password:"
+
+send "$env(PASSWORD_HEROKU)"
+
+expect
+
+send  "\r"
+
+interact
