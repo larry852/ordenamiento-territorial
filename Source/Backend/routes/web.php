@@ -10,22 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('prueba',function(){
-return "Hola mundo!";
 
-});
-
-/*Route::get('usuario/{nombre}', function ($name) {
-    return "El nombre del usuario es: ".$name;
+/*Route::get('/', function () {
+    return view('welcome');
 });*/
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('controlador','Controlador_prueba@index');
-
-Route::get('pot','Control_pot@mostrar');
-
-Route::resource('usuario','Usuariocontroller');
+Route::resource('administrador','AdministradorController');
+Route::resource('administrador.usuario','Usuario_anonimoController');
+Route::resource('usuario-auto','Usuario_autorizadoController');
+Route::resource('usuario','Usuario_anonimoController');

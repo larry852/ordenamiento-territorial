@@ -1,10 +1,10 @@
 <?php
 
-namespace POT\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Controlador_pot extends Controller
+class Usuario_anonimoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +13,8 @@ class Controlador_pot extends Controller
      */
     public function index()
     {
-        return "Plan de Ordenamiento Territorial";
+        //
+        return view('welcome');
     }
 
     /**
@@ -24,6 +25,7 @@ class Controlador_pot extends Controller
     public function create()
     {
         //
+        return view('vistaspot\Registro');
     }
 
     /**
@@ -43,9 +45,9 @@ class Controlador_pot extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nombre)
+    public function show($id)
     {
-        return "El Programador backend es ".$nombre;
+        //
     }
 
     /**
@@ -57,6 +59,7 @@ class Controlador_pot extends Controller
     public function edit($id)
     {
         //
+        return view('vistaspot\Administrar');
     }
 
     /**

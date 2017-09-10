@@ -1,0 +1,25 @@
+ADMINISTRADOR
+id
+nombre
+contraseña
+
+
+USUARIO_AUTORIZADO
+id
+nombre
+
+
+USUARIO_ANONIMO
+id
+nombre
+edad
+ciudad
+
+dominio/usuario //Consultar informacion existente
+dominio/usuario/create  //Registro y solicitud de actualizaciones
+
+dominio/administrador/create  //Aprobacion de actualizaciones
+dominio/administrador/"id"/usuario/"id"/edit //Administrar usuarios
+
+dominio/usuario-auto   //Operaciones de sesion
+dominio/usuario-auto/"id"  //Servicios

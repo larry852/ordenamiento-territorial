@@ -1,6 +1,6 @@
 <?php
 
-namespace POT\Providers;
+namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
