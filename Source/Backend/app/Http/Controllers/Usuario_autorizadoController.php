@@ -1,10 +1,10 @@
 <?php
 
-namespace POT\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class Usuariocontroller extends Controller
+class Usuario_autorizadoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,6 +14,7 @@ class Usuariocontroller extends Controller
     public function index()
     {
         //
+        return view('vistaspot\Operaciones');
     }
 
     /**
@@ -24,7 +25,6 @@ class Usuariocontroller extends Controller
     public function create()
     {
         //
-        return view('usuario.create');
     }
 
     /**
@@ -36,8 +36,6 @@ class Usuariocontroller extends Controller
     public function store(Request $request)
     {
         //
-        
-        return "Usuario registrado";
     }
 
     /**
@@ -49,6 +47,7 @@ class Usuariocontroller extends Controller
     public function show($id)
     {
         //
+        return view('vistaspot\Servicios');
     }
 
     /**
