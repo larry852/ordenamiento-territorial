@@ -15,7 +15,25 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('administrador','AdministradorController');
+/*Route::resource('administrador','AdministradorController');
 Route::resource('administrador.usuario','Usuario_anonimoController');
 Route::resource('usuario-auto','Usuario_autorizadoController');
-Route::resource('usuario','Usuario_anonimoController');
+Route::resource('usuario','Usuario_anonimoController');*/
+
+Route::get('departamentos', 'DepartamentosController@index');
+
+Route::get('municipios/{departamento}', 'MunicipiosController@show');
+
+Route::get('zonas/{municipio}', 'ZonasController@show');
+
+Route::get('zonas/{zona}/detalles', 'ZonasController@detail');
+
+Route::get('usuarios', 'UsuariosController@index');
+
+Route::get('usuarios/{usuario}/detalles', 'UsuariosController@detail');
+
+
+
+
+
+
