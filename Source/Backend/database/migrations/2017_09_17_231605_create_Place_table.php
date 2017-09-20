@@ -14,7 +14,7 @@ class CreatePlaceTable extends Migration
     public function up()
     {
         Schema::create('Place', function (Blueprint $table) {
-            $table->increments('id')->primary();
+            $table->increments('id');
             $table->string('name');
             $table->integer('dane');
             $table->string('flag');

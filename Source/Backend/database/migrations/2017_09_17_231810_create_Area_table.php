@@ -14,10 +14,10 @@ class CreateAreaTable extends Migration
     public function up()
     {
         Schema::create('Area', function (Blueprint $table) {
-            $table->increments('id')->primary();
+            $table->increments('id');
             $table->integer('measure');
             $table->char('unit', 10);
-            //$table->integer('id_zone');
+            $table->integer('id_zone');
             $table->foreign('id_zone')->references('id')->on('Zone');
             
             $table->timestamps();

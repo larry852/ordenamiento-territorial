@@ -14,9 +14,9 @@ class CreateUsoTable extends Migration
     public function up()
     {
         Schema::create('Uso', function (Blueprint $table) {
-            $table->increments('id')->primary();
+            $table->increments('id');
             $table->string('description');
-            //$table->integer('id_zone');
+            $table->integer('id_zone');
             $table->foreign('id_zone')->references('id')->on('Zone');
             
             $table->timestamps();
