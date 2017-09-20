@@ -11,3 +11,44 @@ nav {
     color: #fff;
     background-color: #882E85;/*cambio de color en el footer*/
   }
+
+  .imagenes {
+    padding-top: 60px; /*imagen del logo*/
+    padding-bottom: 30px;
+  }
+
+  .purpura {
+    color: #fff;
+    background-color: #882E85;
+
+  }
+
+  .circulo1 {
+    height: 100px;
+    width: 100px;
+    display: table-cell;
+    text-align: center;
+    font-size:10px;
+    vertical-align: middle;
+    border-radius: 50%;
+    background: #28A8D7;
+  }
+
+  .circulo {
+    width: 80px;
+    height: 80px;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background: #5cb85c;
+}
+
+
+/*
+
+  * {
+    border: 1px solid red;
+
+  }
+
+  */

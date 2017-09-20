@@ -10,23 +10,32 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('prueba',function(){
-return "Hola mundo!";
-
-});
-
-/*Route::get('usuario/{nombre}', function ($name) {
-    return "El nombre del usuario es: ".$name;
-});*/
 
 Route::get('/', function () {
     return view('welcome');
 });
 
+/*Route::resource('administrador','AdministradorController');
+Route::resource('administrador.usuario','Usuario_anonimoController');
+Route::resource('usuario-auto','Usuario_autorizadoController');
+Route::resource('usuario','Usuario_anonimoController');*/
 
-Route::get('controlador','Controlador_prueba@index');
+Route::get('departamentos', 'DepartamentosController@index');
 
-Route::get('pot','Control_pot@mostrar');
+Route::get('municipios/{departamento}', 'MunicipiosController@show');
+
+Route::get('zonas/{municipio}', 'ZonasController@show');
+
+Route::get('zonas/{zona}/detalles', 'ZonasController@detail');
+
+Route::get('usuarios', 'UsuariosController@index');
+
+Route::get('usuarios/{usuario}/detalles', 'UsuariosController@detail');
+
+
+
+
+
 
 Route::resource('usuario','Usuariocontroller');
 
@@ -35,5 +44,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 
-//
+
 Route::resource('/ordenamientos', 'Ordenamientos');
+
