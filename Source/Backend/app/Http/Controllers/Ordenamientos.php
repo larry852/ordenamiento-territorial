@@ -1,10 +1,11 @@
 <?php
 
-namespace POT\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-//use App\Http\Request;
+
 use App\Ordenamiento;
+
 class Ordenamientos extends Controller
 {
     /**

@@ -1,6 +1,6 @@
 <?php
 
-namespace POT;
+namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
