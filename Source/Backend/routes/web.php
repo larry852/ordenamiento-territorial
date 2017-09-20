@@ -29,3 +29,11 @@ Route::get('controlador','Controlador_prueba@index');
 Route::get('pot','Control_pot@mostrar');
 
 Route::resource('usuario','Usuariocontroller');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+//
+Route::resource('/ordenamientos', 'Ordenamientos');
