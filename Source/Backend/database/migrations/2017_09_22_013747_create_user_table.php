@@ -13,7 +13,7 @@ class CreateUserTable extends Migration
      */
     public function up()
     {
-        Schema::create('User', function (Blueprint $table) {
+        Schema::create('user', function (Blueprint $table) {
             $table->increments('id');
             $table->string('username');
             $table->string('first_name');
@@ -27,7 +27,7 @@ class CreateUserTable extends Migration
             $table->boolean('is_active');
             $table->date('last_login')->nullable();
             $table->date('date_joined');
-            $table->boolean('is_staff');            
+            $table->boolean('is_staff');    
             $table->timestamps();
         });
     }
@@ -39,6 +39,6 @@ class CreateUserTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('user');
     }
 }

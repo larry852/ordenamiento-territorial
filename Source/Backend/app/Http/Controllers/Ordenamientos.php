@@ -59,7 +59,47 @@ class Ordenamientos extends Controller
             $ordenamiento->localizacion = $request->localizacion;
             $ordenamiento->codigo_dane = $request->codigo_dane;*/
 
-            $ordenamiento = new Ordenamiento();
+            $place = new Place();
+            $place->name = $request->place_name;
+            $place->dane = $request->dane;
+            $place->frag = $request->frag;
+            $place->pattern = $request->pattern;
+            $place->save();
+
+            $zone = new Zone();
+            $zone->name = $request->zone_name;
+            $zone->description = $request->description;
+            $zone->simbolo = $request->simbolo;
+            $zone->last_modified = $request->last_modified;
+            //$zone->id_place = $request->id_place;
+            $zone->save();
+
+            $uso = new Uso();
+            $uso->description = $request->uso_description;
+            //$uso->id_zone = $request->id_zone;
+            $uso->save();
+
+            $location = new Location();
+            $location->latitude_start = $request->latitude_start;
+            $location->latitude_end = $request->latitude_end;
+            $location->longitude_start = $request->longitude_start;
+            $location->longitude_end = $request->longitude_end;
+            $location->description = $request->description;
+            //$location->id_zone = $request->id_zone;
+            $location->save();
+
+            $area = new Area();
+            $area->measure = $request->measure;
+            $area->unit = $request->unit;
+            $area->id_zone = $request->id_zone;
+            $area->save();
+
+            //$users = new Users();
+            //$users->name = $request->place_name;
+
+
+
+            /*$ordenamiento = new Ordenamiento();
             $ordenamiento->departamento = $request->departamento;
             $ordenamiento->municipio = $request->municipio;
             $ordenamiento->ano = $request->ano;
@@ -68,12 +108,12 @@ class Ordenamientos extends Controller
             $ordenamiento->uso = $request->uso;
             $ordenamiento->area_hectareas = $request->area_hectareas;
             $ordenamiento->localizacion = $request->localizacion;
-            $ordenamiento->codigo_dane = $request->codigo_dane;
+            $ordenamiento->codigo_dane = $request->codigo_dane;*/
 
-            $ordenamiento->save();
+            //$ordenamiento->save();
             dd('Datos guardados');
-            dd($request->departamento);
-            dd($request);
+            //dd($request->departamento);
+            //dd($request);
     }
 
     /**
