@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateLocationTable extends Migration
+class CreateZonesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateLocationTable extends Migration
      */
     public function up()
     {
-        Schema::create('Location', function (Blueprint $table) {
+        Schema::create('zones', function (Blueprint $table) {
             $table->increments('id');
-            $table->decimal('latitude_start', 10, 2);
-            $table->decimal('latitude_end', 10, 2);
-            $table->decimal('longitude_start', 10, 2);
-            $table->decimal('longitude_end', 10, 2);
+            $table->string('name');
             $table->string('description')->nullable();
-            $table->integer('id_zone');
-            $table->foreign('id_zone')->references('id')->on('Zone'); //opcional
-            
+            $table->char('symbol', 10)->nullable();
+            $table->date('last_modified');
+            $table->integer('id_place')->unsigned();
+            $table->foreign('id_place')->references('id')->on('Place');
             $table->timestamps();
         });
     }
@@ -34,6 +32,6 @@ class CreateLocationTable extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('zones');
     }
 }
