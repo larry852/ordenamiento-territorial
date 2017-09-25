@@ -5,6 +5,12 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Ordenamiento;
+use App\Place;
+use App\Users;
+use App\Uso;
+use App\Zone;
+use App\Area;
+use App\Location;
 
 class Ordenamientos extends Controller
 {
@@ -61,38 +67,41 @@ class Ordenamientos extends Controller
 
             $place = new Place();
             $place->name = $request->place_name;
-            $place->dane = $request->dane;
-            $place->frag = $request->frag;
+            $place->dane = (int) $request->dane;
+            $place->flag = $request->flag;
             $place->pattern = $request->pattern;
             $place->save();
+            print($place->name);
 
             $zone = new Zone();
             $zone->name = $request->zone_name;
             $zone->description = $request->description;
-            $zone->simbolo = $request->simbolo;
-            $zone->last_modified = $request->last_modified;
-            //$zone->id_place = $request->id_place;
+            $zone->symbol = $request->symbol;
+            $zone->last_modified = new \DateTime();
+            $zone->id_place = $place->id;
             $zone->save();
 
             $uso = new Uso();
             $uso->description = $request->uso_description;
-            //$uso->id_zone = $request->id_zone;
+            $uso->id_zone = $zone->id;
             $uso->save();
 
+            if ($request->latitude_start === null){
             $location = new Location();
-            $location->latitude_start = $request->latitude_start;
-            $location->latitude_end = $request->latitude_end;
-            $location->longitude_start = $request->longitude_start;
-            $location->longitude_end = $request->longitude_end;
+            $location->latitude_start = (float) $request->latitude_start;
+            $location->latitude_end = (float) $request->latitude_end;
+            $location->longitude_start = (float) $request->longitude_start;
+            $location->longitude_end = (float) $request->longitude_end;
             $location->description = $request->description;
-            //$location->id_zone = $request->id_zone;
-            $location->save();
+            $location->id_zone = $zone->id;
+            $location->save();};
 
             $area = new Area();
-            $area->measure = $request->measure;
+            $area->measure = (int) $request->measure;
             $area->unit = $request->unit;
-            $area->id_zone = $request->id_zone;
+            $area->id_zone = $zone->id;
             $area->save();
+            
 
             //$users = new Users();
             //$users->name = $request->place_name;

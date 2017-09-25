@@ -19,7 +19,7 @@ class CreateZonesTable extends Migration
             $table->string('description')->nullable();
             $table->char('symbol', 10)->nullable();
             $table->date('last_modified');
-            $table->integer('id_place');
+            $table->integer('id_place')->unsigned();
             $table->foreign('id_place')->references('id')->on('Place');
             $table->timestamps();
         });

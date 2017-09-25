@@ -16,7 +16,7 @@ class CreateUsosTable extends Migration
         Schema::create('usos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('description');
-            $table->integer('id_zone');
+            $table->integer('id_zone')->unsigned();
             $table->foreign('id_zone')->references('id')->on('Zone');
             $table->timestamps();
         });

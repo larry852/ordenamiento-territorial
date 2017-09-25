@@ -18,7 +18,7 @@ class CreatePlacesTable extends Migration
             $table->string('name');
             $table->integer('dane');
             $table->string('flag');
-            $table->integer('pattern');
+            $table->integer('pattern')->nullable()->unsigned();
             $table->foreign('pattern')->references('id')->on('Place');
             $table->timestamps();
         });

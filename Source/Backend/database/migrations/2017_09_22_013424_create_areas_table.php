@@ -17,7 +17,7 @@ class CreateAreasTable extends Migration
             $table->increments('id');
             $table->integer('measure');
             $table->char('unit', 10);
-            $table->integer('id_zone');
+            $table->integer('id_zone')->unsigned();
             $table->foreign('id_zone')->references('id')->on('Zone');
             $table->timestamps();
         });

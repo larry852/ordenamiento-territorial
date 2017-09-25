@@ -20,7 +20,7 @@ class CreateLocationsTable extends Migration
             $table->decimal('longitude_start', 10, 2);
             $table->decimal('longitude_end', 10, 2);
             $table->string('description')->nullable();
-            $table->integer('id_zone');
+            $table->integer('id_zone')->unsigned();
             $table->foreign('id_zone')->references('id')->on('Zone'); //opcional
             $table->timestamps();
         });
