@@ -1,4 +1,4 @@
-nav {
+  nav {
     color: #fff;
     background-color: #882E85; /* Cambio de Color del nav */
     width: 100%;
@@ -41,14 +41,39 @@ nav {
     -webkit-border-radius: 50%;
     border-radius: 50%;
     background: #5cb85c;
-}
+  }
+
+  .depart {
+    width:945px; 
+    height:100px; 
+    background-color:blue;
+  }
+  
+  .depart-titulo {
+    color:white;
+  }
+
+  .muni {
+    width:945px; 
+    height:100px; 
+    
+  }
+  
+  .muni-titulo {
+    color:#BAD450;
+  }
+
+  .tabla-muni{
+    background-color: #BAD450
+  }
+
 
 /*
+
   * {
     border: 1px solid red;
-    
   } 
-  */
+  
 
   /* (*) el style es para la maquetación, quitar para producción */
  
