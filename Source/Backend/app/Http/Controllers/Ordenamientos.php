@@ -50,6 +50,17 @@ class Ordenamientos extends Controller
             echo "Municipio existente";
             echo "<br>";
         }
+
+
+
+         $id =1;
+        $Departamentos = Place::consultadepartamentos();
+        echo $Departamentos;
+        $Municipios = Place::consultamunicipios($id);
+        echo $Municipios;
+
+         $Municipios = Place::consultamunicipios($id);
+        echo $Municipios;
     }
 
     /**
