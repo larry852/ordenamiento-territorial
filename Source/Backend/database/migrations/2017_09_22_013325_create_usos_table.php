@@ -17,7 +17,11 @@ class CreateUsosTable extends Migration
             $table->increments('id');
             $table->string('description');
             $table->integer('id_zone')->unsigned();
-            $table->foreign('id_zone')->references('id')->on('Zone');
+            $table->foreign('id_zone')
+                ->references('id')
+                ->on('zones')
+                ->onDelete('cascade')
+                ->onUpdate('cascade');
             $table->timestamps();
         });
     }
