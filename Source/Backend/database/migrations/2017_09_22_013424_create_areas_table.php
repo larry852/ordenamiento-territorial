@@ -15,7 +15,7 @@ class CreateAreasTable extends Migration
     {
         Schema::create('areas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('measure');
+            $table->decimal('measure');
             $table->char('unit', 10);
             $table->integer('id_zone')->unsigned();
             $table->foreign('id_zone')

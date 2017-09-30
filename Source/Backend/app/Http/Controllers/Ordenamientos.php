@@ -22,7 +22,34 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
-        //
+        // Inicializacion de Departamento y municipio
+        if (Place::where("name", "Tolima")->get()->isEmpty()) {
+            $department = new Place();
+            $department->name = "Tolima";
+            $department->dane = 73;
+            $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
+            $department->pattern = null;
+            $department->save();
+            echo "Departamento creado";
+            echo "<br>";
+        }else{
+            echo "Departamento existente";
+            echo "<br>";
+        }
+
+        if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
+            $city = new Place();
+            $city->name = "Roncesvalles";
+            $city->dane = 622;
+            $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
+            $city->pattern = 1; //Tolima
+            $city->save();
+            echo "Municipio creado";
+            echo "<br>";
+        }else{
+            echo "Municipio existente";
+            echo "<br>";
+        }
     }
 
     /**
@@ -43,19 +70,12 @@ class Ordenamientos extends Controller
      */
     public function store(Request $request)
     {
-        $place = new Place();
-        $place->name = $request->place_name;
-        $place->dane = $request->dane;
-        $place->flag = $request->flag;
-        $place->pattern = $request->pattern;
-        $place->save();
-        
         $zone = new Zone();
         $zone->name = $request->zone_name;
         $zone->description = $request->description;
         $zone->symbol = $request->symbol;
         $zone->last_modified = new \DateTime();
-        $zone->id_place = $place->id;
+        $zone->id_place = 2; //Roncesvalles
         $zone->save();
 
         $uso = new Uso();
@@ -63,7 +83,7 @@ class Ordenamientos extends Controller
         $uso->id_zone = $zone->id;
         $uso->save();
 
-        if (!($request->latitude_start === null)){
+        if (!$request->latitude_start === null){
             $location = new Location();
             $location->latitude_start = $request->latitude_start;
             $location->latitude_end = $request->latitude_end;
@@ -72,15 +92,15 @@ class Ordenamientos extends Controller
             $location->description = $request->description;
             $location->id_zone = $zone->id;
             $location->save();
-        };
+        }
 
         $area = new Area();
-        $area->measure = (int) $request->measure;
+        $area->measure = $request->measure;
         $area->unit = $request->unit;
         $area->id_zone = $zone->id;
         $area->save();
 
-        dd('Datos guardados');
+        echo "Zona guardada";
     }
 
     /**
