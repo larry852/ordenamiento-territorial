@@ -23,7 +23,6 @@
 </div>
 
 <div  class="container"> <!--Listado de departamentos--> 
-  {{loadDepartments()}}
     <div class="row">
           <div align="center" *ngFor="let department of departments">
             <img class="col s6 m4" src="{{department.flag}}" alt="{{department.name}}">

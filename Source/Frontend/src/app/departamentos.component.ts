@@ -8,8 +8,10 @@ import { DepartmentService } from './services/department.service';
 	providers: [DepartmentService]
 })
 export class DepartamentosComponent implements OnInit{
-	constructor(private departmentService: DepartmentService) {}
 	departments = {};
+	constructor(private departmentService: DepartmentService) {
+		this.loadDepartments();
+	}
 
 	loadDepartments(){
 		this.departmentService.getAll().subscribe(data => this.departments = data)
