@@ -4,5 +4,5 @@ Plataforma Web para la visualización y gestión de información referente al or
 - [Backend](https://ordenamiento-backend.herokuapp.com)
 - [Frontend](https://ordenamiento-frontend.herokuapp.com)
 
-## Modelo E-R
+## Endpoints API
 ![Endpoints](Source/Backend/Endpoints.PNG?raw=true "Endpoints")
