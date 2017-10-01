@@ -20,17 +20,17 @@ Route::resource('administrador.usuario','Usuario_anonimoController');
 Route::resource('usuario-auto','Usuario_autorizadoController');
 Route::resource('usuario','Usuario_anonimoController');*/
 
-Route::get('departamentos', 'DepartamentosController@index');
+Route::get('departamentos', 'DepartamentosController@index')->middleware('cors');
 
-Route::get('municipios/{departamento}', 'MunicipiosController@show');
+Route::get('municipios/{departamento}', 'MunicipiosController@show')->middleware('cors');
 
-Route::get('zonas/{municipio}', 'ZonasController@show');
+Route::get('zonas/{municipio}', 'ZonasController@show')->middleware('cors');
 
-Route::get('zonas/{zona}/detalles', 'ZonasController@detail');
+Route::get('zonas/{zona}/detalles', 'ZonasController@detail')->middleware('cors');
 
-Route::get('usuarios', 'UsuariosController@index');
+Route::get('usuarios', 'UsuariosController@index')->middleware('cors');
 
-Route::get('usuarios/{usuario}/detalles', 'UsuariosController@detail');
+Route::get('usuarios/{usuario}/detalles', 'UsuariosController@detail')->middleware('cors');
 
 
 

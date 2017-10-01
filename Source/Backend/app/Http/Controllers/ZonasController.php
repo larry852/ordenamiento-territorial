@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Zone;
+
 class ZonasController extends Controller
 {
     /**
@@ -28,8 +30,7 @@ class ZonasController extends Controller
   public function detail($id)
     {
         //
-        echo('<h2>Detalle de la zona '.$id." Leticia</h2>");
-
+         echo('<h2>Detalle de la zona '.$id." Leticia</h2>");
     }
     /**
      * Store a newly created resource in storage.
@@ -50,15 +51,8 @@ class ZonasController extends Controller
      */
     public function show($id)
     {
-        if($id==1){
-         echo('<h2>LISTA DE ZONAS DE LETICIA</h2>
-            
-            ');}
-        else if($id==3){
- echo('<h2>LISTA DE ZONAS DE ALEJANDRIA</h2>
-            ');}
-
-        
+        $municipios = Zone::consultazonas($id);
+        return response()->json($municipios);       
         
     }
 
