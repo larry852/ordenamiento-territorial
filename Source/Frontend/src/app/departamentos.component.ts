@@ -12,7 +12,7 @@ export class DepartamentosComponent implements OnInit{
 	departments = {};
 
 	loadDepartments(){
-		this.departmentService.getAll().subscribe(data => this.departaments = data)
+		this.departmentService.getAll().subscribe(data => this.departments = data)
 	}
 
 	ngOnInit() {
