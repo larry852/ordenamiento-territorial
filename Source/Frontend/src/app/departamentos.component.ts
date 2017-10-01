@@ -8,7 +8,7 @@ import { DepartmentService } from './services/department.service';
 	providers: [DepartmentService]
 })
 export class DepartamentosComponent implements OnInit{
-	departments = {};
+	departments = [];
 	constructor(private departmentService: DepartmentService) {
 		this.loadDepartments();
 	}
