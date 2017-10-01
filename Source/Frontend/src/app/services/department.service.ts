@@ -10,7 +10,7 @@ export class DepartmentService {
 
   getAll() {
     return this.http.get('https://ordenamiento-backend.herokuapp.com/departamentos')
-    .map(res => res.json());
+    .map((res:Response) => res.json());
   }
 
 }
