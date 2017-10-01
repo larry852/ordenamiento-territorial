@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Zone;
+
 class HomeController extends Controller
 {
     /**
