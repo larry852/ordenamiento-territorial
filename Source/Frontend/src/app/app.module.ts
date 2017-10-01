@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize'; /*Se declaro para usar Materialize */
+import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { DepartamentosComponent } from './departamentos.component';
 
@@ -10,7 +11,8 @@ import { DepartamentosComponent } from './departamentos.component';
   ],
   imports: [
     BrowserModule,
-    MaterializeModule     /*Se declaro para usar Materialize */
+    MaterializeModule,    /*Se declaro para usar Materialize */
+    HttpModule
   ],
   providers: [],
   bootstrap: [AppComponent]     /*aquí el componente Main Component */
