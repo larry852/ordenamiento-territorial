@@ -20,7 +20,7 @@ Route::resource('administrador.usuario','Usuario_anonimoController');
 Route::resource('usuario-auto','Usuario_autorizadoController');
 Route::resource('usuario','Usuario_anonimoController');*/
 
-Route::get('departamentos', 'DepartamentosController@index');
+Route::get('departamentos', 'DepartamentosController@index')->middleware('cors');
 
 Route::get('municipios/{departamento}', 'MunicipiosController@show');
 
