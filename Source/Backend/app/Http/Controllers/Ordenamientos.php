@@ -59,8 +59,23 @@ class Ordenamientos extends Controller
         $Municipios = Place::consultamunicipios($id);
         echo $Municipios;
 
-         $Municipios = Place::consultamunicipios($id);
-        echo $Municipios;
+        //$Zones1 = Zone::consultadetalleszona();
+        $Zonas1 = DB::table('zones')
+            ->join('usos', 'usos.id', '=', 'zones.id')
+            ->join('locations', 'locations.id', '=', 'zones.id')
+            ->join('areas', 'areas.id', '=', 'zones.id')
+            //->select('zones.id', 'usos.description', 'locations.latitude_start')
+            ->get();
+        echo "<br>";
+        var_dump($Zonas1);
+
+        //$Zonas2 = DB::SELECT('select zones.id, usos.description, locations.latitude_start FROM zones inner join usos ON usos.id = zones.id inner join locations ON locations.id = zones.id');
+        //echo $Zonas2;
+        //var_dump($Zonas2);
+        $Usuarios = DB::table('user')->get();
+        echo "<br>";
+        var_dump($Usuarios);
+        //echo $Usuarios;
     }
 
     /**
