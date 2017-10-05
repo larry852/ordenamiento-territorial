@@ -23,7 +23,7 @@ import { ZonasComponent } from './zonas.component';
     MaterializeModule,    /*Se declaro para usar Materialize */
     HttpModule,
     RouterModule.forRoot([
-      {path: 'inicio', component:InicioComponent},
+      {path: '', component:InicioComponent},
       {path: 'equipo', component:EquipoComponent},
       {path: 'departamentos', component:DepartamentosComponent},
       {path: 'municipios', component:MunicipiosComponent},
