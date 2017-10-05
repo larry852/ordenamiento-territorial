@@ -3,13 +3,13 @@ import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize'; /*Se declaro para usar Materialize */
 import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
-import { DepartamentosComponent } from './departamentos.component';
+import { DepartamentosComponent } from './components/departamentos.component';
 
 import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
-import { InicioComponent } from './inicio.component';
-import { MunicipiosComponent } from './municipios.component';
-import { EquipoComponent } from './equipo.component';
-import { ZonasComponent } from './zonas.component';  
+import { InicioComponent } from './components/inicio.component';
+import { MunicipiosComponent } from './components/municipios.component';
+import { EquipoComponent } from './components/equipo.component';
+import { ZonasComponent } from './components/zonas.component';  
 
 @NgModule({  
   declarations: [                /*aquí se declaran los componentes*/
