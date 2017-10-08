@@ -53,19 +53,33 @@ class Ordenamientos extends Controller
 
         $Departamentos = Place::consultadepartamentos();
         echo "<h3> Departamentos: </h3>";
-        echo $Departamentos;
+        echo "<pre>";
+        print_r($Departamentos);
+        echo "</pre>";
         echo "<br>";
         echo "<br>";
 
         $Municipios = Place::consultamunicipios(1);
         echo "<h3> Municipios por Departamento 1: </h3>";
-        echo $Municipios;
+        echo "<pre>";
+        print_r($Municipios);
+        echo "</pre>";
         echo "<br>";
         echo "<br>";
 
         $zonas = Zone::consultazonas(2);
-        echo "<h3> Zonas por municipio 2: </h3>";
-        echo $zonas;
+        echo "<h3> Detalles Zonas por municipio 2: </h3>";
+        echo "<pre>";
+        print_r($zonas);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $zone = Zone::detailZone(5);
+        echo "<h3> Detalle Zona 5: </h3>";
+        echo "<pre>";
+        print_r($zone);
+        echo "</pre>";
         echo "<br>";
         echo "<br>";
     }

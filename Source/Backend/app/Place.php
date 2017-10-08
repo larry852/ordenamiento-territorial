@@ -12,13 +12,13 @@ class Place extends Model
 
     public static function consultamunicipios($id_departamento)
     {
-    	return Place::where('pattern',$id_departamento)->get();
+    	return Place::where('pattern',$id_departamento)->get()->toArray();
         
     }
 
     public static function consultadepartamentos()
     {
-    	return Place::where('pattern',null)->get();
+    	return Place::where('pattern',null)->get()->toArray();
         
     }
 }

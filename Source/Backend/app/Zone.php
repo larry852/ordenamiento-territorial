@@ -18,7 +18,7 @@ class Zone extends Model
             ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
             ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
             ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
-            ->get();
+            ->get()->toArray();
         
     }
 
@@ -29,7 +29,7 @@ class Zone extends Model
             ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
             ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
             ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
-            ->get();
+            ->get()->toArray();
         
     }
 }
