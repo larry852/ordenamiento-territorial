@@ -1,68 +1,29 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-
 
 <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo right">POT</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li class="active"><a href="">Inicio</a></li>
-          <li><a href="#MOTIVO">Motivo</a></li>
+          <li><a routerLink="/">Inicio</a></li>
+          <li><a routerLink="/equipo">Equipo</a></li>
+          <li><a routerLink="/departamentos">Departamentos</a></li>
+          <li><a routerLink="/municipios">Municipios</a></li>
+          <li><a routerLink="/zonas">Zonas</a></li>
+
+ <!--         <li><a href="#MOTIVO">Motivo</a></li>
           <li><a href="#OBJETIVO">Objetivo</a></li>
           <li><a href="#DESCRIPCION">Descripción</a></li>
           <li><a href="#DEPARTAMENTOS">Departamentos</a></li>
+ -->
+          
+
         </ul>
       </div>
 </nav>
 
-<div class="container">
-    <div class="row">
-          <div align="center">
-            <img class="imagenes col s12"  src="/assets/imagenes/logoletras.png" alt="Ordenamiento"  >
-          </div>  
-    </div>
-</div>
+
+<router-outlet></router-outlet>
 
 
-
-<div  class="container purpura">
-    <div class="row">
-          <div class="col l6 m6 s12" align="center"> 
-            <img class="col s12"  src="/assets/imagenes/mpaacolom.png" alt="motivo"  >
-          </div>
-          <div id="MOTIVO" class="col l6 m6 s12" align="justify" >
-              <h4 >MOTIVO</h4>
-              <p> La información acerca de Ordenamiento territorial a nivel nacional, se encuentra disponible de manera descentralizada y no estructurada dificultando su visualización, es así como nace la plataforma, “Visualización Ordenamiento Territorial Colombia”.</p>
-          </div>
-    </div>
-</div>
-
-<div class="container">
-    <div class="row">
-          <div ID="OBJETIVO" class="col l6 m6 s12" align="justify">
-              <h4>OBJETIVO</h4>
-              <p>Visualización Ordenamiento Territorial Colombia, se plantea como una solución web para visualizar la información del ordenamiento territorial del país, mediante la presentación de la información de cada municipio de manera ordenada, además permite que cada entidad encargado del ordenamiento territorial incluya información de cada una de las diferentes zonas presentes en su municipio, especificando  su ubicación uso y área.
-</p>
-          </div>
-          <div class="col l6 m6 s12" align="center"> 
-              <img class="col s12"  src="/assets/imagenes/icono2.png" alt="objetivo"  >
-            </div>
-    </div>
-</div>
-
-<div class="container purpura">
-    <div class="row">
-          <div class="col l6 m6 s12" align="center"> 
-            <img class="col s12"  src="/assets/imagenes/icono1.png" alt="descripción"  >
-          </div>
-          <div id="DESCRIPCION" class="col l6 m6 s12" align="justify">
-              <h4>DESCRIPCIÓN</h4>
-              <p>Visualización de Ordenamiento Territorial Colombia, permite el acceso a información acerca del ordenamiento territorial del país, poniendo en detalle cada una de las zonas de un municipio. Los detalles incluyen nombre de zonas, su localización, el área total y el uso para la cual está destinado. Además permite realizar búsquedas sobre la información presente en el sitio. La plataforma cuenta con sistema de registro y autenticación, el cual le dará acceso a cada municipio sobre la información publicada en el sitio. </p>
-          </div>
-          
-    </div>
-</div>
-<hr>
 <!-- 
 <div class="col l3  s6 circulo">Néstor Antonio Pineda Otero</div>
 
@@ -114,12 +75,11 @@
   <a href="https://imgbb.com/"><img src="https://image.ibb.co/b9xd1v/objetivo_318_76233.png" alt="objetivo_318_76233" border="0"></a>
 </div> -->
 
-
-
-
 <!-- height="90" width="auto" vertical-align="middle"   margin-right="11px" -->
 
-<app-departamentos></app-departamentos>
+<!-- <app-departamentos></app-departamentos> -->
+
+
 
 <footer class="page-footer">
 

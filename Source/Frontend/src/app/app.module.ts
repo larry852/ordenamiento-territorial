@@ -1,16 +1,37 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { MaterializeModule } from 'angular2-materialize'; /*Se declaro para usar Materialize */
+import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
-import { DepartamentosComponent } from './departamentos.component';
+import { DepartamentosComponent } from './components/departamentos.component';
+
+import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
+import { InicioComponent } from './components/inicio.component';
+import { MunicipiosComponent } from './components/municipios.component';
+import { EquipoComponent } from './components/equipo.component';
+import { ZonasComponent } from './components/zonas.component';  
 
 @NgModule({  
   declarations: [                /*aquí se declaran los componentes*/
-    AppComponent, DepartamentosComponent
+    AppComponent, 
+    DepartamentosComponent, 
+    InicioComponent, 
+    MunicipiosComponent, EquipoComponent, ZonasComponent
   ],
   imports: [
     BrowserModule,
-    MaterializeModule     /*Se declaro para usar Materialize */
+    MaterializeModule,    /*Se declaro para usar Materialize */
+    HttpModule,
+    RouterModule.forRoot([
+      {path: '', component:InicioComponent},
+      {path: 'equipo', component:EquipoComponent},
+      {path: 'departamentos', component:DepartamentosComponent},
+      {path: 'municipios', component:MunicipiosComponent},
+      {path: 'zonas', component:ZonasComponent}
+      
+      /*Se agregan los componentes a enlazar*/
+
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]     /*aquí el componente Main Component */

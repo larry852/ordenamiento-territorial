@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use DB;
 
 use App\Ordenamiento;
 use App\Place;
@@ -21,7 +22,60 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
-        //
+        // Inicializacion de Departamento y municipio
+        if (Place::where("name", "Tolima")->get()->isEmpty()) {
+            $department = new Place();
+            $department->name = "Tolima";
+            $department->dane = 73;
+            $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
+            $department->pattern = null;
+            $department->save();
+            echo "Departamento creado";
+            echo "<br>";
+        }else{
+            echo "Departamento existente";
+            echo "<br>";
+        }
+
+        if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
+            $city = new Place();
+            $city->name = "Roncesvalles";
+            $city->dane = 622;
+            $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
+            $city->pattern = 1; //Tolima
+            $city->save();
+            echo "Municipio creado";
+            echo "<br>";
+        }else{
+            echo "Municipio existente";
+            echo "<br>";
+        }
+
+
+
+         $id =1;
+        $Departamentos = Place::consultadepartamentos();
+        echo $Departamentos;
+        $Municipios = Place::consultamunicipios($id);
+        echo $Municipios;
+
+        //$Zones1 = Zone::consultadetalleszona();
+        $Zonas1 = DB::table('zones')
+            ->join('usos', 'usos.id', '=', 'zones.id')
+            ->join('locations', 'locations.id', '=', 'zones.id')
+            ->join('areas', 'areas.id', '=', 'zones.id')
+            //->select('zones.id', 'usos.description', 'locations.latitude_start')
+            ->get();
+        echo "<br>";
+        var_dump($Zonas1);
+
+        //$Zonas2 = DB::SELECT('select zones.id, usos.description, locations.latitude_start FROM zones inner join usos ON usos.id = zones.id inner join locations ON locations.id = zones.id');
+        //echo $Zonas2;
+        //var_dump($Zonas2);
+        $Usuarios = DB::table('user')->get();
+        echo "<br>";
+        var_dump($Usuarios);
+        //echo $Usuarios;
     }
 
     /**
@@ -42,87 +96,37 @@ class Ordenamientos extends Controller
      */
     public function store(Request $request)
     {
-        /*$this->validate($request, [
-            'departamento' => '$required',
-            'municipio' => '$required',
-            'año' => '$required',
-            'simbolo' => '$required',
-            'cobertura' => '$required',
-            'uso' => '$required',
-            'area_hectareas' => '$required',
-            'localizacion' => '$required',
-            'codigo_dane' => '$required'
-            ]);
+        $zone = new Zone();
+        $zone->name = $request->zone_name;
+        $zone->description = $request->description;
+        $zone->symbol = $request->symbol;
+        $zone->last_modified = new \DateTime();
+        $zone->id_place = 2; //Roncesvalles
+        $zone->save();
 
-            $ordenamiento = new Ordenamiento();
-            $ordenamiento->departamento = $request->departamento;
-            $ordenamiento->municipio = $request->municipio;
-            $ordenamiento->año = $request->año;
-            $ordenamiento->simbolo = $request->simbolo;
-            $ordenamiento->cobertura = $request->cobertura;
-            $ordenamiento->uso = $request->uso;
-            $ordenamiento->area_hectareas = $request->area_hectareas;
-            $ordenamiento->localizacion = $request->localizacion;
-            $ordenamiento->codigo_dane = $request->codigo_dane;*/
+        $uso = new Uso();
+        $uso->description = $request->uso_description;
+        $uso->id_zone = $zone->id;
+        $uso->save();
 
-            $place = new Place();
-            $place->name = $request->place_name;
-            $place->dane = (int) $request->dane;
-            $place->flag = $request->flag;
-            $place->pattern = $request->pattern;
-            $place->save();
-            print($place->name);
-
-            $zone = new Zone();
-            $zone->name = $request->zone_name;
-            $zone->description = $request->description;
-            $zone->symbol = $request->symbol;
-            $zone->last_modified = new \DateTime();
-            $zone->id_place = $place->id;
-            $zone->save();
-
-            $uso = new Uso();
-            $uso->description = $request->uso_description;
-            $uso->id_zone = $zone->id;
-            $uso->save();
-
-            if ($request->latitude_start === null){
+        if (!$request->latitude_start === null){
             $location = new Location();
-            $location->latitude_start = (float) $request->latitude_start;
-            $location->latitude_end = (float) $request->latitude_end;
-            $location->longitude_start = (float) $request->longitude_start;
-            $location->longitude_end = (float) $request->longitude_end;
+            $location->latitude_start = $request->latitude_start;
+            $location->latitude_end = $request->latitude_end;
+            $location->longitude_start = $request->longitude_start;
+            $location->longitude_end = $request->longitude_end;
             $location->description = $request->description;
             $location->id_zone = $zone->id;
-            $location->save();};
+            $location->save();
+        }
 
-            $area = new Area();
-            $area->measure = (int) $request->measure;
-            $area->unit = $request->unit;
-            $area->id_zone = $zone->id;
-            $area->save();
-            
+        $area = new Area();
+        $area->measure = $request->measure;
+        $area->unit = $request->unit;
+        $area->id_zone = $zone->id;
+        $area->save();
 
-            //$users = new Users();
-            //$users->name = $request->place_name;
-
-
-
-            /*$ordenamiento = new Ordenamiento();
-            $ordenamiento->departamento = $request->departamento;
-            $ordenamiento->municipio = $request->municipio;
-            $ordenamiento->ano = $request->ano;
-            $ordenamiento->simbolo = $request->simbolo;
-            $ordenamiento->cobertura = $request->cobertura;
-            $ordenamiento->uso = $request->uso;
-            $ordenamiento->area_hectareas = $request->area_hectareas;
-            $ordenamiento->localizacion = $request->localizacion;
-            $ordenamiento->codigo_dane = $request->codigo_dane;*/
-
-            //$ordenamiento->save();
-            dd('Datos guardados');
-            //dd($request->departamento);
-            //dd($request);
+        echo "Zona guardada";
     }
 
     /**
