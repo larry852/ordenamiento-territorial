@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DepartamentosComponent } from './components/departamentos.component';
 import {TitleCasePipe} from './pipes/title-case.pipe';
 import {Department} from './pipes/department.pipe';
+import {Zones} from './pipes/zones.pipe';
 import { LOCALE_ID } from '@angular/core';
 
 import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
@@ -18,6 +19,7 @@ import { ZonasComponent } from './components/zonas.component';
   declarations: [                /*aquí se declaran los componentes*/
     AppComponent, 
     TitleCasePipe,
+    Zones,
     Department,
     DepartamentosComponent, 
     InicioComponent, 

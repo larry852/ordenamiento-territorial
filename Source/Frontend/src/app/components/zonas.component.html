@@ -1,6 +1,8 @@
 <div class="container"> <!--Detalle del municipio--> 
-  <div class="muni h2 col s12">
-    <h2 class="muni-titulo" align="center" >Valledupar</h2>
+  <div class="depart h2 col s12">
+    <a *ngIf="zones[zones.length-1]" href="zonas/{{zones[zones.length-1].id}}">
+      <h2 class="muni-titulo" align="center"> {{zones[zones.length-1].name | titleCase}}</h2>
+    </a>
   </div>
   
   <div class="row"> <!--Barra de busqueda detalles municipio--> 
@@ -26,7 +28,7 @@
       </thead>
   
       <tbody>
-        <tr *ngFor="let zone of zones">
+        <tr *ngFor="let zone of zones | zones">
           <td>{{zone.name}}</td>
           <td>{{zone.symbol}}</td>
           <td>{{zone.use}}</td>
