@@ -31,7 +31,7 @@ import { ZonasComponent } from './components/zonas.component';
       {path: 'equipo', component:EquipoComponent},
       {path: 'departamentos', component:DepartamentosComponent},
       {path: 'municipios/:idDepartment', component:MunicipiosComponent},
-      {path: 'zonas', component:ZonasComponent}
+      {path: 'zonas/:idCity', component:ZonasComponent}
       
       /*Se agregan los componentes a enlazar*/
 
