@@ -22,60 +22,52 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
-        // Inicializacion de Departamento y municipio
-        if (Place::where("name", "Tolima")->get()->isEmpty()) {
-            $department = new Place();
-            $department->name = "Tolima";
-            $department->dane = 73;
-            $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
-            $department->pattern = null;
-            $department->save();
-            echo "Departamento creado";
-            echo "<br>";
-        }else{
-            echo "Departamento existente";
-            echo "<br>";
-        }
+        // // Inicializacion de Departamento y municipio
+        // if (Place::where("name", "Tolima")->get()->isEmpty()) {
+        //     $department = new Place();
+        //     $department->name = "Tolima";
+        //     $department->dane = 73;
+        //     $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
+        //     $department->pattern = null;
+        //     $department->save();
+        //     echo "Departamento creado";
+        //     echo "<br>";
+        // }else{
+        //     echo "Departamento existente";
+        //     echo "<br>";
+        // }
 
-        if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
-            $city = new Place();
-            $city->name = "Roncesvalles";
-            $city->dane = 622;
-            $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
-            $city->pattern = 1; //Tolima
-            $city->save();
-            echo "Municipio creado";
-            echo "<br>";
-        }else{
-            echo "Municipio existente";
-            echo "<br>";
-        }
+        // if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
+        //     $city = new Place();
+        //     $city->name = "Roncesvalles";
+        //     $city->dane = 622;
+        //     $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
+        //     $city->pattern = 1; //Tolima
+        //     $city->save();
+        //     echo "Municipio creado";
+        //     echo "<br>";
+        // }else{
+        //     echo "Municipio existente";
+        //     echo "<br>";
+        // }
 
-
-
-         $id =1;
         $Departamentos = Place::consultadepartamentos();
+        echo "<h3> Departamentos: </h3>";
         echo $Departamentos;
-        $Municipios = Place::consultamunicipios($id);
+        echo "<br>";
+        echo "<br>";
+
+        $Municipios = Place::consultamunicipios(1);
+        echo "<h3> Municipios por Departamento 1: </h3>";
         echo $Municipios;
-
-        //$Zones1 = Zone::consultadetalleszona();
-        $Zonas1 = DB::table('zones')
-            ->join('usos', 'usos.id', '=', 'zones.id')
-            ->join('locations', 'locations.id', '=', 'zones.id')
-            ->join('areas', 'areas.id', '=', 'zones.id')
-            //->select('zones.id', 'usos.description', 'locations.latitude_start')
-            ->get();
         echo "<br>";
-        var_dump($Zonas1);
-
-        //$Zonas2 = DB::SELECT('select zones.id, usos.description, locations.latitude_start FROM zones inner join usos ON usos.id = zones.id inner join locations ON locations.id = zones.id');
-        //echo $Zonas2;
-        //var_dump($Zonas2);
-        $Usuarios = DB::table('user')->get();
         echo "<br>";
-        var_dump($Usuarios);
-        //echo $Usuarios;
+
+        $zonas = Zone::consultazonas(2);
+        echo "<h3> Zonas por municipio 2: </h3>";
+        echo $zonas;
+        echo "<br>";
+        echo "<br>";
     }
 
     /**
