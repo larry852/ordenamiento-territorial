@@ -7,7 +7,7 @@ use DB;
 
 use App\Ordenamiento;
 use App\Place;
-use App\Users;
+use App\User;
 use App\Uso;
 use App\Zone;
 use App\Area;
@@ -23,9 +23,9 @@ class Ordenamientos extends Controller
     public function index()
     {
         // Inicializacion de Departamento y municipio
-        if (Place::where("name", "Tolima")->get()->isEmpty()) {
+        if (Place::where("name", "tolima")->get()->isEmpty()) {
             $department = new Place();
-            $department->name = "Tolima";
+            $department->name = strtolower("Tolima");
             $department->dane = 73;
             $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
             $department->pattern = null;
@@ -37,9 +37,9 @@ class Ordenamientos extends Controller
             echo "<br>";
         }
 
-        if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
+        if (Place::where("name", "roncesvalles")->get()->isEmpty()) {
             $city = new Place();
-            $city->name = "Roncesvalles";
+            $city->name = strtolower("Roncesvalles");
             $city->dane = 622;
             $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
             $city->pattern = 1; //Tolima
@@ -51,31 +51,111 @@ class Ordenamientos extends Controller
             echo "<br>";
         }
 
+        if (User::where("username", "admin")->get()->isEmpty()) {
+            $admin = new User();
+            $admin->username = "admin";
+            $admin->first_name = "admin";
+            $admin->last_name = "admin";
+            $admin->email = "admin@admin.com";
+            $admin->password = bcrypt("admin");
+            $admin->is_active = true;
+            $admin->date_joined = new \DateTime();
+            $admin->is_staff = true;
+            $admin->save();
+            echo "Admin creado";
+            echo "<br>";
+        }else{
+            echo "Admin existente";
+            echo "<br>";
+        }
 
-
-         $id =1;
         $Departamentos = Place::consultadepartamentos();
-        echo $Departamentos;
-        $Municipios = Place::consultamunicipios($id);
-        echo $Municipios;
-
-        //$Zones1 = Zone::consultadetalleszona();
-        $Zonas1 = DB::table('zones')
-            ->join('usos', 'usos.id', '=', 'zones.id')
-            ->join('locations', 'locations.id', '=', 'zones.id')
-            ->join('areas', 'areas.id', '=', 'zones.id')
-            //->select('zones.id', 'usos.description', 'locations.latitude_start')
-            ->get();
+        echo "<h3> Departamentos: </h3>";
+        echo "<pre>";
+        print_r($Departamentos);
+        echo "</pre>";
         echo "<br>";
-        var_dump($Zonas1);
-
-        //$Zonas2 = DB::SELECT('select zones.id, usos.description, locations.latitude_start FROM zones inner join usos ON usos.id = zones.id inner join locations ON locations.id = zones.id');
-        //echo $Zonas2;
-        //var_dump($Zonas2);
-        $Usuarios = DB::table('user')->get();
         echo "<br>";
-        var_dump($Usuarios);
-        //echo $Usuarios;
+
+        $Municipios = Place::consultamunicipios(1);
+        echo "<h3> Municipios por departamento '1': </h3>";
+        echo "<pre>";
+        print_r($Municipios);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $zonas = Zone::consultazonas(2);
+        echo "<h3> Detalles zonas por municipio '2': </h3>";
+        echo "<pre>";
+        print_r($zonas);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $zone = Zone::detailZone(1);
+        echo "<h3> Detalle zona '1': </h3>";
+        echo "<pre>";
+        print_r($zone);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $users = User::consultausuarios();
+        echo "<h3> Usuarios: </h3>";
+        echo "<pre>";
+        print_r($users);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $user = User::detailUser(1);
+        echo "<h3> Detalle usuario '1': </h3>";
+        echo "<pre>";
+        print_r($users);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchNameDepartments = Place::searchNameDepartments("tol");
+        echo "<h3> Busqueda por nombre 'tol' en departamentos: </h3>";
+        echo "<pre>";
+        print_r($searchNameDepartments);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchDaneDepartments = Place::searchDaneDepartments(73);
+        echo "<h3> Busqueda por Dane '73' en departamentos: </h3>";
+        echo "<pre>";
+        print_r($searchDaneDepartments);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchNameCities = Place::searchNameCities("ron", 1);
+        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '1': </h3>";
+        echo "<pre>";
+        print_r($searchNameCities);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchDaneCities = Place::searchDaneCities(622, 1);
+        echo "<h3> Busqueda por Dane '622' en municipios, departamento '1': </h3>";
+        echo "<pre>";
+        print_r($searchDaneCities);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchDetailZones = Zone::searchDetailZones("pr", 2);
+        echo "<h3> Busqueda por texto 'pr' en zonas, municipio '2': </h3>";
+        echo "<pre>";
+        print_r($searchDetailZones);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
     }
 
     /**
@@ -97,15 +177,15 @@ class Ordenamientos extends Controller
     public function store(Request $request)
     {
         $zone = new Zone();
-        $zone->name = $request->zone_name;
-        $zone->description = $request->description;
+        $zone->name = strtolower($request->zone_name);
+        $zone->description = strtolower($request->description);
         $zone->symbol = $request->symbol;
         $zone->last_modified = new \DateTime();
         $zone->id_place = 2; //Roncesvalles
         $zone->save();
 
         $uso = new Uso();
-        $uso->description = $request->uso_description;
+        $uso->description = strtolower($request->uso_description);
         $uso->id_zone = $zone->id;
         $uso->save();
 
@@ -115,7 +195,7 @@ class Ordenamientos extends Controller
             $location->latitude_end = $request->latitude_end;
             $location->longitude_start = $request->longitude_start;
             $location->longitude_end = $request->longitude_end;
-            $location->description = $request->description;
+            $location->description = strtolower($request->description);
             $location->id_zone = $zone->id;
             $location->save();
         }

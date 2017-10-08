@@ -1,25 +1,27 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-
 
 <nav>
       <div class="nav-wrapper">
         <a href="#" class="brand-logo right">POT</a>
         <ul id="nav-mobile" class="left hide-on-med-and-down">
-          <li class="active"><a routerLink="/inicio">Inicio</a></li>
-          
-<!--           <li><a href="#MOTIVO">Motivo</a></li>
+          <li><a routerLink="/">Inicio</a></li>
+          <li><a routerLink="/equipo">Equipo</a></li>
+          <li><a routerLink="/departamentos">Departamentos</a></li>
+          <li><a routerLink="/municipios">Municipios</a></li>
+          <li><a routerLink="/zonas">Zonas</a></li>
+
+ <!--         <li><a href="#MOTIVO">Motivo</a></li>
           <li><a href="#OBJETIVO">Objetivo</a></li>
           <li><a href="#DESCRIPCION">Descripción</a></li>
           <li><a href="#DEPARTAMENTOS">Departamentos</a></li>
  -->
-          <li><a routerLink="/departamentos">Departamentos</a></li>
-
+          
 
         </ul>
       </div>
 </nav>
 
+
+<router-outlet></router-outlet>
 
 
 <!-- 
@@ -77,7 +79,6 @@
 
 <!-- <app-departamentos></app-departamentos> -->
 
-<router-outlet></router-outlet>
 
 
 <footer class="page-footer">
