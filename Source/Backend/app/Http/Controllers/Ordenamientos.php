@@ -82,6 +82,14 @@ class Ordenamientos extends Controller
         echo "</pre>";
         echo "<br>";
         echo "<br>";
+
+        $users = User::consultadepartamentos();
+        echo "<h3> Usuarios: </h3>";
+        echo "<pre>";
+        print_r($users);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
     }
 
     /**
