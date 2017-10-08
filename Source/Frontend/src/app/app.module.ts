@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { DepartamentosComponent } from './components/departamentos.component';
 import {TitleCasePipe} from './pipes/title-case.pipe';
 import {Department} from './pipes/department.pipe';
+import { LOCALE_ID } from '@angular/core';
 
 import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
 import { InicioComponent } from './components/inicio.component';
@@ -37,7 +38,7 @@ import { ZonasComponent } from './components/zonas.component';
 
     ])
   ],
-  providers: [],
+  providers: [ { provide: LOCALE_ID, useValue: "UTC" },],
   bootstrap: [AppComponent]     /*aquí el componente Main Component */
 })
 export class AppModule { }

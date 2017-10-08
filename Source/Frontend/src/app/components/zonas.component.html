@@ -16,37 +16,23 @@
     <table class="highlight">
       <thead class="tabla-muni">
         <tr>
-            <th><h4>Cobertura</h4></th>
+            <th><h4>Zona</h4></th>
+            <th><h4>Simbolo</h4></th>
             <th><h4>Uso</h4></th>
-            <th><h4>Área Hectáreas</h4></th>
+            <th><h4>Area</h4></th>
+            <th><h4>Localización</h4></th>
+            <th><h4>Actualizacion</h4></th>
         </tr>
       </thead>
   
       <tbody>
-        <tr>
-          <td>Zona Rural</td>
-          <td>Zona de conservación</td>
-          <td>1000</td>
-        </tr>
-        <tr>
-          <td>Zona Rural</td>
-          <td>Zona de conservación</td>
-          <td>1000</td>
-        </tr>
-        <tr>
-          <td>Zona Rural</td>
-          <td>Zona de conservación</td>
-          <td>1000</td>
-        </tr>
-        <tr>
-          <td>Zona Rural</td>
-          <td>Zona de conservación</td>
-          <td>1000</td>
-        </tr>
-        <tr>
-          <td>Zona Rural</td>
-          <td>Zona de conservación</td>
-          <td>1000</td>
+        <tr *ngFor="let zone of zones">
+          <td>{{zone.name}}</td>
+          <td>{{zone.symbol}}</td>
+          <td>{{zone.use}}</td>
+          <td>{{zone.measure + " " +zone.unit}}</td>
+          <td>{{zone.latitude_start + " " + zone.latitude_end + " " + zone.longitude_start + " " + zone.longitude_end}}</td>
+          <td>{{zone.updated_at | date:'mediumDate'}}</td>
         </tr>
       </tbody>
     </table>
