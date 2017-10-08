@@ -23,9 +23,9 @@ class Ordenamientos extends Controller
     public function index()
     {
         // Inicializacion de Departamento y municipio
-        if (Place::where("name", "Tolima")->get()->isEmpty()) {
+        if (Place::where("name", "tolima")->get()->isEmpty()) {
             $department = new Place();
-            $department->name = "Tolima";
+            $department->name = strtolower("Tolima");
             $department->dane = 73;
             $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
             $department->pattern = null;
@@ -37,9 +37,9 @@ class Ordenamientos extends Controller
             echo "<br>";
         }
 
-        if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
+        if (Place::where("name", "roncesvalles")->get()->isEmpty()) {
             $city = new Place();
-            $city->name = "Roncesvalles";
+            $city->name = strtolower("Roncesvalles");
             $city->dane = 622;
             $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
             $city->pattern = 1; //Tolima
@@ -48,6 +48,24 @@ class Ordenamientos extends Controller
             echo "<br>";
         }else{
             echo "Municipio existente";
+            echo "<br>";
+        }
+
+        if (User::where("username", "admin")->get()->isEmpty()) {
+            $admin = new User();
+            $admin->username = "admin";
+            $admin->first_name = "admin";
+            $admin->last_name = "admin";
+            $admin->email = "admin@admin.com";
+            $admin->password = bcrypt("admin");
+            $admin->is_active = true;
+            $admin->date_joined = new \DateTime();
+            $admin->is_staff = true;
+            $admin->save();
+            echo "Admin creado";
+            echo "<br>";
+        }else{
+            echo "Admin existente";
             echo "<br>";
         }
 
@@ -75,8 +93,8 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $zone = Zone::detailZone(5);
-        echo "<h3> Detalle zona '5': </h3>";
+        $zone = Zone::detailZone(1);
+        echo "<h3> Detalle zona '1': </h3>";
         echo "<pre>";
         print_r($zone);
         echo "</pre>";
@@ -130,6 +148,14 @@ class Ordenamientos extends Controller
         echo "</pre>";
         echo "<br>";
         echo "<br>";
+
+        $searchDetailZones = Zone::searchDetailZones("pr", 2);
+        echo "<h3> Busqueda por texto 'pr' en zonas, municipio '2': </h3>";
+        echo "<pre>";
+        print_r($searchDetailZones);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
     }
 
     /**
@@ -151,15 +177,15 @@ class Ordenamientos extends Controller
     public function store(Request $request)
     {
         $zone = new Zone();
-        $zone->name = $request->zone_name;
-        $zone->description = $request->description;
+        $zone->name = strtolower($request->zone_name);
+        $zone->description = strtolower($request->description);
         $zone->symbol = $request->symbol;
         $zone->last_modified = new \DateTime();
         $zone->id_place = 2; //Roncesvalles
         $zone->save();
 
         $uso = new Uso();
-        $uso->description = $request->uso_description;
+        $uso->description = strtolower($request->uso_description);
         $uso->id_zone = $zone->id;
         $uso->save();
 
@@ -169,7 +195,7 @@ class Ordenamientos extends Controller
             $location->latitude_end = $request->latitude_end;
             $location->longitude_start = $request->longitude_start;
             $location->longitude_end = $request->longitude_end;
-            $location->description = $request->description;
+            $location->description = strtolower($request->description);
             $location->id_zone = $zone->id;
             $location->save();
         }

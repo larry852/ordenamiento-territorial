@@ -24,7 +24,7 @@ class Place extends Model
 
     public static function searchNameDepartments($name)
     {
-        $name = ucfirst(strtolower($name));
+        $name = strtolower($name);
         return Place::where([
             ['name', 'like', '%'.$name.'%'],
             ['pattern', null]
@@ -45,7 +45,7 @@ class Place extends Model
 
     public static function searchNameCities($name, $id_department)
     {
-        $name = ucfirst(strtolower($name));
+        $name = strtolower($name);
         return Place::where([
             ['name', 'like', '%'.$name.'%'],
             ['pattern', $id_department]
