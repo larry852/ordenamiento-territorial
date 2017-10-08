@@ -21,6 +21,17 @@ class Zone extends Model
             ->get();
         
     }
+
+    public static function detailZone($id_zone)
+    {
+        return Zone::where('zones.id',$id_zone)
+            ->leftJoin('usos', 'zones.id', '=', 'usos.id_zone')
+            ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
+            ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
+            ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
+            ->get();
+        
+    }
 }
 
 
