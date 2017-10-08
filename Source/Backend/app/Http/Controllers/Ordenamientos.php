@@ -60,7 +60,7 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $Municipios = Place::consultamunicipios(1);
-        echo "<h3> Municipios por departamento 1: </h3>";
+        echo "<h3> Municipios por departamento '1': </h3>";
         echo "<pre>";
         print_r($Municipios);
         echo "</pre>";
@@ -68,7 +68,7 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $zonas = Zone::consultazonas(2);
-        echo "<h3> Detalles zonas por municipio 2: </h3>";
+        echo "<h3> Detalles zonas por municipio '2': </h3>";
         echo "<pre>";
         print_r($zonas);
         echo "</pre>";
@@ -76,7 +76,7 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $zone = Zone::detailZone(5);
-        echo "<h3> Detalle zona 5: </h3>";
+        echo "<h3> Detalle zona '5': </h3>";
         echo "<pre>";
         print_r($zone);
         echo "</pre>";
@@ -92,26 +92,41 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $user = User::detailUser(1);
-        echo "<h3> Detalle usuario 1: </h3>";
+        echo "<h3> Detalle usuario '1': </h3>";
         echo "<pre>";
         print_r($users);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchNameDepartments = Place::searchName("tol");
-        echo "<h3> Busqueda por nombre tol en departamentos: </h3>";
+        $searchNameDepartments = Place::searchNameDepartments("tol");
+        echo "<h3> Busqueda por nombre 'tol' en departamentos: </h3>";
         echo "<pre>";
         print_r($searchNameDepartments);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-
-        $searchDaneDepartments = Place::searchDane(73);
-        echo "<h3> Busqueda por Dane 73 en departamentos: </h3>";
+        $searchDaneDepartments = Place::searchDaneDepartments(73);
+        echo "<h3> Busqueda por Dane '73' en departamentos: </h3>";
         echo "<pre>";
         print_r($searchDaneDepartments);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchNameCities = Place::searchNameCities("ron", 1);
+        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '1': </h3>";
+        echo "<pre>";
+        print_r($searchNameCities);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchDaneCities = Place::searchDaneCities(622, 1);
+        echo "<h3> Busqueda por Dane '622' en municipios, departamento '1': </h3>";
+        echo "<pre>";
+        print_r($searchDaneCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
