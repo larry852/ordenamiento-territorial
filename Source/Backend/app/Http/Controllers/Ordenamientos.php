@@ -7,7 +7,7 @@ use DB;
 
 use App\Ordenamiento;
 use App\Place;
-use App\Users;
+use App\User;
 use App\Uso;
 use App\Zone;
 use App\Area;
@@ -83,8 +83,16 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $users = User::consultadepartamentos();
+        $users = User::consultausuarios();
         echo "<h3> Usuarios: </h3>";
+        echo "<pre>";
+        print_r($users);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $user = User::detailUser(1);
+        echo "<h3> Detalle Usuario 1: </h3>";
         echo "<pre>";
         print_r($users);
         echo "</pre>";

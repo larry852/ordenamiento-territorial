@@ -10,9 +10,15 @@ class User extends Model
         'username', 'first_name', 'last_name','email','password','avatar','avatar','gender','phone','institution','is_active','last_login','date_joined','if_staff',
     ];
 
+    protected $hidden = array('password');
+
     public static function consultausuarios()
     {
-    	return  DB::table('user')->get();
-        
+    	return  User::all()->toArray();        
+    }
+
+    public static function detailUser($id)
+    {
+    	return  User::where('id',$id)->get()->toArray();        
     }
 }
