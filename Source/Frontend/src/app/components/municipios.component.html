@@ -24,9 +24,11 @@
 
       <tbody>
         <tr *ngFor="let city of cities">
-          <a href="zonas/{{city.id}}">
-            <td *ngIf="city.pattern != null">{{city.name  | titleCase}}</td>
-          </a>
+          <td *ngIf="city.pattern != null">
+            <a href="zonas/{{city.id}}">
+              {{city.name  | titleCase}}
+            </a>
+          </td>
         </tr>
           <!-- <tr>
             <td>Agustín Codazzi</td>
