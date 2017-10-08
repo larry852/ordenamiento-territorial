@@ -4,6 +4,7 @@ import { MaterializeModule } from 'angular2-materialize'; /*Se declaro para usar
 import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { DepartamentosComponent } from './components/departamentos.component';
+import {TitleCasePipe} from './pipes/title-case.pipe';
 
 import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
 import { InicioComponent } from './components/inicio.component';
@@ -14,6 +15,7 @@ import { ZonasComponent } from './components/zonas.component';
 @NgModule({  
   declarations: [                /*aquí se declaran los componentes*/
     AppComponent, 
+    TitleCasePipe,
     DepartamentosComponent, 
     InicioComponent, 
     MunicipiosComponent, EquipoComponent, ZonasComponent
@@ -26,7 +28,7 @@ import { ZonasComponent } from './components/zonas.component';
       {path: '', component:InicioComponent},
       {path: 'equipo', component:EquipoComponent},
       {path: 'departamentos', component:DepartamentosComponent},
-      {path: 'municipios', component:MunicipiosComponent},
+      {path: 'municipios/:idDepartment', component:MunicipiosComponent},
       {path: 'zonas', component:ZonasComponent}
       
       /*Se agregan los componentes a enlazar*/

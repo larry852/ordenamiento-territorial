@@ -21,10 +21,10 @@
         </thead>
 
         <tbody>
-          <tr>
-            <td>Aguachica</td>
+          <tr *ngFor="let city of cities">
+            <td>{{city.name  | titleCase}}</td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td>Agustín Codazzi</td>
           </tr>
           <tr>
@@ -53,7 +53,7 @@
           </tr>
           <tr>
             <td>González</td>
-          </tr>
+          </tr> -->
         </tbody>
       </table>
   </div>    

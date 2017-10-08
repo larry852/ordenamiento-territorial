@@ -20,7 +20,7 @@
 <div  class="container"> <!--Listado de departamentos--> 
     <div class="row">
           <div align="center" *ngFor="let department of departments">
-            <img class="col s6 m4" src="{{department.flag}}" alt="{{department.name}}">
+            <a href="municipios/{{department.id}}"><img class="col s6 m4" src="{{department.flag}}" alt="{{department.name   | titleCase}}"></a>
             <!-- <img class="col s6 m4" src="https://image.ibb.co/b6HOr5/Amazonas.png" alt="Amazonas">
             <img class="col s6 m4" src="https://image.ibb.co/cPDJPQ/Antioquiam.png" alt="Antioquia">
             <img class="col s6 m4" src="https://image.ibb.co/j3DA4Q/Araucam.png" alt="Arauca">
