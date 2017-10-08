@@ -21,4 +21,25 @@ class Place extends Model
     	return Place::where('pattern',null)->get()->toArray();
         
     }
+
+    public static function searchName($name)
+    {
+        $name = ucfirst(strtolower($name));
+        return Place::where([
+            ['name', 'LIKE', '%'.$name.'%'],
+            ['pattern',null]
+        ])
+        ->get()->toArray();
+        
+    }
+
+    public static function searchDane($dane)
+    {
+        return Place::where([
+            ['dane', $dane],
+            ['pattern',null]
+        ])
+        ->get()->toArray();
+        
+    }
 }

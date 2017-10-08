@@ -22,34 +22,34 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
-        // // Inicializacion de Departamento y municipio
-        // if (Place::where("name", "Tolima")->get()->isEmpty()) {
-        //     $department = new Place();
-        //     $department->name = "Tolima";
-        //     $department->dane = 73;
-        //     $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
-        //     $department->pattern = null;
-        //     $department->save();
-        //     echo "Departamento creado";
-        //     echo "<br>";
-        // }else{
-        //     echo "Departamento existente";
-        //     echo "<br>";
-        // }
+        // Inicializacion de Departamento y municipio
+        if (Place::where("name", "Tolima")->get()->isEmpty()) {
+            $department = new Place();
+            $department->name = "Tolima";
+            $department->dane = 73;
+            $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
+            $department->pattern = null;
+            $department->save();
+            echo "Departamento creado";
+            echo "<br>";
+        }else{
+            echo "Departamento existente";
+            echo "<br>";
+        }
 
-        // if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
-        //     $city = new Place();
-        //     $city->name = "Roncesvalles";
-        //     $city->dane = 622;
-        //     $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
-        //     $city->pattern = 1; //Tolima
-        //     $city->save();
-        //     echo "Municipio creado";
-        //     echo "<br>";
-        // }else{
-        //     echo "Municipio existente";
-        //     echo "<br>";
-        // }
+        if (Place::where("name", "Roncesvalles")->get()->isEmpty()) {
+            $city = new Place();
+            $city->name = "Roncesvalles";
+            $city->dane = 622;
+            $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
+            $city->pattern = 1; //Tolima
+            $city->save();
+            echo "Municipio creado";
+            echo "<br>";
+        }else{
+            echo "Municipio existente";
+            echo "<br>";
+        }
 
         $Departamentos = Place::consultadepartamentos();
         echo "<h3> Departamentos: </h3>";
@@ -60,7 +60,7 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $Municipios = Place::consultamunicipios(1);
-        echo "<h3> Municipios por Departamento 1: </h3>";
+        echo "<h3> Municipios por departamento 1: </h3>";
         echo "<pre>";
         print_r($Municipios);
         echo "</pre>";
@@ -68,7 +68,7 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $zonas = Zone::consultazonas(2);
-        echo "<h3> Detalles Zonas por municipio 2: </h3>";
+        echo "<h3> Detalles zonas por municipio 2: </h3>";
         echo "<pre>";
         print_r($zonas);
         echo "</pre>";
@@ -76,7 +76,7 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $zone = Zone::detailZone(5);
-        echo "<h3> Detalle Zona 5: </h3>";
+        echo "<h3> Detalle zona 5: </h3>";
         echo "<pre>";
         print_r($zone);
         echo "</pre>";
@@ -92,9 +92,26 @@ class Ordenamientos extends Controller
         echo "<br>";
 
         $user = User::detailUser(1);
-        echo "<h3> Detalle Usuario 1: </h3>";
+        echo "<h3> Detalle usuario 1: </h3>";
         echo "<pre>";
         print_r($users);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+        $searchNameDepartments = Place::searchName("tol");
+        echo "<h3> Busqueda por nombre tol en departamentos: </h3>";
+        echo "<pre>";
+        print_r($searchNameDepartments);
+        echo "</pre>";
+        echo "<br>";
+        echo "<br>";
+
+
+        $searchDaneDepartments = Place::searchDane(73);
+        echo "<h3> Busqueda por Dane 73 en departamentos: </h3>";
+        echo "<pre>";
+        print_r($searchDaneDepartments);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
