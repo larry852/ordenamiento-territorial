@@ -31,7 +31,8 @@
           <td>{{zone.symbol}}</td>
           <td>{{zone.use}}</td>
           <td>{{zone.measure + " " +zone.unit}}</td>
-          <td>{{zone.latitude_start + " " + zone.latitude_end + " " + zone.longitude_start + " " + zone.longitude_end}}</td>
+          <td *ngIf="zone.latitude_start != null">{{zone.latitude_start + " " + zone.latitude_end + " " + zone.longitude_start + " " + zone.longitude_end}}</td>
+          <td *ngIf="zone.latitude_start === null">No disponible</td>
           <td>{{zone.updated_at | date:'mediumDate'}}</td>
         </tr>
       </tbody>
