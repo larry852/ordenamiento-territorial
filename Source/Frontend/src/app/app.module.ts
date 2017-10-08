@@ -5,6 +5,7 @@ import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { DepartamentosComponent } from './components/departamentos.component';
 import {TitleCasePipe} from './pipes/title-case.pipe';
+import {Department} from './pipes/department.pipe';
 
 import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
 import { InicioComponent } from './components/inicio.component';
@@ -16,6 +17,7 @@ import { ZonasComponent } from './components/zonas.component';
   declarations: [                /*aquí se declaran los componentes*/
     AppComponent, 
     TitleCasePipe,
+    Department,
     DepartamentosComponent, 
     InicioComponent, 
     MunicipiosComponent, EquipoComponent, ZonasComponent
