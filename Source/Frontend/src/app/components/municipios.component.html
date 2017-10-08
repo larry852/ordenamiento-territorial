@@ -1,6 +1,8 @@
 <div class="container"> <!--Detalle del departamento y sus municipios--> 
-  <div class="depart h2 col s12"  *ngFor="let city of cities">
-      <h2 class="depart-titulo" align="center" *ngIf="true"></h2>
+  <div class="depart h2 col s12"  *ngFor="let department of cities | department">
+      <a href="municipios/{{department.id}}">
+        <h2 class="depart-titulo" align="center"> {{department.name | titleCase}}</h2>
+      </a>
   </div>
   
   <div class="row"> <!--Barra de busqueda municipios--> 
@@ -22,7 +24,7 @@
 
         <tbody>
           <tr *ngFor="let city of cities">
-            <td>{{city.name  | titleCase}}</td>
+            <td *ngIf="city.pattern != null">{{city.name  | titleCase}}</td>
           </tr>
           <!-- <tr>
             <td>Agustín Codazzi</td>
