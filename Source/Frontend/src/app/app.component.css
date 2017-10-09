@@ -75,6 +75,9 @@
     background-color: #BAD450
   }
 
+/*Estilo para link de tablas, componente municipios*/
+td a{width:100%;display:block;}
+
 
 /* 
 
