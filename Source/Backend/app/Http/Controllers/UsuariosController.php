@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Users;
+
 class UsuariosController extends Controller
 {
     /**
@@ -14,30 +16,14 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-        echo('<h2>Lista de usuarios</h2><br>
-            1.Jonathan <br>
-            2.Giovanni<br>');
+      $usuarios = Users::consultausuarios();
+       return response()->json($usuarios);
     }
 
     public function detail($id)
     {
-        //
-        if($id==1){
-        echo('<h2>Detalles de usuario </h2>
-             Username:Jonathan9<br>
-             first_name:Jonathan<br>
-             email:jonathan@hotmail.com<br>
-
-            ');
-}
-if($id==2){
-        echo('<h2>Detalles de usuario </h2>
-             Username:Giovanni6<br>
-             first_name:Giovanni<br>
-             email:giovanni@gmail.com<br>
-
-            ');
-}
+     $usuarios = Users::consultadetalleuser($id);
+        return response()->json($usuarios);
     }
 
     /**

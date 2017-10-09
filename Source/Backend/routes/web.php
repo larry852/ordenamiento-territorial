@@ -33,6 +33,21 @@ Route::get('usuarios', 'UsuariosController@index')->middleware('cors');
 Route::get('usuarios/{usuario}/detalles', 'UsuariosController@detail')->middleware('cors');
 
 
+Route::get('departamentos/nombre/{name_departamento}', 'DepartamentosController@show')->middleware('cors');
+
+Route::get('departamentos/dane/{dane_departamento}', 'DepartamentosController@showdane')->middleware('cors');
+
+Route::get('municipios/nombre/{name_departamento}', 'MunicipiosController@showname')->middleware('cors');
+
+Route::get('municipios/dane/{dane_departamento}', 'MunicipiosController@showdane')->middleware('cors');
+
+
+
+
+
+
+
+
 
 
 

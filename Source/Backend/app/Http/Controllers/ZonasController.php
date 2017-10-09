@@ -30,8 +30,13 @@ class ZonasController extends Controller
     }
   public function detail($id)
     {
+
+        //
+       
+
         $zone = Zone::detailZone($id);
         return response()->json($zone);
+
     }
     /**
      * Store a newly created resource in storage.
