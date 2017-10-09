@@ -14,12 +14,6 @@
     </div>
   </div>
   <div class="form-group">
-    <label for="flag" class="col-sm-2 control-label">Flag</label>
-    <div class="col-sm-10">
-      <input type="file" class="form-control" name="flag" required="Obligatorio" placeholder="Flag">
-    </div>
-  </div>
-  <div class="form-group">
     <label for="pattern" class="col-sm-2 control-label">Pattern</label>
     <div class="col-sm-10">
       <input type="text" class="form-control" name="pattern" placeholder="Pattern">
