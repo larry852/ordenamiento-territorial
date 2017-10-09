@@ -46,9 +46,11 @@ class DepartamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($nombre)
     {
         //
+        $departamentos = Place::consultanombredepartamentos($nombre);
+        return response()->json($departamentos);
     }
 
     /**
@@ -60,6 +62,14 @@ class DepartamentosController extends Controller
     public function edit($id)
     {
         //
+     
+    }
+     public function showdane($dane_departamento)
+    {
+        //
+     $departamento = Place::consultadanedepartamentos($dane_departamento);
+        return response()->json($departamento);
+
     }
 
     /**

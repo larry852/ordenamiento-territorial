@@ -51,6 +51,18 @@ class MunicipiosController extends Controller
         return response()->json($municipios);
     }
 
+      public function showname($name)
+    {
+        $municipios = Place::consultanombremunicipios($name);
+        return response()->json($municipios);
+    }
+
+      public function showdane($dane)
+    {
+        $municipios = Place::consultadanemunicipios($dane);
+        return response()->json($municipios);
+    }
+
     /**
      * Show the form for editing the specified resource.
      *

@@ -30,7 +30,8 @@ class ZonasController extends Controller
   public function detail($id)
     {
         //
-         echo('<h2>Detalle de la zona '.$id." Leticia</h2>");
+        $zona = Zone::consultadetalleszona($id);
+        return response()->json($zona);
     }
     /**
      * Store a newly created resource in storage.

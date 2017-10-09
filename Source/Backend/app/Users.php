@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Users extends Model
 {
@@ -12,7 +13,16 @@ class Users extends Model
 
     public static function consultausuarios()
     {
-    	return  DB::table('user')->get();
+     $Usuarios = DB::table('users')->get();
+       echo "<br>";
+       return var_dump($Usuarios);
+    	
+        
+    }
+
+    public static function consultadetalleuser($id_usuario)
+    {
+    	return Users::where('id',$id_usuario)->get();
         
     }
 }

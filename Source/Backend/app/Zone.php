@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Zone extends Model
 {
@@ -22,11 +23,13 @@ class Zone extends Model
     	//return Zone::where('id_place',$id_municipio)->get();
 
 
-    	return DB::table('Zone')
+    	/*return DB::table('Zone')
             ->join('Uso', 'Zone.id', '=', 'Uso.id')
             ->join('Location', 'Zone.id', '=', 'Location.id')
             ->select('Zone.id', 'Uso.description', 'Location.latitude_start')
-            ->get();
+            ->get();*/
+
+            return Zone::where('id',$id_zone)->get();
         
     }
 }

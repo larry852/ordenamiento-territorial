@@ -72,7 +72,7 @@ class Ordenamientos extends Controller
         //$Zonas2 = DB::SELECT('select zones.id, usos.description, locations.latitude_start FROM zones inner join usos ON usos.id = zones.id inner join locations ON locations.id = zones.id');
         //echo $Zonas2;
         //var_dump($Zonas2);
-        $Usuarios = DB::table('user')->get();
+        $Usuarios = DB::table('users')->get();
         echo "<br>";
         var_dump($Usuarios);
         //echo $Usuarios;
