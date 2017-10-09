@@ -1,0 +1,57 @@
+<div class="container"> <!--Detalle del municipio--> 
+  <div class="depart h2 col s12">
+    <a *ngIf="zones[zones.length-1]" href="zonas/{{zones[zones.length-1].id}}">
+      <h2 class="muni-titulo" align="center"> {{zones[zones.length-1].name | titleCase}}</h2>
+    </a>
+  </div>
+  
+  <div class="row"> <!--Barra de busqueda detalles municipio--> 
+    <div class="search-wrapper card">
+        <div class="col s12" align="center">
+            <input id="search" name="Buscar..."><i class="material-icons">search</i>
+            <div class="search-results"></div>
+        </div>
+    </div>
+  </div>
+  
+  <div class="row"> <!--Detalle distribución municipios ordenamiento--> 
+    <table class="highlight">
+      <thead class="tabla-muni">
+        <tr>
+            <th><h4>Zona</h4></th>
+            <th><h4>Simbolo</h4></th>
+            <th><h4>Uso</h4></th>
+            <th><h4>Area</h4></th>
+            <th><h4>Localización</h4></th>
+            <th><h4>Actualizacion</h4></th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr *ngFor="let zone of zones | zones">
+          <td>{{zone.name}}</td>
+          <td>{{zone.symbol}}</td>
+          <td>{{zone.use}}</td>
+          <td>{{zone.measure + " " +zone.unit}}</td>
+          <td *ngIf="zone.latitude_start != null">{{zone.latitude_start + " " + zone.latitude_end + " " + zone.longitude_start + " " + zone.longitude_end}}</td>
+          <td *ngIf="zone.latitude_start === null">No disponible</td>
+          <td>{{zone.updated_at | date:'mediumDate'}}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>    
+  </div>
+  
+  <!--Paginación municipios-->
+  <!-- <div align="center">  
+  <ul class="pagination">
+  <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+  <li class="active"><a href="#!">1</a></li>
+  <li class="waves-effect"><a href="#!">2</a></li>
+  <li class="waves-effect"><a href="#!">3</a></li>
+  <li class="waves-effect"><a href="#!">4</a></li>
+  <li class="waves-effect"><a href="#!">5</a></li>
+  <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+  </ul>
+  </div> -->
+  

@@ -14,23 +14,44 @@ class Zone extends Model
 
     public static function consultazonas($id_municipio)
     {
-    	return Zone::where('id_place',$id_municipio)->get();
+        return Zone::where('id_place',$id_municipio)
+        ->leftJoin('usos', 'zones.id', '=', 'usos.id_zone')
+        ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
+        ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
+        ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
+        ->get()->toArray();
         
     }
 
-    public static function consultadetalleszona($id_zone)
+    public static function detailZone($id_zone)
     {
-    	//return Zone::where('id_place',$id_municipio)->get();
 
+        return Zone::where('zones.id',$id_zone)
+        ->leftJoin('usos', 'zones.id', '=', 'usos.id_zone')
+        ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
+        ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
+        ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
+        ->get()->toArray();
 
-    	/*return DB::table('Zone')
-            ->join('Uso', 'Zone.id', '=', 'Uso.id')
-            ->join('Location', 'Zone.id', '=', 'Location.id')
-            ->select('Zone.id', 'Uso.description', 'Location.latitude_start')
-            ->get();*/
-
-            return Zone::where('id',$id_zone)->get();
         
+    }
+
+    public static function searchDetailZones($text, $id_city)
+    {
+        $text = strtolower($text);
+        return Zone::where([
+            ['zones.name', 'like', '%'.$text.'%'],
+            ['zones.id_place', $id_city]
+        ]) 
+        ->orWhere([
+            ['usos.description', 'like', '%'.$text.'%'],
+            ['zones.id_place', $id_city]
+        ])
+        ->leftJoin('usos', 'zones.id', '=', 'usos.id_zone')
+        ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
+        ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
+        ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
+        ->get()->toArray();
     }
 }
 

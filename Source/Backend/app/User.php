@@ -9,21 +9,21 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
     protected $fillable = [
-        'name', 'email', 'password',
+        'username', 'first_name', 'last_name','email','password','avatar','avatar','gender','phone','institution','is_active','last_login','date_joined','if_staff',
     ];
 
-    /**
-     * The attributes that should be hidden for arrays.
-     *
-     * @var array
-     */
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    public static function consultausuarios()
+    {
+    	return  User::all()->toArray();        
+    }
+
+    public static function detailUser($id)
+    {
+    	return  User::where('id',$id)->get()->toArray();        
+    }
 }
