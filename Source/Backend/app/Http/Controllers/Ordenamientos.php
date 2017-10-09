@@ -205,8 +205,34 @@ class Ordenamientos extends Controller
         $area->unit = $request->unit;
         $area->id_zone = $zone->id;
         $area->save();
-
         echo "Zona guardada";
+
+
+        $place = new Place();
+        $place->name = $request->place_name;
+        $place->dane = $request->dane;
+        $place->flag = "asd.png";
+        $place->pattern = $request->pattern;
+        $place->save();
+        echo "Places Guardados";
+
+
+        $user = new User();
+        $user->first_name = $request->first_name;
+        $user->last_name = $request->last_name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->password = $request->password;
+        $user->avatar = $request->avatar;
+        $user->gender = $request->gender;
+        $user->phone = $request->phone;
+        $user->institution = $request->institution;
+        $user->is_active = $request->is_active;
+        $user->last_login = $request->last_login;
+        $user->date_joined = new \DateTime();
+        $user->is_staff = $request->is_staff;
+        $user->save();
+        echo "User guardado";
     }
 
     /**
