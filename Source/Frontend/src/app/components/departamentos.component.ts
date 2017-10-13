@@ -9,6 +9,7 @@ import { DepartmentService } from '../services/department.service';
 })
 export class DepartamentosComponent implements OnInit{
 	departments = [];
+	query = "";
 	constructor(private departmentService: DepartmentService) {}
 
 	loadDepartments(){
@@ -17,5 +18,9 @@ export class DepartamentosComponent implements OnInit{
 
 	ngOnInit() {
 		this.loadDepartments();
+	}
+
+	search(){
+		this.departmentService.getSearch(this.query).subscribe(data => this.departments = data)
 	}
 }

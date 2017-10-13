@@ -7,8 +7,8 @@ import { DepartamentosComponent } from './components/departamentos.component';
 import {TitleCasePipe} from './pipes/title-case.pipe';
 import {Department} from './pipes/department.pipe';
 import {Zones} from './pipes/zones.pipe';
+import { FormsModule } from '@angular/forms';
 import { LOCALE_ID } from '@angular/core';
-
 import { RouterModule, Routes} from '@angular/router'; /*para enrutamiento de paginas*/
 import { InicioComponent } from './components/inicio.component';
 import { MunicipiosComponent } from './components/municipios.component';
@@ -17,7 +17,7 @@ import { ZonasComponent } from './components/zonas.component';
 
 @NgModule({  
   declarations: [                /*aquí se declaran los componentes*/
-    AppComponent, 
+    AppComponent,     
     TitleCasePipe,
     Zones,
     Department,
@@ -29,6 +29,7 @@ import { ZonasComponent } from './components/zonas.component';
     BrowserModule,
     MaterializeModule,    /*Se declaro para usar Materialize */
     HttpModule,
+    FormsModule,
     RouterModule.forRoot([
       {path: '', component:InicioComponent},
       {path: 'equipo', component:EquipoComponent},
