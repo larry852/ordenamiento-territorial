@@ -11,6 +11,7 @@ import { ZoneService } from '../services/zones.service';
 export class ZonasComponent implements OnInit {
 	private idCity:number;
 	zones = [];
+	query = "";
 
 	constructor(
 		private route:ActivatedRoute,
@@ -29,6 +30,10 @@ export class ZonasComponent implements OnInit {
 				this.loadZones(this.idCity);
 			}			
 		});
+	}
+
+	search(){
+		this.zoneService.getSearch(this.query, this.idCity).subscribe(data => this.zones = data)
 	}
 
 }
