@@ -5,13 +5,13 @@
     </a>
   </div>
   
-  <div class="row"> <!--Barra de busqueda municipios--> 
-    <div class="search-wrapper card">
-      <div class="col s12" align="center">
-        <input id="search" name="Buscar..."><i class="material-icons">search</i>
-        <div class="search-results"></div>
+  <div class="row">
+      <div class="search-wrapper card">
+          <div class="col s12" align="center">
+            <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
+            <i (click)="search()" class="material-icons">search</i>
+          </div>
       </div>
-    </div>
   </div>
 
   <div class="row"> <!--Tabla de lo municipios para el departamento--> 

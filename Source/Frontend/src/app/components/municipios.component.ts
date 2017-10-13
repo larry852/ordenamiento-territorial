@@ -11,6 +11,7 @@ import { CityService } from '../services/city.service';
 export class MunicipiosComponent implements OnInit {
 	private idDepartment:number;
 	cities = [];
+	query = "";
 
 	constructor(
 		private route:ActivatedRoute,
@@ -29,5 +30,9 @@ export class MunicipiosComponent implements OnInit {
 				this.loadCities(this.idDepartment);
 			}			
 		});
+	}
+
+	search(){
+		this.cityService.getSearch(this.query, this.idDepartment).subscribe(data => this.cities = data)
 	}
 }
