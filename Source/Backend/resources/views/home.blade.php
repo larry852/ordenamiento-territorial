@@ -13,6 +13,12 @@
                     @endif
 
                      @include('layouts.formulario')
+                     <br>
+                     <br>
+                     @include('layouts.formulario_place')
+                     <br>
+                     <br>
+                     @include('layouts.formulario_user')
                 </div>
             </div>
         </div>

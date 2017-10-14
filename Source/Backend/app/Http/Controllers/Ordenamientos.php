@@ -156,6 +156,7 @@ class Ordenamientos extends Controller
         echo "</pre>";
         echo "<br>";
         echo "<br>";
+
     }
 
     /**
@@ -176,37 +177,70 @@ class Ordenamientos extends Controller
      */
     public function store(Request $request)
     {
-        $zone = new Zone();
-        $zone->name = strtolower($request->zone_name);
-        $zone->description = strtolower($request->description);
-        $zone->symbol = $request->symbol;
-        $zone->last_modified = new \DateTime();
-        $zone->id_place = 2; //Roncesvalles
-        $zone->save();
+        if ($request->zone_name != null){
+            $zone = new Zone();
+            $zone->name = strtolower($request->zone_name);
+            $zone->description = strtolower($request->description);
+            $zone->symbol = $request->symbol;
+            $zone->last_modified = new \DateTime();
+            $zone->id_place = 2; //Roncesvalles
+            $zone->save();
 
-        $uso = new Uso();
-        $uso->description = strtolower($request->uso_description);
-        $uso->id_zone = $zone->id;
-        $uso->save();
+            $uso = new Uso();
+            $uso->description = strtolower($request->uso_description);
+            $uso->id_zone = $zone->id;
+            $uso->save();
 
-        if (!$request->latitude_start === null){
-            $location = new Location();
-            $location->latitude_start = $request->latitude_start;
-            $location->latitude_end = $request->latitude_end;
-            $location->longitude_start = $request->longitude_start;
-            $location->longitude_end = $request->longitude_end;
-            $location->description = strtolower($request->description);
-            $location->id_zone = $zone->id;
-            $location->save();
+            if ($request->latitude_start != null){
+                $location = new Location();
+                $location->latitude_start = $request->latitude_start;
+                $location->latitude_end = $request->latitude_end;
+                $location->longitude_start = $request->longitude_start;
+                $location->longitude_end = $request->longitude_end;
+                $location->description = strtolower($request->description);
+                $location->id_zone = $zone->id;
+                $location->save();
+            }
+
+            $area = new Area();
+            $area->measure = $request->measure;
+            $area->unit = $request->unit;
+            $area->id_zone = $zone->id;
+            $area->save();
+            echo "Zona guardada";
+
         }
 
-        $area = new Area();
-        $area->measure = $request->measure;
-        $area->unit = $request->unit;
-        $area->id_zone = $zone->id;
-        $area->save();
 
-        echo "Zona guardada";
+        if($request->place_name != null){
+            $place = new Place();
+            $place->name = strtolower($request->place_name);
+            $place->dane = $request->dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$request->dane. ".png";
+            $place->pattern = $request->pattern;
+            $place->save();
+            echo "Places Guardados";
+
+        }
+        if ($request->first_name != null) {
+      
+            $user = new User();
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->avatar = $request->avatar;
+            $user->gender = $request->gender;
+            $user->phone = $request->phone;
+            $user->institution = $request->institution;
+            $user->is_active = $request->is_active;
+            $user->last_login = $request->last_login;
+            $user->date_joined = new \DateTime();
+            $user->is_staff = $request->is_staff;
+            $user->save();
+            echo "User guardado";
+        }
     }
 
     /**

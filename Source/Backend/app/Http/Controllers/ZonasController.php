@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Zone;
+use App\Place;
 
 class ZonasController extends Controller
 {
@@ -29,8 +30,13 @@ class ZonasController extends Controller
     }
   public function detail($id)
     {
+
+        //
+       
+
         $zone = Zone::detailZone($id);
         return response()->json($zone);
+
     }
     /**
      * Store a newly created resource in storage.
@@ -52,6 +58,8 @@ class ZonasController extends Controller
     public function show($id)
     {
         $zonas = Zone::consultazonas($id);
+        $city = Place::find($id);
+        array_push($zonas, $city);
         return response()->json($zonas);       
         
     }

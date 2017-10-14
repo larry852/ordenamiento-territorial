@@ -1,15 +1,39 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, Params, ActivatedRoute } from '@angular/router';
+import { ZoneService } from '../services/zones.service';
 
 @Component({
-  selector: 'app-zonas',
-  templateUrl: './zonas.component.html',
-  styleUrls: ['../app.component.css']
+	selector: 'app-zonas',
+	templateUrl: './zonas.component.html',
+	styleUrls: ['../app.component.css'],
+	providers: [ZoneService]
 })
 export class ZonasComponent implements OnInit {
+	private idCity:number;
+	zones = [];
+	query = "";
 
-  constructor() { }
+	constructor(
+		private route:ActivatedRoute,
+		private router:Router,
+		private zoneService: ZoneService
+		) { }
 
-  ngOnInit() {
-  }
+	loadZones(idCity){
+		this.zoneService.getAll(idCity).subscribe(data => this.zones = data)
+	}
+
+	ngOnInit() {
+		this.route.params.forEach((params:Params)=>{
+			this.idCity=params["idCity"];
+			if(this.idCity!=null){
+				this.loadZones(this.idCity);
+			}			
+		});
+	}
+
+	search(){
+		this.zoneService.getSearch(this.query, this.idCity).subscribe(data => this.zones = data)
+	}
 
 }

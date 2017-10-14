@@ -17,6 +17,14 @@
     padding-bottom: 30px;
   }
 
+  .mapacolombia{
+    margin-top: 6px;
+    margin-bottom: 6px;
+  }
+
+  .textos {
+    margin-right:9px;
+  }
   .purpura {
     color: #fff;
     background-color: #882E85;
@@ -67,13 +75,91 @@
     background-color: #BAD450
   }
 
+/*Estilo para link de tablas, componente municipios*/
+td a{width:100%;display:block;}
 
-/*
+
+/* 
 
   * {
     border: 1px solid red;
   } 
   
+  .guiaazul {
+    border: 2px solid blue;
+  } 
+
+  .guiaverde {
+    border: 3px solid green;
+  }
+
+  .guiaamarilla {
+    border: 3px solid yellow;
+  }
+
+  .guiaimagen {
+    border: 4px solid purple;
+  }
+
+  .containerguia{
+    border: 4px solid goldenrod;
+  }
+  .equipo{
+    display: inline;
+  } */
 
   /* (*) el style es para la maquetación, quitar para producción */
- 
+
+    /*Styles para el componente de equipo*/
+
+  .rowequipo {
+    box-sizing: border-box;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-flex: 0;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -.5rem;
+    margin-left: -.5rem;
+  }
+
+  .containerequipo { 
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: start;
+    -o-box-pack: start;
+    -ms-flex-pack: start;
+    justify-content: flex-start;
+    -webkit-box-align: center;
+    -o-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-orient: vertical;
+    -o-box-orient: vertical;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    margin-top: 32px;
+  }
+
+  figure {
+    display: block;
+    -webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 40px;
+    -webkit-margin-end: 40px;
+  }
+
+
+.equipoparrafo{
+  margin: 0px;
+}
+/*Final de Styles para el componente de equipo*/
+
+

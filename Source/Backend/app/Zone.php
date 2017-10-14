@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use DB;
 
 class Zone extends Model
 {
@@ -24,12 +25,14 @@ class Zone extends Model
 
     public static function detailZone($id_zone)
     {
+
         return Zone::where('zones.id',$id_zone)
         ->leftJoin('usos', 'zones.id', '=', 'usos.id_zone')
         ->leftJoin('areas', 'zones.id', '=', 'areas.id_zone')
         ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
         ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
         ->get()->toArray();
+
         
     }
 
