@@ -58,8 +58,8 @@ class ZonasController extends Controller
     public function show($id)
     {
         $zonas = Zone::consultazonas($id);
-        $city = Place::find($id);
-        array_push($zonas, $city);
+       /* $city = Place::find($id);
+        array_push($zonas, $city);*/
         return response()->json($zonas);       
         
     }
