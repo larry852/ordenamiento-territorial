@@ -1,5 +1,6 @@
 <form class="form-horizontal" role="form" method="POST" action="{{ url('ordenamientos') }}">
 {{ csrf_field() }}
+<h2 align="center">Zone</h2>
   <div class="form-group">
     <label for="Zone_name" class="col-sm-2 control-label">Zone (*)</label>
     <div class="col-sm-10">
@@ -66,7 +67,6 @@
       <input type="text" class="form-control" name="unit" placeholder="Unit" value="ha">
     </div>
   </div>
-
   <div class="form-group">
     <div class="col-sm-offset-2 col-sm-10">
       <button type="submit" class="btn btn-primary">Registrar</button>

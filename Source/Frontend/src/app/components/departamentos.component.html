@@ -10,8 +10,8 @@
   <div class="row">
       <div class="search-wrapper card">
           <div class="col s12" align="center">
-            <input id="search" name="Buscar..."><i class="material-icons">search</i>
-            <div class="search-results"></div>
+            <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
+            <i (click)="search()" class="material-icons">search</i>
           </div>
       </div>
   </div>
@@ -20,26 +20,14 @@
 <div  class="container"> <!--Listado de departamentos--> 
     <div class="row">
           <div align="center" *ngFor="let department of departments">
-            <img class="col s6 m4" src="{{department.flag}}" alt="{{department.name}}">
-            <!-- <img class="col s6 m4" src="https://image.ibb.co/b6HOr5/Amazonas.png" alt="Amazonas">
-            <img class="col s6 m4" src="https://image.ibb.co/cPDJPQ/Antioquiam.png" alt="Antioquia">
-            <img class="col s6 m4" src="https://image.ibb.co/j3DA4Q/Araucam.png" alt="Arauca">
-            <img class="col s6 m4" src="https://image.ibb.co/cidzyk/Atl_ntico.png" alt="Atlantico">
-            <img class="col s6 m4" src="https://image.ibb.co/mFAq4Q/Bolivarm.png" alt="Bolivar">
-            <img class="col s6 m4" src="https://image.ibb.co/i323PQ/Boyac_m.png" alt="Boyaca">
-            <img class="col s6 m4" src="https://image.ibb.co/hHVZW5/Caldasm.png" alt="Caldas">
-            <img class="col s6 m4" src="https://image.ibb.co/doJGdk/Casanarem.png" alt="Casanare">
-            <img class="col s6 m4" src="https://image.ibb.co/hfYSjQ/Caucam.png" alt="Cauca">
-            <img class="col s6 m4" src="https://image.ibb.co/fHDSjQ/Cesarm.png" alt="Cesar">
-            <img class="col s6 m4" src="https://image.ibb.co/cqfjW5/Choc_m.png" alt="Choco">
-            <img class="col s6 m4" src="https://image.ibb.co/miqUyk/C_rdobam.png" alt="Cordoba">
-            <img class="col s6 m4" src="https://image.ibb.co/crCL4Q/cundinamarcam.png" alt="Cundinamarca">
-            <img class="col s6 m4" src="https://image.ibb.co/ex3Gdk/Guain_am.png" alt="Guainia">
-            <img class="col s6 m4" src="https://image.ibb.co/kesWB5/Guaviarem.png" alt="Guaviare"> -->
-          </div>  
+            <a href="municipios/{{department.id}}">
+              <img class="col s6 m4" src="{{department.flag}}" alt="{{department.name   | titleCase}}">
+              <!-- <span>{{department.name | titleCase}}</span> -->
+            </a>
+          </div> 
     </div>
     
-    <div align="center">
+    <!-- <div align="center">
       <ul class="pagination">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
         <li class="active"><a href="#!">1</a></li>
@@ -49,7 +37,7 @@
         <li class="waves-effect"><a href="#!">5</a></li>
         <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
       </ul>
-    </div> 
+    </div>  -->
 </div>
 
 

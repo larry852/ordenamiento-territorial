@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UsuarioAnonimoMigration extends Migration
+class CreatePasswordResetsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class UsuarioAnonimoMigration extends Migration
      */
     public function up()
     {
-        Schema::create('usu_anoni', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('nombre');
-            $table->integer('edad');
-            $table->string('ciudad');
-            $table->timestamps();
+        Schema::create('password_resets', function (Blueprint $table) {
+            $table->string('email')->index();
+            $table->string('token');
+            $table->timestamp('created_at')->nullable();
         });
     }
 
@@ -29,6 +27,6 @@ class UsuarioAnonimoMigration extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('usu_anoni');
+        Schema::dropIfExists('password_resets');
     }
 }
