@@ -38,6 +38,15 @@ class ZonasController extends Controller
         return response()->json($zone);
 
     }
+      public function showText($id,$texto)
+    {
+
+        //
+       $zones=Zone::searchDetailZones($texto, $id);
+       return response()->json($zones);
+
+
+    }
     /**
      * Store a newly created resource in storage.
      *
