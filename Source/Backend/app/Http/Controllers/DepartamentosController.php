@@ -52,8 +52,8 @@ class DepartamentosController extends Controller
         /*$departamentos = Place::consultanombredepartamentos($nombre);
         return response()->json($departamentos);*/
 
-        $departamentos=Place::searchNameDepartments($nombre);
-        return response()->json($departamentos);
+        $departamento=Place::searchNameDepartments($nombre);
+        return response()->json($departamento);
     }
 
     /**
