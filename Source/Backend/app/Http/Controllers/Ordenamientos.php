@@ -12,6 +12,8 @@ use App\Uso;
 use App\Zone;
 use App\Area;
 use App\Location;
+use File;
+use Storage;
 
 class Ordenamientos extends Controller
 {
@@ -22,8 +24,28 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
+        $json = File::get("departamentos.json"); 
+        $data =json_decode($json, true);
+            foreach ($data as $obj) { 
+                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
+                $dane = $obj['Dane'];
+                $departamento = $obj['Departamento'];
+                print_r('Dane: '.$dane.', Departamento: '.$departamento.'<br/>');
+                //print_r($obj); 
+            }
+        $json = File::get("places.json"); 
+        $data =json_decode($json, true);
+            foreach ($data as $obj) { 
+                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
+                $municipio = $obj['municipio'];
+                $dane = $obj['mun_dane'];
+               
+                print_r(' Dane: '.$dane.', Municipio: '.$municipio.'<br/>');
+                //print_r($obj); 
+            }
+
         // Inicializacion de Departamento y municipio
-        if (Place::where("name", "tolima")->get()->isEmpty()) {
+        /*if (Place::where("name", "tolima")->get()->isEmpty()) {
             $department = new Place();
             $department->name = strtolower("Tolima");
             $department->dane = 73;
@@ -49,7 +71,7 @@ class Ordenamientos extends Controller
         }else{
             echo "Municipio existente";
             echo "<br>";
-        }
+        }*/
 
         if (User::where("username", "admin")->get()->isEmpty()) {
             $admin = new User();
@@ -166,7 +188,41 @@ class Ordenamientos extends Controller
      */
     public function create()
     {
-        //
+        /*$json = File::get("departamentos.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $place = new Place();
+                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
+            $place->name = $obj['Departamento'];
+            $place->dane = $obj['Dane'];
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$obj['Dane']. ".png";
+            $place->pattern = null;
+            //echo(' Dane: '.$dane.', Departamento: '.$departamento.'<br/>');
+
+            
+            $place->save();
+        }
+        echo "Departamentos Guardados";
+*/      
+        $json = File::get("places.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $place = new Place();
+                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
+            $place->name = $obj['MUNICIPIO'];
+            $mun_dane =  $obj["MUN_DANE"];
+            $place->dane = $mun_dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$mun_dane. ".png";
+            $place->pattern = $obj['PATTERN'];
+            //$dane = $obj['c_digo_dane_del_municipio'];
+            //$municipio = $obj['municipio'];
+            //echo(' Dane: '.$dane.', Departamento: '.$municipio.'<br/>');
+            //echo(' Dane: '.$obj['c_digo_dane_del_municipio'].', Departamento: '.$obj['municipio'].'<br/>');
+            
+            $place->save();
+        }
+
+        echo "Municipios Guardados";
     }
 
     /**
@@ -177,6 +233,8 @@ class Ordenamientos extends Controller
      */
     public function store(Request $request)
     {
+        
+
         if ($request->zone_name != null){
             $zone = new Zone();
             $zone->name = strtolower($request->zone_name);
@@ -213,6 +271,7 @@ class Ordenamientos extends Controller
 
 
         if($request->place_name != null){
+
             $place = new Place();
             $place->name = strtolower($request->place_name);
             $place->dane = $request->dane;
@@ -286,5 +345,26 @@ class Ordenamientos extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function municipios()
+    {
+        $json = File::get("municipios.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $place = new Place();
+                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
+            $place->name = strtolower($obj['municipio']);
+            $dane = (int) substr(obj["MUN_DANE}"], -3);
+            $place->dane = $dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane. ".png";
+            $place->pattern = $obj['pattern'];
+            //$dane = $obj['c_digo_dane_del_municipio'];
+            //$municipio = $obj['municipio'];
+            //echo(' Dane: '.$dane.', Departamento: '.$municipio.'<br/>');
+            //echo(' Dane: '.$obj['c_digo_dane_del_municipio'].', Departamento: '.$obj['municipio'].'<br/>');
+            
+            $place->save();
+        }
     }
 }

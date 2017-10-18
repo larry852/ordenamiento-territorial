@@ -1,16 +1,16 @@
-<form class="form-horizontal" role="form" method="POST" action="{{ url('ordenamientos') }}">
+<form class="form-horizontal" role="form" method="POST" action="{{ url('ordenamientos') }}" enctype="multipart/form-data">
 {{ csrf_field() }}
   <h2 align="center">Place</h2>
   <div class="form-group">
     <label for="place_name" class="col-sm-2 control-label">Name (*)</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="place_name" required="Obligatorio" placeholder="Place Name">
+      <input type="text" class="form-control" name="place_name" placeholder="Place Name">
     </div>
   </div>
   <div class="form-group">
     <label for="dane" class="col-sm-2 control-label">Dane</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" name="dane" required="Obligatorio" placeholder="Codigo Dane">
+      <input type="text" class="form-control" name="dane" placeholder="Codigo Dane">
     </div>
   </div>
   <div class="form-group">
