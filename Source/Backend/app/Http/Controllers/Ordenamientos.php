@@ -181,8 +181,9 @@ class Ordenamientos extends Controller
         foreach ($data as $obj) { 
             $place = new Place();
             $place->name = strtolower($obj['Departamento']);
-            $place->dane = $obj['Dane'];
-            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$obj['Dane']. ".png";
+            $dane = $obj["Dane"];
+            $place->dane = $dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane;
             $place->pattern = null;            
             $place->save();
         }
@@ -199,9 +200,9 @@ class Ordenamientos extends Controller
         foreach ($data as $obj) { 
             $place = new Place();
             $place->name = strtolower($obj['MUNICIPIO']);
-            $dane = $obj["MUN_DANE"]
+            $dane = $obj["MUN_DANE"];
             $place->dane = $dane;
-            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane. ".png";
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane;
             $place->pattern = $obj['PATTERN'];            
             $place->save();
         }
