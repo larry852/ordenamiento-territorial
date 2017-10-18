@@ -25,7 +25,7 @@ class Ordenamientos extends Controller
     public function index()
     {
 
-        // Initcializacion de Departamentos
+        // Inicializacion de Departamentos
         // $this->departamentos();
 
         // Inicializacion de Municipios
