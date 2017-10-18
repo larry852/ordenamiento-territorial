@@ -199,7 +199,7 @@ class Ordenamientos extends Controller
         foreach ($data as $obj) { 
             $place = new Place();
             $place->name = strtolower($obj['MUNICIPIO']);
-            $dane = (int) substr($obj["MUN_DANE"], -3);
+            $dane = $obj["MUN_DANE"]
             $place->dane = $dane;
             $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane. ".png";
             $place->pattern = $obj['PATTERN'];            
