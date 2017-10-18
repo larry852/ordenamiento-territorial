@@ -26,10 +26,10 @@ class Ordenamientos extends Controller
     {
 
         // Inicializacion de Departamentos
-        // $this->departamentos();
+        $this->departamentos();
 
         // Inicializacion de Municipios
-        // $this->municipios();
+        $this->municipios();
 
         // Inicializacion de usuario admin por defecto
         $this->userAdmin();
