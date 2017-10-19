@@ -24,7 +24,7 @@ class Place extends Model
 
     public static function searchNameDepartments($name)
     {
-        /*$name = strtolower($name);*/
+        $name = strtolower($name);
         return Place::where([
             ['name', 'like', '%'.$name.'%'],
             ['pattern', null]
