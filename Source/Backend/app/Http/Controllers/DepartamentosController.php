@@ -15,8 +15,10 @@ class DepartamentosController extends Controller
      */
     public function index()
     {
+        
        $departamentos = Place::consultadepartamentos();
        return response()->json($departamentos);
+
     }
 
     /**

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Place extends Model
 {
     protected $fillable = [
@@ -21,10 +22,16 @@ class Place extends Model
     	return Place::where('pattern', null)->get()->toArray();
         
     }
+    public static function estadisticas($id_departamento){
+    
+   
+   //$nombre=Place::where('id', $id_departamento)->get(['name']);
+   return Place::where('pattern', $id_departamento)->count();
+    }
 
     public static function searchNameDepartments($name)
     {
-        /*$name = strtolower($name);*/
+        $name = strtolower($name);
         return Place::where([
             ['name', 'like', '%'.$name.'%'],
             ['pattern', null]
@@ -45,7 +52,7 @@ class Place extends Model
 
     public static function searchNameCities($name, $id_department)
     {
-        $name = strtolower($name);
+        /*$name = strtolower($name);*/
         return Place::where([
             ['name', 'like', '%'.$name.'%'],
             ['pattern', $id_department]

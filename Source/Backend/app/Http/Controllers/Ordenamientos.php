@@ -22,8 +22,21 @@ class Ordenamientos extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+      public function graficos()
+    {   $est=array();
+          for($i=1;$i<=33;$i++){
+       $estadistica=Place::estadisticas($i);
+       //echo('Departamento id:'.$i.' Cantidad municipios->'.$estadistica.'<br>');
+       $est[$i]=$estadistica;}
+       return response()->json($est);
+
+    }
     public function index()
     {
+      for($i=1;$i<=33;$i++){
+       $estadistica=Place::estadisticas($i);
+       echo('Departamento id:'.$i.' Cantidad municipios->'.$estadistica.'<br>');
+   }
         $json = File::get("departamentos.json"); 
         $data =json_decode($json, true);
             foreach ($data as $obj) { 
@@ -323,6 +336,8 @@ class Ordenamientos extends Controller
     {
         //
     }
+
+
 
     /**
      * Update the specified resource in storage.
