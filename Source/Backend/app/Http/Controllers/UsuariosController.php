@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Users;
+use App\User;
 
 class UsuariosController extends Controller
 {
@@ -16,14 +16,18 @@ class UsuariosController extends Controller
     public function index()
     {
         //
-      $usuarios = Users::consultausuarios();
-       return response()->json($usuarios);
+        $users = User::consultausuarios();
+      //$usuarios = Users::consultausuarios();
+       return response()->json($users);
     }
 
     public function detail($id)
     {
-     $usuarios = Users::consultadetalleuser($id);
-        return response()->json($usuarios);
+    /* $usuarios = Users::consultadetalleuser($id);
+        return response()->json($usuarios);*/
+
+        $user = User::detailUser($id);
+         return response()->json($user);
     }
 
     /**

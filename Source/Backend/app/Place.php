@@ -64,7 +64,7 @@ class Place extends Model
         
     }
 
-
+/*
     public static function consultanombredepartamentos($nombre_departamento)
     {
         return Place::where('name',$nombre_departamento)->get();
@@ -90,4 +90,5 @@ class Place extends Model
         return Place::where('dane',$dane_municipio)->get();
         
     }
+    */
 }

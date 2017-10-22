@@ -49,8 +49,11 @@ class DepartamentosController extends Controller
     public function show($nombre)
     {
         //
-        $departamentos = Place::consultanombredepartamentos($nombre);
-        return response()->json($departamentos);
+        /*$departamentos = Place::consultanombredepartamentos($nombre);
+        return response()->json($departamentos);*/
+
+        $departamento=Place::searchNameDepartments($nombre);
+        return response()->json($departamento);
     }
 
     /**
@@ -67,7 +70,10 @@ class DepartamentosController extends Controller
      public function showdane($dane_departamento)
     {
         //
-     $departamento = Place::consultadanedepartamentos($dane_departamento);
+     /*$departamento = Place::consultadanedepartamentos($dane_departamento);
+        return response()->json($departamento);*/
+
+        $departamento=Place::searchDaneDepartments($dane_departamento);
         return response()->json($departamento);
 
     }

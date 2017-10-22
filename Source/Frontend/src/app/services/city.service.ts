@@ -18,9 +18,8 @@ export class CityService {
 	}
 
 	getSearch(query, idDepartment){
-		var data = [{'query': query, 'idDepartment': idDepartment}];
 		if (this.isNumber(query))
-			return this.http.post('https://ordenamiento-backend.herokuapp.com/municipios/dane/', data, {}).map(res=>res.json());
-		return this.http.post('https://ordenamiento-backend.herokuapp.com/municipios/nombre/', data, {}).map(res=>res.json());
+			return this.http.get('https://ordenamiento-backend.herokuapp.com/municipios/'+idDepartment+'/dane/'+query).map(res=>res.json());
+		return this.http.get('https://ordenamiento-backend.herokuapp.com/municipios/'+idDepartment+'/nombre/'+query).map(res=>res.json());
 	}
 }

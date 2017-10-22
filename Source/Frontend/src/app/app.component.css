@@ -76,7 +76,14 @@
   }
 
 /*Estilo para link de tablas, componente municipios*/
-td a{width:100%;display:block;}
+  td a{
+    width:100%;
+    display:block;
+  }
+
+  .avatar{
+    border-radius: 50%;
+  }
 
 
 /* 
