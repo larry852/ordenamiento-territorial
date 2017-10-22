@@ -56,7 +56,7 @@ Route::get('usuarios/{id_usuario}/detalles', 'UsuariosController@detail')->middl
 
 
 Route::get('graficos','Ordenamientos@graficos')->middleware('cors');
-//Ruta opcional para visualizar estadisticas para realizar los graficos
+//Ruta provisional para visualizar estadisticas para realizar los graficos
 
 
 //Route::resource('usuario','Usuariocontroller');
