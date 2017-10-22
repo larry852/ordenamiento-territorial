@@ -22,12 +22,13 @@ class Place extends Model
     	return Place::where('pattern', null)->get()->toArray();
 
     }
-    public static function estadisticas($id_departamento)
+    public static function numeroMunicipios()
     {
-        //$nombre=Place::where('id', $id_departamento)->get(['name']);
-        return Place::where('pattern', $id_departamento)->count();
-    }
-
+        $array=Place::where('pattern',null)->get(['id','name'])->toArray();
+        for($i=0;$i<33;$i++){
+         $array[$i]=array_add($array[$i], 'count:', Place::where('pattern', $i+1)->count());}
+     return $array;
+}
     public static function searchNameDepartments($name)
     {
         $name = strtolower($name);

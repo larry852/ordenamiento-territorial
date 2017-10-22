@@ -49,6 +49,7 @@ class Ordenamientos extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
 
@@ -60,6 +61,7 @@ class Ordenamientos extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    
     public function store(Request $request)
     {
 
@@ -253,16 +255,16 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $Municipios = Place::consultamunicipios(22);
-        echo "<h3> Municipios por departamento '22': </h3>";
+        $Municipios = Place::consultamunicipios(1);
+        echo "<h3> Municipios por departamento '1': </h3>";
         echo "<pre>";
         print_r($Municipios);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $zonas = Zone::consultazonas(1056);
-        echo "<h3> Detalles zonas por municipio '1056': </h3>";
+        $zonas = Zone::consultazonas(2);
+        echo "<h3> Detalles zonas por municipio '2': </h3>";
         echo "<pre>";
         print_r($zonas);
         echo "</pre>";
@@ -309,24 +311,24 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $searchNameCities = Place::searchNameCities("ron", 22);
-        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '22': </h3>";
+        $searchNameCities = Place::searchNameCities("ron", 1);
+        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '1': </h3>";
         echo "<pre>";
         print_r($searchNameCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchDaneCities = Place::searchDaneCities(73622, 22);
-        echo "<h3> Busqueda por Dane '73622' en municipios, departamento '22': </h3>";
+        $searchDaneCities = Place::searchDaneCities(622, 1);
+        echo "<h3> Busqueda por Dane '622' en municipios, departamento '1': </h3>";
         echo "<pre>";
         print_r($searchDaneCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchDetailZones = Zone::searchDetailZones("pas", 1056);
-        echo "<h3> Busqueda por texto 'pas' en zonas, municipio '1056': </h3>";
+        $searchDetailZones = Zone::searchDetailZones("pr", 2);
+        echo "<h3> Busqueda por texto 'pr' en zonas, municipio '2': </h3>";
         echo "<pre>";
         print_r($searchDetailZones);
         echo "</pre>";
@@ -334,16 +336,4 @@ class Ordenamientos extends Controller
         echo "<br>";
     }
 
-    public function graficos()
-    {   
-        $est=array();
-        for($i=1;$i<=33;$i++)
-        {
-            $estadistica=Place::estadisticas($i);
-            //echo('Departamento id:'.$i.' Cantidad municipios->'.$estadistica.'<br>');
-            $est[$i]=$estadistica;
-        }
-        return response()->json($est);
-
-    }
-}
+  

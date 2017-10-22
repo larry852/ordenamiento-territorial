@@ -6,21 +6,18 @@ use Illuminate\Http\Request;
 
 use App\Place;
 
-class DepartamentosController extends Controller
+class EstadisticasController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-  
     public function index()
     {
         
-       $departamentos = Place::consultadepartamentos();
-       return response()->json($departamentos);
-
+    $numunicipios=Place::numeroMunicipios();
+    return response()->json($numunicipios);
     }
 
     /**
@@ -50,14 +47,9 @@ class DepartamentosController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($nombre)
+    public function show($id)
     {
         //
-        /*$departamentos = Place::consultanombredepartamentos($nombre);
-        return response()->json($departamentos);*/
-
-        $departamento=Place::searchNameDepartments($nombre);
-        return response()->json($departamento);
     }
 
     /**
@@ -69,17 +61,6 @@ class DepartamentosController extends Controller
     public function edit($id)
     {
         //
-     
-    }
-     public function showdane($dane_departamento)
-    {
-        //
-     /*$departamento = Place::consultadanedepartamentos($dane_departamento);
-        return response()->json($departamento);*/
-
-        $departamento=Place::searchDaneDepartments($dane_departamento);
-        return response()->json($departamento);
-
     }
 
     /**
@@ -104,5 +85,4 @@ class DepartamentosController extends Controller
     {
         //
     }
- 
 }
