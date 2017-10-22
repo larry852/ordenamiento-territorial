@@ -48,29 +48,27 @@ class MunicipiosController extends Controller
     public function show($id)
     {
         $municipios = Place::consultamunicipios($id);
-       /* $department = Place::find($id);
-        array_push($municipios, $department);*/
+        $department = Place::find($id);
+        array_push($municipios, $department);
         return response()->json($municipios);
 
        
     }
 
-      public function showname($id_departamento,$name)
+    public function showname($id_departamento,$name)
     {
-        /*$municipios = Place::consultanombremunicipios($name);
-        return response()->json($municipios);*/
-
         $municipios=Place::searchNameCities($name,$id_departamento);
+        $department = Place::find($id_departamento);
+        array_push($municipios, $department);
         return response()->json($municipios);
     }
 
-      public function showdane($id_departamento,$dane)
+    public function showdane($id_departamento,$dane)
     {
-      /*  $municipios = Place::consultadanemunicipios($dane);
-        return response()->json($municipios);*/
        $municipios=Place::searchDaneCities($dane,$id_departamento);
-        return response()->json($municipios);
-
+       $department = Place::find($id_departamento);
+       array_push($municipios, $department);
+       return response()->json($municipios);
     }
 
     /**

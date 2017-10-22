@@ -38,7 +38,7 @@ class Zone extends Model
 
     public static function searchDetailZones($text, $id_city)
     {
-        /*$text = strtolower($text);*/
+        $text = strtolower($text);
         return Zone::where([
             ['zones.name', 'like', '%'.$text.'%'],
             ['zones.id_place', $id_city]

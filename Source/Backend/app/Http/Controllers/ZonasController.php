@@ -30,10 +30,6 @@ class ZonasController extends Controller
     }
   public function detail($id)
     {
-
-        //
-       
-
         $zone = Zone::detailZone($id);
         return response()->json($zone);
 
@@ -43,6 +39,8 @@ class ZonasController extends Controller
 
         //
        $zones=Zone::searchDetailZones($texto, $id);
+        $city = Place::find($id);
+        array_push($zonas, $city);
        return response()->json($zones);
 
 
@@ -67,8 +65,8 @@ class ZonasController extends Controller
     public function show($id)
     {
         $zonas = Zone::consultazonas($id);
-       /* $city = Place::find($id);
-        array_push($zonas, $city);*/
+        $city = Place::find($id);
+        array_push($zonas, $city);
         return response()->json($zonas);       
         
     }
