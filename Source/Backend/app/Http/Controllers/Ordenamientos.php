@@ -22,44 +22,8 @@ class Ordenamientos extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-      public function graficos()
-    {   $est=array();
-          for($i=1;$i<=33;$i++){
-       $estadistica=Place::estadisticas($i);
-       //echo('Departamento id:'.$i.' Cantidad municipios->'.$estadistica.'<br>');
-       $est[$i]=$estadistica;}
-       return response()->json($est);
-
-    }
     public function index()
     {
-<<<<<<< HEAD
-      for($i=1;$i<=33;$i++){
-       $estadistica=Place::estadisticas($i);
-       echo('Departamento id:'.$i.' Cantidad municipios->'.$estadistica.'<br>');
-   }
-        $json = File::get("departamentos.json"); 
-        $data =json_decode($json, true);
-            foreach ($data as $obj) { 
-                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
-                $dane = $obj['Dane'];
-                $departamento = $obj['Departamento'];
-                print_r('Dane: '.$dane.', Departamento: '.$departamento.'<br/>');
-                //print_r($obj); 
-            }
-        $json = File::get("places.json"); 
-        $data =json_decode($json, true);
-            foreach ($data as $obj) { 
-                //Pais::create(array( 'Dane' => $obj->Dane, 'Departamento' => $obj->Departamentos)); 
-                $municipio = $obj['municipio'];
-                $dane = $obj['mun_dane'];
-               
-                print_r(' Dane: '.$dane.', Municipio: '.$municipio.'<br/>');
-                //print_r($obj); 
-            }
-=======
->>>>>>> 79459798500f46f366147b6019a2228d3b379055
-
         // Inicializacion de Departamentos
         // $this->departamentos();
 
@@ -67,12 +31,18 @@ class Ordenamientos extends Controller
         // $this->municipios();
 
         // Inicializacion de usuario admin por defecto
-        $this->userAdmin();
+       $this->userAdmin();
 
         // Test de endpoints
-        $this->test();
+       $this->test();
 
-    }
+
+       // Funcion de graficos
+       $this->graficos();
+
+
+
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -364,4 +334,15 @@ class Ordenamientos extends Controller
         echo "<br>";
     }
 
-}
+    public function graficos()
+    {   
+        $est=array();
+        for($i=1;$i<=33;$i++)
+        {
+            $estadistica=Place::estadisticas($i);
+            //echo('Departamento id:'.$i.' Cantidad municipios->'.$estadistica.'<br>');
+            $est[$i]=$estadistica;
+        }
+        return response()->json($est);
+
+    }

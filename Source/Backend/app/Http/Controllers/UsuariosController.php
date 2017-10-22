@@ -17,17 +17,13 @@ class UsuariosController extends Controller
     {
         //
         $users = User::consultausuarios();
-      //$usuarios = Users::consultausuarios();
-       return response()->json($users);
+        return response()->json($users);
     }
 
     public function detail($id)
     {
-    /* $usuarios = Users::consultadetalleuser($id);
-        return response()->json($usuarios);*/
-
         $user = User::detailUser($id);
-         return response()->json($user);
+        return response()->json($user);
     }
 
     /**
