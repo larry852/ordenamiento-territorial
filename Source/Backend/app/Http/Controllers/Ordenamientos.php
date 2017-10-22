@@ -346,3 +346,4 @@ class Ordenamientos extends Controller
         return response()->json($est);
 
     }
+}
