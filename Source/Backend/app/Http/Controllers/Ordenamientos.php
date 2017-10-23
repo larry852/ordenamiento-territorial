@@ -25,10 +25,10 @@ class Ordenamientos extends Controller
     public function index()
     {
         // Inicializacion de Departamentos
-        // $this->departamentos();
+        $this->departamentos();
 
         // Inicializacion de Municipios
-        // $this->municipios();
+        $this->municipios();
 
         // Inicializacion de usuario admin por defecto
        $this->userAdmin();
@@ -64,7 +64,7 @@ class Ordenamientos extends Controller
             $zone->description = strtolower($request->description);
             $zone->symbol = $request->symbol;
             $zone->last_modified = new \DateTime();
-            $zone->id_place = 2; //Roncesvalles
+            $zone->id_place = $request->place;
             $zone->save();
 
             $uso = new Uso();
