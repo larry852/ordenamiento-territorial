@@ -55,18 +55,18 @@ class Zone extends Model
         ->get()->toArray();
     }
 
-       public static function areaZonas($id_municipio)
+    public static function areaZonas($id_municipio)
     {
         
       $id_zonas= Zone::where('id_place',$id_municipio)->get(['id'])->toArray();
       $array= Zone::where('id_place',$id_municipio)->get(['id','name'])->toArray();
 
-       for($i=0;$i<sizeof($id_zonas);$i++){
-      
-  $array[$i]=array_add($array[$i], 'area:', Area::where('id_zone', $id_zonas[$i])->count());
-       }
-       return $array;
-    }
+      for($i=0;$i<sizeof($id_zonas);$i++){
+          $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure'])->toArray()[0]["measure"];
+          $array[$i]=array_add($array[$i], 'area:', $area);
+      }
+      return $array;
+  }
 }
 
 
