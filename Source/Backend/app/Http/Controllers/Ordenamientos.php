@@ -242,7 +242,7 @@ class Ordenamientos extends Controller
         }
 
         echo "<br>";
-        echo "Zonas Guardados";
+        echo "Zonas Guardadas";
         echo "<br>";
     }
 
