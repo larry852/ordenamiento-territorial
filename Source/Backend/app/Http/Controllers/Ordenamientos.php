@@ -30,6 +30,9 @@ class Ordenamientos extends Controller
         // Inicializacion de Municipios
         // $this->municipios();
 
+        // Inicializacion de Zonas
+        $this->zones();
+
         // Inicializacion de usuario admin por defecto
        $this->userAdmin();
 
@@ -212,6 +215,37 @@ class Ordenamientos extends Controller
         echo "Municipios Guardados";
         echo "<br>";
     }
+
+
+    public function zones()
+    {
+        $json = File::get("zones.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $zone = new Zone();
+            $zone->name = strtolower($obj['cobertura']);
+            $zone->symbol = $obj['simbolo'];
+            $zone->last_modified = new \DateTime();
+            $zone->id_place = 1056; //Roncesvalles
+            $zone->save();
+
+            $uso = new Uso();
+            $uso->description = strtolower($obj['uso']);
+            $uso->id_zone = $zone->id;
+            $uso->save();
+
+            $area = new Area();
+            $area->measure = $obj['area_hectareas'];
+            $area->unit = "ha";
+            $area->id_zone = $zone->id;
+            $area->save();
+        }
+
+        echo "<br>";
+        echo "Zonas Guardados";
+        echo "<br>";
+    }
+
 
     public function userAdmin()
     {
