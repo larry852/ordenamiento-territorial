@@ -4,7 +4,9 @@ import { MaterializeModule } from 'angular2-materialize'; /*Se declaro para usar
 import { HttpModule } from "@angular/http";
 import { AppComponent } from './app.component';
 import { DepartamentosComponent } from './components/departamentos.component';
-import { TitleCasePipe} from './pipes/title-case.pipe';
+import { TitleCasePipe } from './pipes/title-case.pipe';
+import { CapitalizePipe } from './pipes/capitalize.pipe';
+import { NullPipe } from './pipes/null.pipe';
 import { Department} from './pipes/department.pipe';
 import { Zones} from './pipes/zones.pipe';
 import { FormsModule } from '@angular/forms';
@@ -22,6 +24,8 @@ import { ZonasComponent } from './components/zonas.component';
   declarations: [                /*aquí se declaran los componentes*/
     AppComponent,     
     TitleCasePipe,
+    CapitalizePipe,
+    NullPipe,
     Zones,
     Department,
     DepartamentosComponent, 

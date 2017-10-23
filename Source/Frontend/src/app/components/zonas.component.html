@@ -29,13 +29,11 @@
   
       <tbody>
         <tr *ngFor="let zone of zones | zones">
-          <td>{{zone.name | titleCase}}</td>
+          <td>{{zone.name | capitalize}}</td>
           <td>{{zone.symbol}}</td>
-          <td>{{zone.use | titleCase}}</td>
-          <td *ngIf="zone.measure === null">No disponible</td>
-          <td *ngIf="zone.measure != null">{{zone.measure + " " +zone.unit}}</td>
-          <td *ngIf="zone.latitude_start != null">{{zone.latitude_start + " " + zone.latitude_end + " " + zone.longitude_start + " " + zone.longitude_end}}</td>
-          <td *ngIf="zone.latitude_start === null">No disponible</td>
+          <td>{{zone.use | capitalize}}</td>
+          <td>{{zone.measure + " " + zone.unit | null }}</td>
+          <td>{{zone.latitude_start + " " + zone.latitude_end + " " + zone.longitude_start + " " + zone.longitude_end | null }}</td>
           <td>{{zone.updated_at | date:'mediumDate'}}</td>
         </tr>
       </tbody>
