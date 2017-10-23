@@ -31,7 +31,7 @@ class Ordenamientos extends Controller
         // $this->municipios();
 
         // Inicializacion de Zonas
-        $this->zones();
+        // $this->zones();
 
         // Inicializacion de usuario admin por defecto
        $this->userAdmin();
