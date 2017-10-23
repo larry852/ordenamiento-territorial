@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use DB;
+use App\Area;
 
 class Zone extends Model
 {
@@ -52,6 +53,19 @@ class Zone extends Model
         ->leftJoin('locations', 'zones.id', '=', 'locations.id_zone')
         ->select('zones.*', 'usos.description as use', 'areas.measure', 'areas.unit', 'locations.latitude_start', 'locations.latitude_end', 'locations.longitude_start', 'locations.longitude_end')
         ->get()->toArray();
+    }
+
+       public static function areaZonas($id_municipio)
+    {
+        
+      $id_zonas= Zone::where('id_place',$id_municipio)->get(['id'])->toArray();
+      $array= Zone::where('id_place',$id_municipio)->get(['id','name'])->toArray();
+
+       for($i=0;$i<sizeof($id_zonas);$i++){
+      
+  $array[$i]=array_add($array[$i], 'area:', Area::where('id_zone', $id_zonas[$i])->count());
+       }
+       return $array;
     }
 }
 

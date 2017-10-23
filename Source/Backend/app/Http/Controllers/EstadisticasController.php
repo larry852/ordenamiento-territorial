@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\Place;
+use App\Zone;
 
 class EstadisticasController extends Controller
 {
@@ -49,7 +50,8 @@ class EstadisticasController extends Controller
      */
     public function show($id)
     {
-        //
+      $zonas=Zone::areaZonas($id);
+    return response()->json($zonas);
     }
 
     /**

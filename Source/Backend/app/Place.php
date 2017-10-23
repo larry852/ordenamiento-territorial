@@ -24,9 +24,14 @@ class Place extends Model
     }
     public static function numeroMunicipios()
     {
+
+        $id_muni= Place::where('pattern',null)->get(['id'])->toArray();
         $array=Place::where('pattern',null)->get(['id','name'])->toArray();
-        for($i=0;$i<33;$i++){
-         $array[$i]=array_add($array[$i], 'count:', Place::where('pattern', $i+1)->count());}
+
+        for($i=0;$i<sizeof($id_muni);$i++){
+         $array[$i]=array_add($array[$i], 'count:', Place::where('pattern', $id_muni[$i])->count());
+        }
+        
      return $array;
 }
     public static function searchNameDepartments($name)
