@@ -28,22 +28,20 @@ class ZonasController extends Controller
     {
         //
     }
-  public function detail($id)
+    public function detail($id)
     {
-
-        //
-       
-
         $zone = Zone::detailZone($id);
         return response()->json($zone);
 
     }
-      public function showText($id,$texto)
+    public function showText($id,$texto)
     {
 
         //
-       $zones=Zone::searchDetailZones($texto, $id);
-       return response()->json($zones);
+        $zones=Zone::searchDetailZones($texto, $id);
+        $city = Place::find($id);
+        array_push($zones, $city);
+        return response()->json($zones);
 
 
     }
@@ -67,8 +65,8 @@ class ZonasController extends Controller
     public function show($id)
     {
         $zonas = Zone::consultazonas($id);
-       /* $city = Place::find($id);
-        array_push($zonas, $city);*/
+        $city = Place::find($id);
+        array_push($zonas, $city);
         return response()->json($zonas);       
         
     }

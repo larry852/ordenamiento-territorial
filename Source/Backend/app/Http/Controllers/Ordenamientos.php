@@ -12,6 +12,8 @@ use App\Uso;
 use App\Zone;
 use App\Area;
 use App\Location;
+use File;
+use Storage;
 
 class Ordenamientos extends Controller
 {
@@ -22,35 +24,231 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
-        // Inicializacion de Departamento y municipio
-        if (Place::where("name", "tolima")->get()->isEmpty()) {
-            $department = new Place();
-            $department->name = strtolower("Tolima");
-            $department->dane = 73;
-            $department->flag = "https://ordenamiento-backend.herokuapp.com/flags/73.png";
-            $department->pattern = null;
-            $department->save();
-            echo "Departamento creado";
-            echo "<br>";
-        }else{
-            echo "Departamento existente";
-            echo "<br>";
+        // Inicializacion de Departamentos
+        // $this->departamentos();
+
+        // Inicializacion de Municipios
+        // $this->municipios();
+
+        // Inicializacion de Zonas
+        // $this->zones();
+
+        // Inicializacion de usuario admin por defecto
+       $this->userAdmin();
+
+        // Test de endpoints
+       $this->test();
+
+   }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+
+        // Guardado de zona por formulario
+        if ($request->zone_name != null){
+            $zone = new Zone();
+            $zone->name = strtolower($request->zone_name);
+            $zone->description = strtolower($request->description);
+            $zone->symbol = $request->symbol;
+            $zone->last_modified = new \DateTime();
+            $zone->id_place = $request->place;
+            $zone->save();
+
+            $uso = new Uso();
+            $uso->description = strtolower($request->uso_description);
+            $uso->id_zone = $zone->id;
+            $uso->save();
+
+            if ($request->latitude_start != null){
+                $location = new Location();
+                $location->latitude_start = $request->latitude_start;
+                $location->latitude_end = $request->latitude_end;
+                $location->longitude_start = $request->longitude_start;
+                $location->longitude_end = $request->longitude_end;
+                $location->description = strtolower($request->description);
+                $location->id_zone = $zone->id;
+                $location->save();
+            }
+
+            $area = new Area();
+            $area->measure = $request->measure;
+            $area->unit = $request->unit;
+            $area->id_zone = $zone->id;
+            $area->save();
+            echo "Zona guardada";
+
         }
 
-        if (Place::where("name", "roncesvalles")->get()->isEmpty()) {
-            $city = new Place();
-            $city->name = strtolower("Roncesvalles");
-            $city->dane = 622;
-            $city->flag = "https://ordenamiento-backend.herokuapp.com/flags/622.png";
-            $city->pattern = 1; //Tolima
-            $city->save();
-            echo "Municipio creado";
-            echo "<br>";
-        }else{
-            echo "Municipio existente";
-            echo "<br>";
+
+        // Guardado de lugar por formulario
+        if($request->place_name != null){
+
+            $place = new Place();
+            $place->name = strtolower($request->place_name);
+            $place->dane = $request->dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$request->dane. ".png";
+            $place->pattern = $request->pattern;
+            $place->save();
+            echo "Places Guardados";
+
         }
 
+        // Guardado de usuario por formulario
+        if ($request->first_name != null) {
+
+            $user = new User();
+            $user->first_name = $request->first_name;
+            $user->last_name = $request->last_name;
+            $user->username = $request->username;
+            $user->email = $request->email;
+            $user->password = $request->password;
+            $user->avatar = $request->avatar;
+            $user->gender = $request->gender;
+            $user->phone = $request->phone;
+            $user->institution = $request->institution;
+            $user->is_active = $request->is_active;
+            $user->last_login = $request->last_login;
+            $user->date_joined = new \DateTime();
+            $user->is_staff = $request->is_staff;
+            $user->save();
+            echo "User guardado";
+        }
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        //
+    }
+
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+
+    public function departamentos()
+    {
+        $json = File::get("departamentos.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $place = new Place();
+            $place->name = strtolower($obj['Departamento']);
+            $dane = $obj["Dane"];
+            $place->dane = $dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane;
+            $place->pattern = null;            
+            $place->save();
+        }
+
+        echo "<br>";
+        echo "Departamentos Guardados";
+        echo "<br>";
+    }
+
+    public function municipios()
+    {
+        $json = File::get("places.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $place = new Place();
+            $place->name = strtolower($obj['MUNICIPIO']);
+            $dane = $obj["MUN_DANE"];
+            $place->dane = $dane;
+            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$dane;
+            $place->pattern = $obj['PATTERN'];            
+            $place->save();
+        }
+
+        echo "<br>";
+        echo "Municipios Guardados";
+        echo "<br>";
+    }
+
+
+    public function zones()
+    {
+        $json = File::get("zones.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $zone = new Zone();
+            $zone->name = strtolower($obj['cobertura']);
+            $zone->symbol = $obj['simbolo'];
+            $zone->last_modified = new \DateTime();
+            $zone->id_place = 1056; //Roncesvalles
+            $zone->save();
+
+            $uso = new Uso();
+            $uso->description = strtolower($obj['uso']);
+            $uso->id_zone = $zone->id;
+            $uso->save();
+
+            $area = new Area();
+            $area->measure = $obj['area_hectareas'];
+            $area->unit = "ha";
+            $area->id_zone = $zone->id;
+            $area->save();
+        }
+
+        echo "<br>";
+        echo "Zonas Guardadas";
+        echo "<br>";
+    }
+
+
+    public function userAdmin()
+    {
         if (User::where("username", "admin")->get()->isEmpty()) {
             $admin = new User();
             $admin->username = "admin";
@@ -62,13 +260,19 @@ class Ordenamientos extends Controller
             $admin->date_joined = new \DateTime();
             $admin->is_staff = true;
             $admin->save();
+            echo "<br>";
             echo "Admin creado";
             echo "<br>";
         }else{
+            echo "<br>";
             echo "Admin existente";
             echo "<br>";
         }
+    }
 
+
+    public function test()
+    {
         $Departamentos = Place::consultadepartamentos();
         echo "<h3> Departamentos: </h3>";
         echo "<pre>";
@@ -77,16 +281,16 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $Municipios = Place::consultamunicipios(1);
-        echo "<h3> Municipios por departamento '1': </h3>";
+        $Municipios = Place::consultamunicipios(22);
+        echo "<h3> Municipios por departamento '22': </h3>";
         echo "<pre>";
         print_r($Municipios);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $zonas = Zone::consultazonas(2);
-        echo "<h3> Detalles zonas por municipio '2': </h3>";
+        $zonas = Zone::consultazonas(1056);
+        echo "<h3> Detalles zonas por municipio '1056': </h3>";
         echo "<pre>";
         print_r($zonas);
         echo "</pre>";
@@ -133,158 +337,28 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $searchNameCities = Place::searchNameCities("ron", 1);
-        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '1': </h3>";
+        $searchNameCities = Place::searchNameCities("ron", 22);
+        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '22': </h3>";
         echo "<pre>";
         print_r($searchNameCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchDaneCities = Place::searchDaneCities(622, 1);
-        echo "<h3> Busqueda por Dane '622' en municipios, departamento '1': </h3>";
+        $searchDaneCities = Place::searchDaneCities(73622, 22);
+        echo "<h3> Busqueda por Dane '73622' en municipios, departamento '22': </h3>";
         echo "<pre>";
         print_r($searchDaneCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchDetailZones = Zone::searchDetailZones("pr", 2);
-        echo "<h3> Busqueda por texto 'pr' en zonas, municipio '2': </h3>";
+        $searchDetailZones = Zone::searchDetailZones("pas", 1056);
+        echo "<h3> Busqueda por texto 'pas' en zonas, municipio '1056': </h3>";
         echo "<pre>";
         print_r($searchDetailZones);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
-
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        if ($request->zone_name != null){
-            $zone = new Zone();
-            $zone->name = strtolower($request->zone_name);
-            $zone->description = strtolower($request->description);
-            $zone->symbol = $request->symbol;
-            $zone->last_modified = new \DateTime();
-            $zone->id_place = 2; //Roncesvalles
-            $zone->save();
-
-            $uso = new Uso();
-            $uso->description = strtolower($request->uso_description);
-            $uso->id_zone = $zone->id;
-            $uso->save();
-
-            if ($request->latitude_start != null){
-                $location = new Location();
-                $location->latitude_start = $request->latitude_start;
-                $location->latitude_end = $request->latitude_end;
-                $location->longitude_start = $request->longitude_start;
-                $location->longitude_end = $request->longitude_end;
-                $location->description = strtolower($request->description);
-                $location->id_zone = $zone->id;
-                $location->save();
-            }
-
-            $area = new Area();
-            $area->measure = $request->measure;
-            $area->unit = $request->unit;
-            $area->id_zone = $zone->id;
-            $area->save();
-            echo "Zona guardada";
-
-        }
-
-
-        if($request->place_name != null){
-            $place = new Place();
-            $place->name = strtolower($request->place_name);
-            $place->dane = $request->dane;
-            $place->flag = "https://ordenamiento-backend.herokuapp.com/flags/" .$request->dane. ".png";
-            $place->pattern = $request->pattern;
-            $place->save();
-            echo "Places Guardados";
-
-        }
-        if ($request->first_name != null) {
-      
-            $user = new User();
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->username = $request->username;
-            $user->email = $request->email;
-            $user->password = $request->password;
-            $user->avatar = $request->avatar;
-            $user->gender = $request->gender;
-            $user->phone = $request->phone;
-            $user->institution = $request->institution;
-            $user->is_active = $request->is_active;
-            $user->last_login = $request->last_login;
-            $user->date_joined = new \DateTime();
-            $user->is_staff = $request->is_staff;
-            $user->save();
-            echo "User guardado";
-        }
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
     }
 }

@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+
 class Place extends Model
 {
     protected $fillable = [
@@ -13,24 +14,35 @@ class Place extends Model
     public static function consultamunicipios($id_departamento)
     {
     	return Place::where('pattern', $id_departamento)->get()->toArray();
-        
+
     }
 
     public static function consultadepartamentos()
     {
     	return Place::where('pattern', null)->get()->toArray();
-        
-    }
 
+    }
+    public static function numeroMunicipios()
+    {
+
+        $id_muni= Place::where('pattern',null)->get(['id'])->toArray();
+        $array=Place::where('pattern',null)->get(['id','name'])->toArray();
+
+        for($i=0;$i<sizeof($id_muni);$i++){
+         $array[$i]=array_add($array[$i], 'count:', Place::where('pattern', $id_muni[$i])->count());
+        }
+        
+     return $array;
+}
     public static function searchNameDepartments($name)
     {
-        /*$name = strtolower($name);*/
+        $name = strtolower($name);
         return Place::where([
             ['name', 'like', '%'.$name.'%'],
             ['pattern', null]
         ])
         ->get()->toArray();
-        
+
     }
 
     public static function searchDaneDepartments($dane)
@@ -40,7 +52,7 @@ class Place extends Model
             ['pattern', null]
         ])
         ->get()->toArray();
-        
+
     }
 
     public static function searchNameCities($name, $id_department)
@@ -51,7 +63,7 @@ class Place extends Model
             ['pattern', $id_department]
         ])
         ->get()->toArray();
-        
+
     }
 
     public static function searchDaneCities($dane, $id_department)
@@ -61,34 +73,6 @@ class Place extends Model
             ['pattern', $id_department]
         ])
         ->get()->toArray();
-        
+
     }
-
-/*
-    public static function consultanombredepartamentos($nombre_departamento)
-    {
-        return Place::where('name',$nombre_departamento)->get();
-        
-    }
-
-
-    public static function consultadanedepartamentos($dane_departamento)
-    {
-        return Place::where('dane',$dane_departamento)->get();
-        
-    }
-
-       public static function consultanombremunicipios($nombre_municipio)
-    {
-        return Place::where('name',$nombre_municipio)->get();
-        
-    }
-
-
-    public static function consultadanemunicipios($dane_municipio)
-    {
-        return Place::where('dane',$dane_municipio)->get();
-        
-    }
-    */
 }

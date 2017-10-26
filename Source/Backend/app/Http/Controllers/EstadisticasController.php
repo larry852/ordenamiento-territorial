@@ -4,9 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\User;
+use App\Place;
+use App\Zone;
 
-class UsuariosController extends Controller
+class EstadisticasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,15 +16,9 @@ class UsuariosController extends Controller
      */
     public function index()
     {
-        //
-        $users = User::consultausuarios();
-        return response()->json($users);
-    }
-
-    public function detail($id)
-    {
-        $user = User::detailUser($id);
-        return response()->json($user);
+        
+    $numunicipios=Place::numeroMunicipios();
+    return response()->json($numunicipios);
     }
 
     /**
@@ -55,7 +50,8 @@ class UsuariosController extends Controller
      */
     public function show($id)
     {
-        //
+      $zonas=Zone::areaZonas($id);
+    return response()->json($zonas);
     }
 
     /**
