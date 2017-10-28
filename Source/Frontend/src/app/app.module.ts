@@ -16,6 +16,8 @@ import { InicioComponent } from './components/inicio.component';
 import { MunicipiosComponent } from './components/municipios.component';
 import { EquipoComponent } from './components/equipo.component';
 import { ZonasComponent } from './components/zonas.component';
+import { PreguntasComponent } from './components/preguntas.component';
+
 
 
 
@@ -30,7 +32,7 @@ import { ZonasComponent } from './components/zonas.component';
     Department,
     DepartamentosComponent, 
     InicioComponent, 
-    MunicipiosComponent, EquipoComponent, ZonasComponent
+    MunicipiosComponent, EquipoComponent, ZonasComponent, PreguntasComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +44,8 @@ import { ZonasComponent } from './components/zonas.component';
       {path: 'equipo', component:EquipoComponent},
       {path: 'departamentos', component:DepartamentosComponent},
       {path: 'municipios/:idDepartment', component:MunicipiosComponent},
-      {path: 'zonas/:idCity', component:ZonasComponent}
+      {path: 'zonas/:idCity', component:ZonasComponent},
+      {path: 'preguntas', component:PreguntasComponent}
       
       /*Se agregan los componentes a enlazar*/
 

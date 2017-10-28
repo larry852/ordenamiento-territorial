@@ -1,11 +1,20 @@
-<div class="container" *ngFor="let department of cities | department"> <!--Detalle del departamento y sus municipios--> 
-  <div class="depart h2 col s12">
-    <a href="municipios/{{department.id}}">
-      <h2 class="depart-titulo" align="center"> {{department.name | titleCase}}</h2>
-      <img class="col s6 m4" src="{{department.flag + '_head.png'}}" alt="{{department.name   | titleCase}}">
-    </a>
+
+<br>
+
+<div  class="container" *ngFor="let department of cities | department"> 
+  <div class="row depart">
+        <div class="h2 col l6 m6 s12"> 
+          <a href="municipios/{{department.id}}"> 
+            <img class="col s12"  src="{{department.flag + '_head.png'}}" alt="{{department.name   | titleCase}}"  >
+          </a>
+        </div>
+        <div class="col l6 m6 s12">
+          <a href="municipios/{{department.id}}">
+           <h2 class="depart-titulo" align="center">{{department.name | titleCase}}</h2>
+          </a>
+        </div>
   </div>
-  
+
   <div class="row">
       <div class="search-wrapper card">
           <div class="col s12" align="center">
@@ -15,38 +24,27 @@
       </div>
   </div>
 
-  <div class="row"> <!--Tabla de lo municipios para el departamento--> 
-    <table class="highlight">
-      <thead>
-        <tr>
-          <th><h4>Municipios</h4></th>
-        </tr>
-      </thead>
-
-      <tbody>
-        <tr *ngFor="let city of cities">
-          <td *ngIf="city.pattern != null">
-            <a href="zonas/{{city.id}}">
-              {{city.name  | titleCase}}
-            </a>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>    
+  <div class="row"> 
+      <table class="highlight">
+        <thead>
+          <tr>
+            <th><h4>Municipios</h4></th>
+          </tr>
+        </thead>
+  
+        <tbody>
+          <tr *ngFor="let city of cities">
+            <td *ngIf="city.pattern != null">
+              <a href="zonas/{{city.id}}">
+                {{city.name  | titleCase}}
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>    
+  
 </div>
 
-<!--Paginación municipios-->
-<!-- <div align="center">  
-  <ul class="pagination">
-    <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
-    <li class="active"><a href="#!">1</a></li>
-    <li class="waves-effect"><a href="#!">2</a></li>
-    <li class="waves-effect"><a href="#!">3</a></li>
-    <li class="waves-effect"><a href="#!">4</a></li>
-    <li class="waves-effect"><a href="#!">5</a></li>
-    <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
-  </ul>
-</div> -->
-
+<br>
 

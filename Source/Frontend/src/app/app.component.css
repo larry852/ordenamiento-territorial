@@ -52,13 +52,14 @@
   }
 
   .depart {
-    width:945px; 
-    height:100px; 
+    /* width:945px; 
+    height:100px;  */
     background-color:blue;
   }
   
   .depart-titulo {
-    color:white;
+    color:rgb(255, 255, 255);
+    background-color:blue;
   }
 
   .muni {
