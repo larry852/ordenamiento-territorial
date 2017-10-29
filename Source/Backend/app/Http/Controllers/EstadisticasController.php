@@ -29,6 +29,7 @@ class EstadisticasController extends Controller
     public function create()
     {
         //
+
     }
 
     /**
@@ -54,6 +55,11 @@ class EstadisticasController extends Controller
     return response()->json($zonas);
     }
 
+    public function showMuni($id_departamento)
+    {
+      $municipios=Place::areaMunicipios($id_departamento);
+        return response()->json($municipios);
+    }
     /**
      * Show the form for editing the specified resource.
      *

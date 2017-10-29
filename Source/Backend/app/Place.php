@@ -75,4 +75,38 @@ class Place extends Model
         ->get()->toArray();
 
     }
+
+    public static function totalAreaMunicipio($id_municipio)
+    {
+        
+      $id_zonas= Zone::where('id_place',$id_municipio)->get(['id'])->toArray();
+      //$array= Zone::where('id_place',$id_municipio)->get(['id','name'])->toArray();
+         $total=0;
+      for($i=0;$i<sizeof($id_zonas);$i++){
+          $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure'])->toArray()[0]["measure"];
+          $total=(float)$total+$area;
+          //$array[$i]=array_add($array[$i], 'area:', $area);
+      }
+      return $total;
+  }
+
+
+
+  public static function areaMunicipios($id_departamento)
+    {
+        
+      $id_municipios= Place::where('pattern',$id_departamento)->get(['id'])->toArray();
+      $array= Place::where('pattern',$id_departamento)->get(['id','name'])->toArray();
+
+      for($i=0;$i<sizeof($id_municipios);$i++){
+         // $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure']);
+
+        $area[]= Place::totalAreaMunicipio($id_municipios[$i]);
+        $array[$i]=array_add($array[$i], 'area:', $area[$i]);
+      }
+
+      return $array;
+  }
+
+
 }
