@@ -51,6 +51,8 @@ class MunicipiosController extends Controller
         $department = Place::find($id);
         array_push($municipios, $department);
         return response()->json($municipios);
+
+       
     }
 
     public function showname($id_departamento,$name)

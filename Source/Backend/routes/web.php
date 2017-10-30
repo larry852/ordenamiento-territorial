@@ -48,8 +48,12 @@ Route::get('usuarios/{id_usuario}/detalles', 'UsuariosController@detail')->middl
 
 
 
-
-
+Route::get('estadisticas/departamentos', 'EstadisticasController@index')->middleware('cors');
+//Ruta para consultar cantidad de municipios por departamento
+Route::get('estadisticas/municipios/{id_departamento}','EstadisticasController@showMuni')->middleware('cors');
+//Ruta para consultar area total de cadda municipio por departamento
+Route::get('estadisticas/zonas/{id_municipio}','EstadisticasController@show')->middleware('cors');
+//Ruta para consultar area de cada zona por municipio
 
 
 

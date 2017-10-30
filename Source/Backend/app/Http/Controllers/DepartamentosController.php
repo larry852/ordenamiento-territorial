@@ -13,10 +13,14 @@ class DepartamentosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+  
     public function index()
     {
+        
        $departamentos = Place::consultadepartamentos();
        return response()->json($departamentos);
+
     }
 
     /**
@@ -100,4 +104,5 @@ class DepartamentosController extends Controller
     {
         //
     }
+ 
 }

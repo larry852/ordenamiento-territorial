@@ -24,20 +24,22 @@ class Ordenamientos extends Controller
      */
     public function index()
     {
-
         // Inicializacion de Departamentos
         // $this->departamentos();
 
         // Inicializacion de Municipios
         // $this->municipios();
 
+        // Inicializacion de Zonas
+        // $this->zones();
+
         // Inicializacion de usuario admin por defecto
-        $this->userAdmin();
+       $this->userAdmin();
 
         // Test de endpoints
-        $this->test();
+       $this->test();
 
-    }
+   }
 
     /**
      * Show the form for creating a new resource.
@@ -65,7 +67,7 @@ class Ordenamientos extends Controller
             $zone->description = strtolower($request->description);
             $zone->symbol = $request->symbol;
             $zone->last_modified = new \DateTime();
-            $zone->id_place = 2; //Roncesvalles
+            $zone->id_place = $request->place;
             $zone->save();
 
             $uso = new Uso();
@@ -151,6 +153,8 @@ class Ordenamientos extends Controller
         //
     }
 
+
+
     /**
      * Update the specified resource in storage.
      *
@@ -212,6 +216,37 @@ class Ordenamientos extends Controller
         echo "<br>";
     }
 
+
+    public function zones()
+    {
+        $json = File::get("zones.json"); 
+        $data =json_decode($json, true);
+        foreach ($data as $obj) { 
+            $zone = new Zone();
+            $zone->name = strtolower($obj['cobertura']);
+            $zone->symbol = $obj['simbolo'];
+            $zone->last_modified = new \DateTime();
+            $zone->id_place = 1056; //Roncesvalles
+            $zone->save();
+
+            $uso = new Uso();
+            $uso->description = strtolower($obj['uso']);
+            $uso->id_zone = $zone->id;
+            $uso->save();
+
+            $area = new Area();
+            $area->measure = $obj['area_hectareas'];
+            $area->unit = "ha";
+            $area->id_zone = $zone->id;
+            $area->save();
+        }
+
+        echo "<br>";
+        echo "Zonas Guardadas";
+        echo "<br>";
+    }
+
+
     public function userAdmin()
     {
         if (User::where("username", "admin")->get()->isEmpty()) {
@@ -246,16 +281,16 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $Municipios = Place::consultamunicipios(1);
-        echo "<h3> Municipios por departamento '1': </h3>";
+        $Municipios = Place::consultamunicipios(22);
+        echo "<h3> Municipios por departamento '22': </h3>";
         echo "<pre>";
         print_r($Municipios);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $zonas = Zone::consultazonas(2);
-        echo "<h3> Detalles zonas por municipio '2': </h3>";
+        $zonas = Zone::consultazonas(1056);
+        echo "<h3> Detalles zonas por municipio '1056': </h3>";
         echo "<pre>";
         print_r($zonas);
         echo "</pre>";
@@ -302,29 +337,28 @@ class Ordenamientos extends Controller
         echo "<br>";
         echo "<br>";
 
-        $searchNameCities = Place::searchNameCities("ron", 1);
-        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '1': </h3>";
+        $searchNameCities = Place::searchNameCities("ron", 22);
+        echo "<h3> Busqueda por nombre 'ron' en municipios, departamento '22': </h3>";
         echo "<pre>";
         print_r($searchNameCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchDaneCities = Place::searchDaneCities(622, 1);
-        echo "<h3> Busqueda por Dane '622' en municipios, departamento '1': </h3>";
+        $searchDaneCities = Place::searchDaneCities(73622, 22);
+        echo "<h3> Busqueda por Dane '73622' en municipios, departamento '22': </h3>";
         echo "<pre>";
         print_r($searchDaneCities);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
 
-        $searchDetailZones = Zone::searchDetailZones("pr", 2);
-        echo "<h3> Busqueda por texto 'pr' en zonas, municipio '2': </h3>";
+        $searchDetailZones = Zone::searchDetailZones("pas", 1056);
+        echo "<h3> Busqueda por texto 'pas' en zonas, municipio '1056': </h3>";
         echo "<pre>";
         print_r($searchDetailZones);
         echo "</pre>";
         echo "<br>";
         echo "<br>";
     }
-
 }
