@@ -48,8 +48,8 @@ class MunicipiosController extends Controller
     public function show($id)
     {
         $municipios = Place::consultamunicipios($id);
-        /*$department = Place::find($id);
-        array_push($municipios, $department);*/
+        $department = Place::find($id);
+        array_push($municipios, $department);
         return response()->json($municipios);
 
        
