@@ -48,6 +48,8 @@
     <div *ngIf="zones.length == 1" class="progress">
       <div class="indeterminate"></div>
     </div>
+
+    <h5 *ngIf='zones.length == 1 && query != ""'>Búsqueda sin resultados</h5>
   </div>    
 </div>
 

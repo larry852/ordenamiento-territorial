@@ -30,6 +30,8 @@
       <div *ngIf="departments.length == 0" class="progress">
         <div class="indeterminate"></div>
       </div>
+
+      <h5 *ngIf='departments.length == 0 && query != ""'>Búsqueda sin resultados</h5>
       
       <div align="center" *ngFor="let department of departments">
         <a href="municipios/{{department.id}}">
