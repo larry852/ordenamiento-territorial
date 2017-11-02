@@ -45,7 +45,8 @@ import { PreguntasComponent } from './components/preguntas.component';
       {path: 'departamentos', component:DepartamentosComponent},
       {path: 'municipios/:idDepartment', component:MunicipiosComponent},
       {path: 'zonas/:idCity', component:ZonasComponent},
-      {path: 'preguntas', component:PreguntasComponent}
+      {path: 'preguntas/:first', component:PreguntasComponent},
+      {path: 'preguntas', component:PreguntasComponent},
       
       /*Se agregan los componentes a enlazar*/
 
