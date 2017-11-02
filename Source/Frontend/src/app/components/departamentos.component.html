@@ -4,27 +4,39 @@
             <img class="imagenes col s12"  src="/assets/imagenes/logoletras.png" alt="Ordenamiento"  >
           </div>  
     </div>
-</div> -->
+  </div> -->
 
-<div id="DEPARTAMENTOS" class="container">  <!--Barra de busqueda departamentos--> 
-  <div class="row">
-      <div class="search-wrapper card">
-          <div class="col s12" align="center">
-            <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
-            <i (click)="search()" class="material-icons">search</i>
-          </div>
-      </div>
+  <div class="row container">
+    <div class="col s12 breadcums">
+      <a href="/departamentos">Departamentos </a> > {{query}}
+    </div>
   </div>
-</div>
 
-<div  class="container"> <!--Listado de departamentos--> 
+  <div id="DEPARTAMENTOS" class="container">  <!--Barra de busqueda departamentos--> 
     <div class="row">
-          <div align="center" *ngFor="let department of departments">
-            <a href="municipios/{{department.id}}">
-              <img class="col s6 m4" src="{{department.flag + '_headm.png'}}" alt="{{department.name   | titleCase}}">
-              <!-- <span>{{department.name | titleCase}}</span> -->
-            </a>
-          </div> 
+      <div class="search-wrapper card">
+        <div class="col s12" align="center">
+          <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
+          <i (click)="search()" class="material-icons">search</i>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div  class="container"> <!--Listado de departamentos--> 
+    <div class="row">
+      
+      <!-- Loading -->
+      <div *ngIf="departments.length == 0" class="progress">
+        <div class="indeterminate"></div>
+      </div>
+      
+      <div align="center" *ngFor="let department of departments">
+        <a href="municipios/{{department.id}}">
+          <img class="col s6 m4" src="{{department.flag + '_headm.png'}}" alt="{{department.name   | titleCase}}">
+          <!-- <span>{{department.name | titleCase}}</span> -->
+        </a>
+      </div> 
     </div>
     
     <!-- <div align="center">
@@ -38,6 +50,6 @@
         <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
       </ul>
     </div>  -->
-</div>
+  </div>
 
 
