@@ -74,12 +74,14 @@ class DepartamentosController extends Controller
      public function showdane($dane_departamento)
     {
         //
-     /*$departamento = Place::consultadanedepartamentos($dane_departamento);
-        return response()->json($departamento);*/
-
-        $departamento=Place::searchDaneDepartments($dane_departamento);
-        return response()->json($departamento);
-
+   
+        if(is_numeric($dane_departamento)&&$dane_departamento>0){
+            $departamento=Place::searchDaneDepartments($dane_departamento);
+            return response()->json($departamento);
+        }
+        else{
+            return response()->view('errors.validacionDane');
+        }
     }
 
     /**
