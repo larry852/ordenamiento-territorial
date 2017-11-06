@@ -70,3 +70,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::resource('/ordenamientos', 'Ordenamientos');
 
+
+/*Route::get('error',function(){
+abort(500);
+
+});*/
+
