@@ -47,28 +47,69 @@ class MunicipiosController extends Controller
      */
     public function show($id)
     {
-        $municipios = Place::consultamunicipios($id);
-        $department = Place::find($id);
-        array_push($municipios, $department);
-        return response()->json($municipios);
+        if(is_numeric($id)&&$id>0){
+            $municipios = Place::consultamunicipios($id);
 
-       
+            if($municipios!=null){
+                $department = Place::find($id);
+                array_push($municipios, $department);
+                return response()->json($municipios);
+            }
+            else{
+                return response()->view('errors.validacionId');
+            }
+        }
+        else{
+            return response()->view('errors.validacionNumber');
+
+        }
+
+    
     }
 
     public function showname($id_departamento,$name)
     {
-        $municipios=Place::searchNameCities($name,$id_departamento);
-        $department = Place::find($id_departamento);
-        array_push($municipios, $department);
-        return response()->json($municipios);
+        if(is_numeric($id_departamento)&&$id_departamento>0){
+            $municipios=Place::searchNameCities($name,$id_departamento);
+
+            if($municipios!=null){
+                $department = Place::find($id_departamento);
+                array_push($municipios, $department);
+                return response()->json($municipios);
+            }
+            else{
+                return response()->view('errors.validacionId');
+            }
+        }
+        else{
+            return response()->view('errors.validacionNumber');
+
+        }
     }
 
     public function showdane($id_departamento,$dane)
     {
-       $municipios=Place::searchDaneCities($dane,$id_departamento);
-       $department = Place::find($id_departamento);
-       array_push($municipios, $department);
-       return response()->json($municipios);
+       if(is_numeric($id_departamento)&&$id_departamento>0){
+            if(is_numeric($dane)&&$dane>0){
+                $municipios=Place::searchDaneCities($dane,$id_departamento);
+
+                if($municipios!=null){
+                    $department = Place::find($id_departamento);
+                    array_push($municipios, $department);
+                    return response()->json($municipios);
+                }
+                else{
+                    return response()->view('errors.validacionId');
+                }
+            }
+            else{
+                return response()->view('errors.validacionDane');
+            }    
+        }
+        else{
+            return response()->view('errors.validacionNumber');
+
+        }
     }
 
     /**

@@ -4,29 +4,35 @@
       <h2 class="muni-titulo" align="center"> {{zones[zones.length-1].name | titleCase}}</h2>
     </a>
   </div>
+
+  <div class="row container">
+    <div *ngIf="zones[zones.length-1]" class="col s12 margin-bottom-20">
+      <a routerLink="/departamentos">Departamentos </a> > Departamento > <a href="zonas/{{zones[zones.length-1].id}}">{{zones[zones.length-1].name | titleCase}}</a> > {{query}}
+    </div> 
+  </div>
   
   <div class="row">
-      <div class="search-wrapper card">
-          <div class="col s12" align="center">
-            <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
-            <i (click)="search()" class="material-icons">search</i>
-          </div>
+    <div class="search-wrapper card">
+      <div class="col s12" align="center">
+        <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
+        <i (click)="search()" class="material-icons">search</i>
       </div>
+    </div>
   </div>
   
   <div class="row"> <!--Detalle distribución municipios ordenamiento--> 
     <table class="highlight">
       <thead class="tabla-muni">
         <tr>
-            <th><h4>Zona</h4></th>
-            <th><h4>Símbolo</h4></th>
-            <th><h4>Uso</h4></th>
-            <th><h4>Área</h4></th>
-            <th><h4>Localización</h4></th>
-            <th><h4>Actualización</h4></th>
+          <th><h4>Zona</h4></th>
+          <th><h4>Símbolo</h4></th>
+          <th><h4>Uso</h4></th>
+          <th><h4>Área</h4></th>
+          <th><h4>Localización</h4></th>
+          <th><h4>Actualización</h4></th>
         </tr>
       </thead>
-  
+
       <tbody>
         <tr *ngFor="let zone of zones | zones">
           <td>{{zone.name | capitalize}}</td>
@@ -38,10 +44,16 @@
         </tr>
       </tbody>
     </table>
+    <!-- Loading -->
+    <div *ngIf="zones.length == 1" class="progress">
+      <div class="indeterminate"></div>
+    </div>
+
+    <h5 *ngIf='zones.length == 1 && query != ""'>Búsqueda sin resultados</h5>
   </div>    
-  </div>
-  
-  <!--Paginación municipios-->
+</div>
+
+<!--Paginación municipios-->
   <!-- <div align="center">  
   <ul class="pagination">
   <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
@@ -52,5 +64,4 @@
   <li class="waves-effect"><a href="#!">5</a></li>
   <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
   </ul>
-  </div> -->
-  
+</div> -->
