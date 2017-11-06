@@ -17,10 +17,8 @@ import { MunicipiosComponent } from './components/municipios.component';
 import { EquipoComponent } from './components/equipo.component';
 import { ZonasComponent } from './components/zonas.component';
 import { PreguntasComponent } from './components/preguntas.component';
-
-
-
-
+import { EstadisticasComponent } from './components/estadisticas.component';
+import { ChartsModule } from 'ng2-charts';
 
 @NgModule({  
   declarations: [                /*aquí se declaran los componentes*/
@@ -32,13 +30,15 @@ import { PreguntasComponent } from './components/preguntas.component';
     Department,
     DepartamentosComponent, 
     InicioComponent, 
-    MunicipiosComponent, EquipoComponent, ZonasComponent, PreguntasComponent
+    MunicipiosComponent, EquipoComponent, ZonasComponent, PreguntasComponent, 
+    EstadisticasComponent
   ],
   imports: [
     BrowserModule,
     MaterializeModule,    /*Se declaro para usar Materialize */
     HttpModule,
     FormsModule,
+    ChartsModule,
     RouterModule.forRoot([
       {path: '', component:InicioComponent},
       {path: 'equipo', component:EquipoComponent},
