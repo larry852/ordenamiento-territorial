@@ -78,7 +78,8 @@ class MunicipiosController extends Controller
                 return response()->json($municipios);
             }
             else{
-                return response()->view('errors.validacionId');
+                return response()->json($municipios);   
+                // return response()->view('errors.validacionId');
             }
         }
         else{
@@ -99,7 +100,8 @@ class MunicipiosController extends Controller
                     return response()->json($municipios);
                 }
                 else{
-                    return response()->view('errors.validacionId');
+                    return response()->json($municipios);   
+                    // return response()->view('errors.validacionId');
                 }
             }
             else{
