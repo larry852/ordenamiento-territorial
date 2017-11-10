@@ -1,43 +1,46 @@
 
-  <div class="row container">
-    <div class="col s12 breadcums">
-      <a href="/departamentos">Departamentos </a> > {{query}}
-    </div>
+<div class="row container">
+  <div class="col s12 breadcums">
+    <a href="/departamentos">Departamentos </a> > {{query}}
   </div>
+</div>
 
-  <app-estadisticas></app-estadisticas>
+<app-estadisticas></app-estadisticas>
 
-  <div id="DEPARTAMENTOS" class="container">  <!--Barra de busqueda departamentos--> 
-    <div class="row">
-      <div class="search-wrapper card">
-        <div class="col s12" align="center">
-          <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query">
-          <i (click)="search()" class="material-icons">search</i>
-        </div>
+<div id="DEPARTAMENTOS" class="container">  <!--Barra de busqueda departamentos--> 
+  <div class="row">
+    <div class="search-wrapper card">
+      <div class="col s12" align="center">
+        <form>
+          <div class="input-field">
+            <input type="search" id="query" name="query" placeholder="Buscar..." [(ngModel)]="query" required>
+            <i class="material-icons" (click)="search()">search</i>
+          </div>
+        </form>
       </div>
     </div>
   </div>
+</div>
 
-  
 
-  <div  class="container"> <!--Listado de departamentos--> 
-    <div class="row">
-      
-      <!-- Loading -->
-      <div *ngIf="departments.length == 0" class="progress">
-        <div class="indeterminate"></div>
-      </div>
+<div  class="container"> <!--Listado de departamentos--> 
+  <div class="row">
 
-      <h5 *ngIf='departments.length == 0 && query != ""'>Búsqueda sin resultados</h5>
-      
-      <div align="center" *ngFor="let department of departments">
-        <a href="municipios/{{department.id}}">
-          <img class="col s6 m4" src="{{department.flag + '_headm.png'}}" alt="{{department.name   | titleCase}}">
-          <!-- <span>{{department.name | titleCase}}</span> -->
-        </a>
-      </div> 
+    <!-- Loading -->
+    <div *ngIf="departments.length == 0" class="progress">
+      <div class="indeterminate"></div>
     </div>
-    
+
+    <h5 *ngIf='departments.length == 0 && query != ""'>Búsqueda sin resultados</h5>
+
+    <div align="center" *ngFor="let department of departments">
+      <a href="municipios/{{department.id}}">
+        <img class="col s6 m4" src="{{department.flag + '_headm.png'}}" alt="{{department.name   | titleCase}}">
+        <!-- <span>{{department.name | titleCase}}</span> -->
+      </a>
+    </div> 
+  </div>
+
     <!-- <div align="center">
       <ul class="pagination">
         <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
