@@ -102,7 +102,7 @@ class Place extends Model
          // $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure']);
 
         $area[]= Place::totalAreaMunicipio($id_municipios[$i]);
-        $array[$i]=array_add($array[$i], 'area:', $area[$i]);
+        $array[$i]=array_add($array[$i], 'area', $area[$i]);
       }
 
       return $array;
