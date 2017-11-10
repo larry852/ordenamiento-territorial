@@ -29,7 +29,7 @@ class Place extends Model
         $array=Place::where('pattern',null)->get(['id','name'])->toArray();
 
         for($i=0;$i<sizeof($id_muni);$i++){
-         $array[$i]=array_add($array[$i], 'count:', Place::where('pattern', $id_muni[$i])->count());
+         $array[$i]=array_add($array[$i], 'count', Place::where('pattern', $id_muni[$i])->count());
         }
         
      return $array;
