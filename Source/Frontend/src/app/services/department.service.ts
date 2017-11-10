@@ -23,4 +23,9 @@ export class DepartmentService {
 		return this.http.get('https://ordenamiento-backend.herokuapp.com/departamentos/nombre/'+query).map(res=>res.json());
 	}
 
+	getStatistics() {
+		return this.http.get('https://ordenamiento-backend.herokuapp.com/estadisticas/departamentos')
+		.map(res=>res.json());
+	}
+
 }
