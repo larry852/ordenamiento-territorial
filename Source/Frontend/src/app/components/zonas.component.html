@@ -8,7 +8,7 @@
   <div class="row container">
     <div *ngIf="zones[zones.length-2]" class="col s12 margin-bottom-20">
       <a routerLink="/departamentos">Departamentos </a> > 
-      <a href="municipios/{{zones[zones.length-1].id}}"> {{zones[zones.length-1].name | titleCase}}</a>> 
+      <a href="municipios/{{zones[zones.length-1].id}}"> {{zones[zones.length-1].name | titleCase}}</a> > 
       <a href="zonas/{{zones[zones.length-2].id}}">{{zones[zones.length-2].name | titleCase}}</a> > 
       {{query}}
     </div> 
@@ -29,7 +29,7 @@
         <tr>
           <th><h4>Zona</h4></th>
           <th><h4>Símbolo</h4></th>
-          <th><h4>Uso</h4></th>
+          <th align="center"><h4>Uso</h4></th>
           <th><h4>Área</h4></th>
           <th><h4>Localización</h4></th>
           <th><h4>Actualización</h4></th>
