@@ -78,7 +78,9 @@ class MunicipiosController extends Controller
                 return response()->json($municipios);
             }
             else{
-                return response()->json($municipios);   
+                $department = Place::find($id_departamento);
+                array_push($municipios, $department);
+                return response()->json($municipios);
                 // return response()->view('errors.validacionId');
             }
         }
@@ -100,6 +102,8 @@ class MunicipiosController extends Controller
                     return response()->json($municipios);
                 }
                 else{
+                    $department = Place::find($id_departamento);
+                    array_push($municipios, $department);
                     return response()->json($municipios);   
                     // return response()->view('errors.validacionId');
                 }
