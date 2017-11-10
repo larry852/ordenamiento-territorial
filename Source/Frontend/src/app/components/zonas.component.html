@@ -8,7 +8,7 @@
   <div class="row container">
     <div *ngIf="zones[zones.length-2]" class="col s12 margin-bottom-20">
       <a routerLink="/departamentos">Departamentos </a> > 
-      <a href="zonas/{{zones[zones.length-1].id}}"> {{zones[zones.length-1].name | titleCase}}</a>> 
+      <a href="municipios/{{zones[zones.length-1].id}}"> {{zones[zones.length-1].name | titleCase}}</a>> 
       <a href="zonas/{{zones[zones.length-2].id}}">{{zones[zones.length-2].name | titleCase}}</a> > 
       {{query}}
     </div> 
@@ -48,11 +48,11 @@
       </tbody>
     </table>
     <!-- Loading -->
-    <div *ngIf="zones.length == 1" class="progress">
+    <div *ngIf="zones.length == 2" class="progress">
       <div class="indeterminate"></div>
     </div>
 
-    <h5 *ngIf='zones.length == 1 && query != ""'>Búsqueda sin resultados</h5>
+    <h5 *ngIf='zones.length == 2 && query != ""'>Búsqueda sin resultados</h5>
   </div>    
 </div>
 
