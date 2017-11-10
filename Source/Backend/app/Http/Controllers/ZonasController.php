@@ -40,7 +40,8 @@ class ZonasController extends Controller
         //
         $zones=Zone::searchDetailZones($texto, $id);
         $city = Place::find($id);
-        array_push($zones, $city);
+        $department = Place::find($city->pattern);
+        array_push($zones, $city, $department);
         return response()->json($zones);
 
 
