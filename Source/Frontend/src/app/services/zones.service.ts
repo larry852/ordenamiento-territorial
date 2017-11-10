@@ -16,4 +16,9 @@ export class ZoneService {
 	getSearch(query, idCity){
 		return this.http.get('https://ordenamiento-backend.herokuapp.com/zonas/'+idCity+'/'+query).map(res=>res.json());
 	}
+
+	getStatistics(idCity) {
+		return this.http.get('https://ordenamiento-backend.herokuapp.com/estadisticas/zonas/'+idCity)
+		.map(res=>res.json());
+	}
 }

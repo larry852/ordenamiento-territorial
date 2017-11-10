@@ -12,6 +12,9 @@ export class ZonasComponent implements OnInit {
 	private idCity:number;
 	zones = [];
 	query = "";
+	pieChartLabels = [];
+	pieChartData = [];
+	isDataAvailable = false;
 
 	constructor(
 		private route:ActivatedRoute,
@@ -34,6 +37,15 @@ export class ZonasComponent implements OnInit {
 
 	search(){
 		this.zoneService.getSearch(this.query, this.idCity).subscribe(data => this.zones = data)
+	}
+
+	loadStatistics(idCity){
+		var self = this;
+		this.zoneService.getStatistics(this.idCity).subscribe(function(response) { 
+			self.pieChartLabels = response.map(a => a.name);
+			self.pieChartData = response.map(a => a.area);
+			self.isDataAvailable = !self.isDataAvailable;
+		});
 	}
 
 }

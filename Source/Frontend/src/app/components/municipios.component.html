@@ -15,9 +15,10 @@
    </div>
  
  </div>
- <div class="row container">
+ <div class="row">
   <div class="col s12 margin-bottom-20">
     <a routerLink="/departamentos">Departamentos </a> > <a href="municipios/{{department.id}}">{{department.name | titleCase}}</a> > {{query}}
+    <a class="waves-effect waves-light btn right" (click)="loadStatistics()"><i class="material-icons left">pie_chart</i>Estadisticas</a>
   </div> 
 </div>
 

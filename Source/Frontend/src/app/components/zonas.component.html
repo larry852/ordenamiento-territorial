@@ -5,15 +5,23 @@
     </a>
   </div>
 
-  <div class="row container">
+  <div class="row">
     <div *ngIf="zones[zones.length-2]" class="col s12 margin-bottom-20">
       <a routerLink="/departamentos">Departamentos </a> > 
       <a href="municipios/{{zones[zones.length-1].id}}"> {{zones[zones.length-1].name | titleCase}}</a> > 
       <a href="zonas/{{zones[zones.length-2].id}}">{{zones[zones.length-2].name | titleCase}}</a> > 
       {{query}}
+      <a class="waves-effect waves-light btn right" (click)="loadStatistics()"><i class="material-icons left">pie_chart</i>Estadisticas</a>
     </div> 
   </div>
   
+  <app-estadisticas 
+  [pieChartLabels]=pieChartLabels
+  [pieChartData]=pieChartData
+  [isDataAvailable]=isDataAvailable
+  >
+  </app-estadisticas>
+
   <div class="row">
     <div class="search-wrapper card">
       <div class="col s12" align="center">
