@@ -1,18 +1,20 @@
 
+<br>
+
 <div class="row container">
   <div class="col s12 breadcums">
     <a href="/departamentos">Departamentos </a> > {{query}}
     <a class="waves-effect waves-light btn right" (click)="loadStatistics()"><i class="material-icons left">pie_chart</i>Estadisticas</a>
   </div>
-</div>
 
-
-<app-estadisticas 
+  <app-estadisticas 
   [pieChartLabels]=pieChartLabels
   [pieChartData]=pieChartData
   [isDataAvailable]=isDataAvailable
->
-</app-estadisticas>
+  >
+  </app-estadisticas>
+
+</div>
 
 <div id="DEPARTAMENTOS" class="container">  <!--Barra de busqueda departamentos--> 
   <div class="row">
