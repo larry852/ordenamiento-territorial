@@ -54,6 +54,8 @@
   .depart {
     /* width:945px; 
     height:100px;  */
+    background-color:#882E85;
+    padding: 20px;
   }
   
   .depart-titulo {
@@ -62,9 +64,7 @@
   }
 
   .muni {
-    width:945px; 
-    height:100px; 
-    
+    background-color:#882E85;
   }
   
   .muni-titulo {
