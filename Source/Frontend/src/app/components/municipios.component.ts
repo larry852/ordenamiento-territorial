@@ -12,7 +12,9 @@ export class MunicipiosComponent implements OnInit {
 	private idDepartment:number;
 	cities = [];
 	query = "";
-
+	pieChartLabels = [];
+	pieChartData = [];
+	isDataAvailable = false;
 	constructor(
 		private route:ActivatedRoute,
 		private router:Router,
@@ -34,5 +36,14 @@ export class MunicipiosComponent implements OnInit {
 
 	search(){
 		this.cityService.getSearch(this.query, this.idDepartment).subscribe(data => this.cities = data)
+	}
+
+	loadStatistics(){
+		var self = this;
+		this.cityService.getStatistics(this.idDepartment).subscribe(function(response) { 
+			self.pieChartLabels = response.map(a => a.name);
+			self.pieChartData = response.map(a => a.area);
+			self.isDataAvailable = !self.isDataAvailable;
+		});
 	}
 }

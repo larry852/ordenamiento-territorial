@@ -7,7 +7,12 @@
 </div>
 
 
-<app-estadisticas></app-estadisticas>
+<app-estadisticas 
+  [pieChartLabels]=pieChartLabels
+  [pieChartData]=pieChartData
+  [isDataAvailable]=isDataAvailable
+>
+</app-estadisticas>
 
 <div id="DEPARTAMENTOS" class="container">  <!--Barra de busqueda departamentos--> 
   <div class="row">

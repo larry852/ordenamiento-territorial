@@ -1,4 +1,4 @@
-import { Component} from '@angular/core';
+import { Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-estadisticas',
@@ -7,10 +7,12 @@ import { Component} from '@angular/core';
 })
 export class EstadisticasComponent  {
 
-  // Pie
-  public pieChartLabels: string[];
-  public pieChartData: number[];
+   // Pie
+  @Input() pieChartLabels: string[];
+  @Input() pieChartData: number[];
   public pieChartType: string = 'pie';
+  
+  @Input() isDataAvailable:boolean = false;
 
   // events
   public chartClicked(e: any): void {
@@ -19,12 +21,5 @@ export class EstadisticasComponent  {
 
   public chartHovered(e: any): void {
     console.log(e);
-  }
-
-  public initStatistics(pieChartLabels, pieChartData){
-    this.pieChartLabels = pieChartLabels;
-    this.pieChartData = pieChartData;
-    console.log(pieChartData);
-    console.log(pieChartLabels);
   }
 }

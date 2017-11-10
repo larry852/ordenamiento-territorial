@@ -1,17 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { DepartmentService } from '../services/department.service';
-import { EstadisticasComponent } from './estadisticas.component';
 
 @Component({
 	selector: 'app-departamentos',
 	templateUrl: './departamentos.component.html',
 	styleUrls: [  '../app.component.css'], 
-	providers: [DepartmentService, EstadisticasComponent]
+	providers: [DepartmentService]
 })
 export class DepartamentosComponent implements OnInit{
 	departments = [];
 	query = "";
-	constructor(private departmentService: DepartmentService, private estadisticasComponent: EstadisticasComponent) {}
+	pieChartLabels = [];
+	pieChartData = [];
+	isDataAvailable = false;
+	constructor(private departmentService: DepartmentService) {}
 
 	loadDepartments(){
 		this.departmentService.getAll().subscribe(data => this.departments = data);
@@ -27,15 +29,11 @@ export class DepartamentosComponent implements OnInit{
 
 
 	loadStatistics(){
-		var pieChartLabels = [];
-		var pieChartData = [];
 		var self = this;
 		this.departmentService.getStatistics().subscribe(function(response) { 
-			for (var i = response.length - 1; i >= 0; i--) {
-				pieChartLabels.push(response[i].name);
-				pieChartData.push(response[i].count);
-			}
-			self.estadisticasComponent.initStatistics(pieChartLabels, pieChartData);
+			self.pieChartLabels = response.map(a => a.name);
+			self.pieChartData = response.map(a => a.count);
+			self.isDataAvailable = !self.isDataAvailable;
 		});
 	}
 }
