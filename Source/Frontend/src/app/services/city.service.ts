@@ -22,4 +22,9 @@ export class CityService {
 			return this.http.get('https://ordenamiento-backend.herokuapp.com/municipios/'+idDepartment+'/dane/'+query).map(res=>res.json());
 		return this.http.get('https://ordenamiento-backend.herokuapp.com/municipios/'+idDepartment+'/nombre/'+query).map(res=>res.json());
 	}
+
+	getStatistics(idDepartment) {
+		return this.http.get('https://ordenamiento-backend.herokuapp.com/estadisticas/municipios/'+idDepartment)
+		.map(res=>res.json());
+	}
 }

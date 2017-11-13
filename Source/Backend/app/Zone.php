@@ -63,7 +63,7 @@ class Zone extends Model
 
       for($i=0;$i<sizeof($id_zonas);$i++){
           $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure'])->toArray()[0]["measure"];
-          $array[$i]=array_add($array[$i], 'area:', $area);
+          $array[$i]=array_add($array[$i], 'area', $area);
       }
       return $array;
   }

@@ -29,7 +29,7 @@ class Place extends Model
         $array=Place::where('pattern',null)->get(['id','name'])->toArray();
 
         for($i=0;$i<sizeof($id_muni);$i++){
-         $array[$i]=array_add($array[$i], 'count:', Place::where('pattern', $id_muni[$i])->count());
+         $array[$i]=array_add($array[$i], 'count', Place::where('pattern', $id_muni[$i])->count());
         }
         
      return $array;
@@ -102,7 +102,7 @@ class Place extends Model
          // $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure']);
 
         $area[]= Place::totalAreaMunicipio($id_municipios[$i]);
-        $array[$i]=array_add($array[$i], 'area:', $area[$i]);
+        $array[$i]=array_add($array[$i], 'area', $area[$i]);
       }
 
       return $array;

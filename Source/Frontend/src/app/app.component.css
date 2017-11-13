@@ -54,26 +54,31 @@
   .depart {
     /* width:945px; 
     height:100px;  */
-    background-color:blue;
+    background-color:#882E85;
+    padding: 20px;
   }
   
   .depart-titulo {
     color:rgb(255, 255, 255);
-    background-color:blue;
+    background-color:#882E85;
   }
 
   .muni {
-    width:945px; 
-    height:100px; 
-    
+    background-color:#882E85;
   }
   
   .muni-titulo {
-    color:#BAD450;
+    color:rgb(255, 255, 255);
+    background-color:#882E85;
   }
 
   .tabla-muni{
-    background-color: #BAD450
+    color:rgb(255, 255, 255);
+    background-color: #882E85;
+  }
+
+  table th{
+    text-align: center;
   }
 
 /*Estilo para link de tablas, componente municipios*/
