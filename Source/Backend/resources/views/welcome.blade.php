@@ -79,15 +79,15 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Plan de ordenamiento territorial
+                    Visualización Ordenamiento Territorial Colombia
                 </div>
 
                 <div class="links">
-                    <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
+                    <a href="https://ordenamiento-frontend.herokuapp.com/">Aplicación</a>
+                    <a href="https://github.com/larry852/ordenamiento-territorial">Repositorio GitHub</a>
+                    <a href="https://github.com/larry852/ordenamiento-territorial/tree/master/Documentacion">Documentación</a>
+                    <a href="https://ordenamiento-frontend.herokuapp.com/equipo">Contato</a>
+                    <a href="http://cocrealab.org/">CocreaLab</a>
                 </div>
             </div>
         </div>
