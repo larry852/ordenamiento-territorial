@@ -86,7 +86,7 @@
                     <a href="https://ordenamiento-frontend.herokuapp.com/">Aplicación</a>
                     <a href="https://github.com/larry852/ordenamiento-territorial">Repositorio GitHub</a>
                     <a href="https://github.com/larry852/ordenamiento-territorial/tree/master/Documentacion">Documentación</a>
-                    <a href="https://ordenamiento-frontend.herokuapp.com/equipo">Contato</a>
+                    <a href="https://ordenamiento-frontend.herokuapp.com/equipo">Contacto</a>
                     <a href="http://cocrealab.org/">CocreaLab</a>
                 </div>
             </div>
