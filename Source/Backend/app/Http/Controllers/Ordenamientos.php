@@ -39,6 +39,9 @@ class Ordenamientos extends Controller
         // Test de endpoints
        $this->test();
 
+       // Eliminacioan de zona por id
+       // $this->deleteZone(30);
+
    }
 
     /**
@@ -246,6 +249,14 @@ class Ordenamientos extends Controller
         echo "<br>";
     }
 
+
+    public function deleteZone($id)
+    {
+        Zone::destroy($id);
+        echo "<br>";
+        echo "Zona ". $id ." eliminada";
+        echo "<br>";
+    }
 
     public function userAdmin()
     {
