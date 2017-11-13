@@ -83,8 +83,11 @@ class Place extends Model
       //$array= Zone::where('id_place',$id_municipio)->get(['id','name'])->toArray();
          $total=0;
       for($i=0;$i<sizeof($id_zonas);$i++){
-          $area = (float) Area::where('id_zone', $id_zonas[$i])->get(['measure'])->toArray()[0]["measure"];
-          $total=(float)$total+$area;
+          $area = Area::where('id_zone', $id_zonas[$i])->get();
+          if (!$area->isEmpty()) {
+            $measure = (float) $area->toArray()[0]["measure"];
+            $total= (float) $total + $measure;
+          }
           //$array[$i]=array_add($array[$i], 'area:', $area);
       }
       return $total;
