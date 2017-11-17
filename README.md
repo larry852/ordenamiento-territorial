@@ -1,4 +1,4 @@
-# ordenamiento-territorial ![TravisCI](https://travis-ci.org/larry852/ordenamiento-territorial.svg?branch=master)
+# Visualización Ordenamiento Territorial Colombia ![TravisCI](https://travis-ci.org/larry852/ordenamiento-territorial.svg?branch=master)
 
 ## Descripción
 El aplicativo web, “visualización ordenamiento territorial colombia”, a través de la centralización de información abierta no estructurada sobre ordenamiento territorial colombiano, muestra al usuario de manera organizada y graficada, los datos de cada municipio y departamento del país, información referente a la distribución de zonas asignadas por cada institución municipal. Además el sistema web permite la aplicación de filtrado y búsqueda sobre esta información. También se incluye en el desarrollo del aplicativo, el diseño del mecanismo de administración de la información en la plataforma por cada municipio.
