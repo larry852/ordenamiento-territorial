@@ -26,7 +26,7 @@ Api Rest prestadora de servicios de información.
 - [Historias de usuario](Documentacion/Historias%20de%20usuario)
 - [Testing](Documentacion/Testing)
 
-## Tecnologias
+## Tecnologías
 - Framework(Backend)
 	- Laravel 5.4.36
 - Framework controlador (Frontend)
