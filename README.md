@@ -35,10 +35,10 @@ Api Rest prestadora de servicios de información.
 	- Materialize
 
 ## Diagrama de componentes
-![Componentes](Documentacion/Dise%C3%B1o/componentes.png?raw=true "Componentes")
+![Componentes](Documentacion/Dise%C3%B1o/Logico/componentes.png?raw=true "Componentes")
 
 ## Diagrama de despliegue
-![Despliegue](Documentacion/Dise%C3%B1o/despliegue.png?raw=true "Despliegue")
+![Despliegue](Documentacion/Dise%C3%B1o/Logico/despliegue.png?raw=true "Despliegue")
 
 ## Endpoints API
 ![Endpoints](Source/Backend/Endpoints.PNG?raw=true "Endpoints")
