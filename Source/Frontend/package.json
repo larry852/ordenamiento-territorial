@@ -24,11 +24,13 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "angular2-materialize": "^15.1.9",
     "chart.js": "^2.7.1",
     "core-js": "^2.4.1",
     "express": "^4.15.4",
     "ng2-breadcrumbs": "^0.1.28",
     "ng2-charts": "^1.6.0",
+    "materialize-css": "^0.100.2",
     "rxjs": "^5.4.2",
     "typescript": "~2.3.3",
     "zone.js": "^0.8.14"
