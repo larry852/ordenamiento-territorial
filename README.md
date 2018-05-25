@@ -17,6 +17,72 @@ Api Rest prestadora de servicios de información.
 - [Backend](Source/Backend)
 - [Frontend](Source/Frontend)
 
+
+## Ejecución local
+
+- Sistema operativo testeo: Debian GNU/Linux 9 (stretch) 64-bit
+
+### Requerimientos
+
+**PHP 7.0**
+```sh
+sudo apt-get install php7.0
+```
+
+**php-mbstring**
+```sh
+sudo apt-get install php-mbstring
+```
+
+**php-xml**
+```sh
+sudo apt-get install php-xml
+```
+
+**php5-pgsql**
+```sh
+sudo apt-get install php-pgsql
+```
+
+**composer**
+```sh
+php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
+sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
+php -r "unlink('composer-setup.php');"
+```
+
+**Node - npm**
+```sh
+sudo apt install curl
+curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
+sudo apt-get install nodejs
+sudo apt-get install build-essential
+```
+
+**Clonación de repositorio**
+```sh
+git clone https://github.com/larry852/ordenamiento-territorial.git
+```
+
+**Ejecución módulo Backend**
+```sh
+cd ordenamiento-territorial/Source/Backend/
+composer install
+cp .env.example .env
+php artisan key:generate
+php artisan serve
+## http://localhost:8000/
+```
+
+**Ejecución módulo Frontend**
+```sh
+cd ordenamiento-territorial/Source/Frontend/
+sudo npm install -g @angular/cli
+npm install
+ng server
+## http://localhost:4200/
+```
+
 ## Documentación
 - [Manual de usuario](Documentacion/Manual%20usuario.pdf)
 - [Despliegue](Documentacion/Despliegue)
