@@ -39,7 +39,7 @@ sudo apt-get install php-mbstring
 sudo apt-get install php-xml
 ```
 
-**php5-pgsql**
+**php-pgsql**
 ```sh
 sudo apt-get install php-pgsql
 ```
