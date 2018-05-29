@@ -59,6 +59,8 @@ sudo apt-get install nodejs
 sudo apt-get install build-essential
 ```
 
+### Ejecución
+
 **Clonación de repositorio**
 ```sh
 git clone https://github.com/larry852/ordenamiento-territorial.git
