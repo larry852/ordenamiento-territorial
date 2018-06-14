@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
+import { environment } from './global';
 
 @Injectable()
 export class DepartmentService {
@@ -9,7 +10,7 @@ export class DepartmentService {
 		) {}
 
 	getAll() {
-		return this.http.get('https://ordenamiento-backend.herokuapp.com/departamentos')
+		return this.http.get(environment.BASE_API_URL + '/departamentos')
 		.map(res=>res.json());
 	}
 
@@ -19,12 +20,12 @@ export class DepartmentService {
 
 	getSearch(query){
 		if (this.isNumber(query))
-			return this.http.get('https://ordenamiento-backend.herokuapp.com/departamentos/dane/'+query).map(res=>res.json());
-		return this.http.get('https://ordenamiento-backend.herokuapp.com/departamentos/nombre/'+query).map(res=>res.json());
+			return this.http.get(environment.BASE_API_URL + '/departamentos/dane/'+query).map(res=>res.json());
+		return this.http.get(environment.BASE_API_URL + '/departamentos/nombre/'+query).map(res=>res.json());
 	}
 
 	getStatistics() {
-		return this.http.get('https://ordenamiento-backend.herokuapp.com/estadisticas/departamentos')
+		return this.http.get(environment.BASE_API_URL + '/estadisticas/departamentos')
 		.map(res=>res.json());
 	}
 
