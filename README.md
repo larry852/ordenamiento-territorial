@@ -18,7 +18,7 @@ Api Rest prestadora de servicios de información.
 - [Frontend](Source/Frontend)
 
 
-## Ejecución local
+## Manual de ejecución local
 
 - Sistema operativo testeo: Debian GNU/Linux 9 (stretch) 64-bit
 
@@ -58,6 +58,8 @@ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt-get install nodejs
 sudo apt-get install build-essential
 ```
+
+### Ejecución
 
 **Clonación de repositorio**
 ```sh
