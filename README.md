@@ -26,22 +26,26 @@ Api Rest prestadora de servicios de información.
 
 **PHP 7.0**
 ```sh
-sudo apt-get install php7.0
+sudo apt install php7.0
 ```
 
 **php-mbstring**
 ```sh
-sudo apt-get install php-mbstring
+sudo apt install php-mbstring
 ```
 
 **php-xml**
 ```sh
-sudo apt-get install php-xml
+sudo apt install php-xml
 ```
 
 **php-pgsql**
 ```sh
-sudo apt-get install php-pgsql
+sudo apt install php-pgsql
+```
+**php-sqlite**
+```sh
+sudo apt install php-sqlite3
 ```
 
 **composer**
@@ -55,8 +59,8 @@ php -r "unlink('composer-setup.php');"
 ```sh
 sudo apt install curl
 curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
-sudo apt-get install nodejs
-sudo apt-get install build-essential
+sudo apt install nodejs
+sudo apt install build-essential
 ```
 
 ### Ejecución
