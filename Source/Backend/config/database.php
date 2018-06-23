@@ -13,9 +13,7 @@ return [
     |
     */
 
-    // 'default' => env('DB_CONNECTION', 'pgsql'),
-    'default' => 'pgsql',
-    // 'default' => 'sqlite',
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------

@@ -69,9 +69,11 @@ git clone https://github.com/larry852/ordenamiento-territorial.git
 **Ejecución módulo Backend**
 ```sh
 cd ordenamiento-territorial/Source/Backend/
+touch database/database.sqlite
 composer install
 cp .env.example .env
 php artisan key:generate
+php artisan migrate
 php artisan serve
 ## http://localhost:8000/
 ```
