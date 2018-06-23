@@ -55,6 +55,11 @@ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('composer-setup.php');"
 ```
 
+**php-sqlite**
+```sh
+sudo apt install curl
+```
+
 **Node - npm**
 ```sh
 sudo apt install curl
@@ -62,6 +67,7 @@ curl -sL https://deb.nodesource.com/setup_9.x | sudo -E bash -
 sudo apt install nodejs
 sudo apt install build-essential
 ```
+
 
 ### Ejecución
 
@@ -80,6 +86,9 @@ php artisan key:generate
 php artisan migrate
 php artisan serve
 ## http://localhost:8000/
+
+## Para inicialización de base de datos, abrir una nueva terminal y ejecutar.
+curl http://localhost:8000/init
 ```
 
 **Ejecución módulo Frontend**
@@ -90,6 +99,11 @@ npm install
 ng server --env=local
 ## http://localhost:4200/
 ```
+
+### Formulario registro y adicion de datos.
+1. Ingresar a http://localhost:8000/login
+2. Acceder a la plataforma con las credenciales. email: admin@admin.com password: admin
+
 
 ## Documentación
 - [Manual de usuario](Documentacion/Manual%20usuario.pdf)

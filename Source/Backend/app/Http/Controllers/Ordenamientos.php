@@ -25,13 +25,13 @@ class Ordenamientos extends Controller
     public function index()
     {
         // Inicializacion de Departamentos
-        // $this->departamentos();
+        $this->departamentos();
 
         // Inicializacion de Municipios
-        // $this->municipios();
+        $this->municipios();
 
         // Inicializacion de Zonas
-        // $this->zones();
+        $this->zones();
 
         // Inicializacion de usuario admin por defecto
        $this->userAdmin();
