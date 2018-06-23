@@ -81,7 +81,7 @@ php artisan serve
 cd ordenamiento-territorial/Source/Frontend/
 sudo npm install -g @angular/cli
 npm install
-ng server
+ng server --env=local
 ## http://localhost:4200/
 ```
 
