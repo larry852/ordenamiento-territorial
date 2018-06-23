@@ -55,7 +55,7 @@ sudo php composer-setup.php --install-dir=/usr/local/bin --filename=composer
 php -r "unlink('composer-setup.php');"
 ```
 
-**php-sqlite**
+**curl**
 ```sh
 sudo apt install curl
 ```
