@@ -68,7 +68,8 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('/init', 'Ordenamientos');
+Route::get('/init', 'Ordenamientos@index');
+Route::resource('/ordenamientos', 'Ordenamientos');
 
 
 /*Route::get('error',function(){
