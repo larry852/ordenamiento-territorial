@@ -100,13 +100,14 @@ ng server --env=local
 ## http://localhost:4200/
 ```
 
-### Formulario registro y adicion de datos.
+### Formulario registro y adición de datos.
 1. Ingresar a http://localhost:8000/login
 2. Acceder a la plataforma con las credenciales. email: admin@admin.com password: admin
 
 
 ## Documentación
 - [Manual de usuario](Documentacion/Manual%20usuario.pdf)
+- [Manual ejecución local](Documentacion/Manual%20ejecucion%20local.pdf)
 - [Manual de registro de información](Documentacion/Manual%20de%20registro%20de%20informacion.pdf)
 - [Despliegue](Documentacion/Despliegue)
 - [Diseño](Documentacion/Dise%C3%B1o)
