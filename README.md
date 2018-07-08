@@ -107,8 +107,10 @@ ng server --env=local
 
 ## Documentación
 - [Manual de usuario](Documentacion/Manual%20usuario.pdf)
-- [Manual ejecución local](Documentacion/Manual%20ejecucion%20local.pdf)
+- [Manual de ejecución local](Documentacion/Manual%20ejecucion%20local.pdf)
 - [Manual de registro de información](Documentacion/Manual%20de%20registro%20de%20informacion.pdf)
+- [Manual de visualización de datos planos](Documentacion/Manual%20de%20visualización%20datos%20de%20las%20distintas%20entidades.pdf)
+
 - [Despliegue](Documentacion/Despliegue)
 - [Diseño](Documentacion/Dise%C3%B1o)
 - [General](Documentacion/General)
